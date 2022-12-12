@@ -1,0 +1,1077 @@
+{% load static %}
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<!-- Mobile Specific Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Favicon-->
+		
+		<link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
+		<!-- Author Meta -->
+		<meta name="author" content="">
+		<!-- Meta Description -->
+		<meta name="description" content="">
+		<!-- Meta Keyword -->
+		<meta name="keywords" content="">
+		<!-- meta character set -->
+		<meta charset="UTF-8">
+		<!-- Site Title -->
+		<title>HotWheels - Home Buy Vechiles,Service Market Place</title>
+		<link href="https://fonts.googleapis.com/css?family=Mina" rel="stylesheet"> 
+			<!--
+			CSS
+			============================================= -->
+			
+			<link rel="stylesheet" href="">
+			<link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
+			<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+			<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+			<link rel="stylesheet" href="{% static 'css/nice-select.css' %}">					
+			<link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+			<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+			<link rel="stylesheet" href="{% static 'css/owl.theme.min.css' %}">
+			<link rel="stylesheet" href="{% static 'css/owl.transitions.css' %}">
+			<link rel="stylesheet" href="{% static 'css/carousel_advance.css' %}">
+			<link rel="stylesheet" href="{% static 'css/main.css' %}">
+			<link rel="stylesheet" href="{% static 'css/rangeslider.css' %}">
+			<!--======= Responsive Bootstrap Carousel StyleSheet =========-->
+		<link href="{% static 'css/testimonial_speech_bubble_border_carousel.css' %}" rel="stylesheet" media="all">
+		</head>
+		<body>
+
+			  <!-- #header Start-->
+			  <header id="header">
+			  	<div class="header-top bg-1">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-7 col-xs-12 hide_column">
+								<div class="header-top-menu">
+									<ul>
+										<!-- <li><a href="#">Partners</a></li>
+										<li><a href="#">Community</a></li>
+										<li><a href="#">Become A Seller</a></li> -->
+									</ul>
+								</div>
+							</div>
+							<div class="col-lg-5 col-md-12 col-xs-12">
+								<div class="header-top-right text-right">
+									<ul class="account">	
+										<li>
+											<a href="#">
+												<img src="{% static 'img/boogyman.png' %}" alt="">
+												Login Or <span> Register
+												<i class="fa fa-angle-down"></i></span>
+											</a>
+											<ul class="profile">
+												<li><a href="#">Login</a></li>
+												<li><a href="{% url 'signup' %}">Register</a></li>
+												<!-- <li><a href="user_profile.html">User Profile</a></li>
+												<li><a href="upload_products.html">Upload Products</a></li>
+												<li><a href="favourite_products.html">Favourite Products</a></li>
+												<li><a href="change_password.html">Change Password</a></li>
+												<li><a href="manage_products.html">Manage Products</a></li>
+												<li><a href="product_notification.html">Notifications</a></li>
+												<li><a href="product_message.html">Messages</a></li>
+												<li><a href="shopping_cart.html">Shopping Cart</a></li>
+												<li><a href="withdraw.html">Withdraw</a></li>
+												<li><a href="#">Sign Out</a></li> -->
+											</ul>
+										</li>
+									</ul>
+									<!-- <ul class="notification_icons">
+										<li>
+											<a href="#"><i class="fa fa-bell-o"></i><span class="number">11</span></a>
+										</li>
+										<li>
+											<a href="#"><i class="fa fa-envelope-o"></i><span class="number">5</span></a>
+										</li>
+										<li>
+											<a href="#">
+												<i class="fa fa-shopping-basket"></i>
+											</a>
+										</li> 
+
+									</ul> -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			    <div class="header-bottom">
+			    	<div class="container">
+				    	<div class="row align-items-center d-flex">
+				    		<div class="col-lg-2 col-md-2">
+				    			<div id="logo">
+							        <a href="index.html"><img src="#" alt="" /></a>
+									<!-- {% static 'img/logo.png' %} -->
+							    </div>
+				    		</div>
+					   		<div class="col-lg-10 col-md-2">				
+						      <nav id="nav-menu-container">
+						        <ul class="nav-menu float-right">
+						          <li class="menu-has-children"><a href="index.html">Home</a>
+						          </li>
+						          <li class="menu-has-children"><a href="">Pages</a>
+						            <ul>
+						            	<li><a href="product_listing.html">Product Listing</a></li>
+										<li><a href="product_listing_detail.html">Product Listing Detail</a></li>
+										<li><a href="search.html">search</a></li>
+										<!-- <li><a href="upload_products.html">Upload Products</a></li> -->
+										<li><a href="favourite_products.html">Favourite Products</a></li>
+										<li><a href="signin.html">Signin Page</a></li>
+										<li><a href="signup.html">Signup Page</a></li>					
+										<li><a href="terms_and_conditions.html">Terms & Conditions</a></li>
+										<li><a href="privcy_policy.html">Privacy Policy</a></li>
+										<li><a href="404.html">404 Page</a></li>
+						            </ul>
+						          </li>
+						          <li class="menu-has-children"><a href="about_us.html">About</a>
+						          </li>  
+						          <li class="menu-has-children"><a href="services.html">Services</a>
+						          </li>
+						          <li class="menu-has-children"><a href="blog_home.html">Blog</a>
+						          	<ul>
+						            	<li><a href="blog_home.html">Blog Page</a></li>
+						            	<li><a href="blog_single.html">Blog Detail</a></li>
+						            </ul>
+						          </li>
+						          
+						          <li class="menu-has-children"><a href="contact.html">Contact</a></li>
+						          <!-- <li class="menu-has-children"><a href="sell_a_product.html" class="rounded ml-3 text-white sell-btn">Sell My Car</a>
+						          </li>-->
+						        </ul>
+						      </nav><!-- #nav-menu-container -->
+					      </div>	    		
+				    	</div>
+				    </div>
+			    </div>
+			  </header><!-- #header -->
+
+			  <div class="banner-area relative">	
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row align-items-center justify-content-center">
+						<div class="banner-content col-lg-10">
+							<h1 class="text-white">
+								Buy your new car.		
+							</h1>
+							<p class="text-capitalize">We Have more than a thousand cars for you to choose</p>	
+							
+						</div>											
+					</div>
+				</div>
+			</div>
+			<!-- End banner Area -->	
+			<!-- <div class="banner_form">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-12">
+							<div class="banner_content rounded">
+								<h3 class="text-capitalize text-white mb-3">Find Your Dream Car</h3>
+								<div class="row">
+									<div class="col-lg-12 col-md-12 col-sm-12">
+										<div class="row">
+												<div class="col-lg-3 col-md-3 col-sm-6 mb-3">
+													<select class="form-control-lg">
+													  <option>Select Location</option>
+													  <option>Location 1</option>
+													  <option>Location 2</option>
+													</select>
+												</div>
+
+												<div class="col-lg-3 col-md-3 col-sm-6 mb-3">
+													<select class="form-control-lg">
+													  <option>Select Brand</option>
+													  <option>Audi</option>
+													  <option>BMW</option>
+													  <option>Nissan</option>
+													  <option>Toyota</option>
+													</select>
+												</div>
+
+												<div class="col-lg-3 col-md-3 col-sm-6 mb-3">
+													<select class="form-control-lg">
+													  <option>Select Model</option>
+													  <option>Series 1</option>
+													  <option>Series 2</option>
+													  <option>Series 3</option>
+													  <option>Series 4</option>
+													</select>
+												</div>
+
+												<div class="col-lg-3 col-md-3 col-sm-6 mb-3">
+													<select class="form-control-lg">
+													  <option>Year Of Model</option>
+													  <option>2018</option>
+													  <option>2017</option>
+													  <option>2016</option>
+													</select>
+												</div>
+										</div>
+
+										<div class="row">
+											<div class="col-lg-6 col-md-6 col-sm-12">
+												    	<h4 class="mb-3 text-white">Price Range</h4>
+												<div class="demo">
+												    <div class="range-slider">
+												        <input type="range" value="150" min="0" max="500" range="true">
+												        <span class="range-value">150 $</span>
+												    </div>
+												</div>
+											</div>
+
+											<div class="col-lg-3 col-md-6 col-sm-6">
+												<select class="form-control-lg mb-3">
+													  <option>Type Of Car</option>
+													  <option>New Car</option>
+													  <option>Used Car</option>
+													</select>
+											</div>
+
+											<div class="col-lg-3 col-md-6 col-sm-6">
+												<div class="section_search">
+													<a class="btn btn-block btn-lg bg-dark text-white"><i class="mr-3 fa fa-search"></i><span>Search Car</span></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> -->
+
+		<section id="welcome" class="section-full">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-12">
+						<div class="section_heading">
+							<h3 class="">Welcome To HotWheels</h3>
+							<p class="">Welcome To HotWheels.</p>
+							<p class="">Welcome To HotWheels.</p>
+							<p class="mb-0">Welcome To HotWheels.</p>
+						</div>
+					</div>
+
+					<div class="col-lg-6 col-md-6 col-12">
+						<div class="section_image mt-5">
+							<img class="img-fluid" src="{% static 'img/welcome/welcome1.png' %}" alt="">
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-3 col-md-6 col-sm-6 mb">
+						<div class="section_service text-center">
+							<div class="section_image">
+								<img class="img-fluid w-25" src="{% static 'img/welcome/vehicle1.png' %}" alt="">
+							</div>
+							<div class="section_content">
+								<h3 class="text-capitalize">new vehicles</h3>
+								<p>HotWheels.</p>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-6 col-sm-6 mb">
+						<div class="section_service text-center">
+							<div class="section_image">
+								<img class="img-fluid w-25" src="{% static 'img/welcome/discount.png' %}" alt="">
+							</div>
+							<div class="section_content">
+								<h3 class="text-capitalize">special offers</h3>
+								<p>HotWheels.</p>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-6 col-sm-6 mb">
+						<div class="section_service text-center">
+							<div class="section_image">
+								<img class="img-fluid w-25" src="{% static 'img/welcome/services.png' %}" alt="">
+							</div>
+							<div class="section_content">
+								<h3 class="text-capitalize">workshop</h3>
+								<p>HotWheels.</p>
+							</div>
+
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-6 col-sm-6 mb">
+						<div class="section_service text-center">
+							<div class="section_image">
+								<img class="img-fluid w-25" src="{% static 'img/welcome/parts.png' %}" alt="">
+							</div>
+							<div class="section_content">
+								<h3 class="text-capitalize">vehicle parts</h3>
+								<p>HotWheels.</p>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class=" section-full bg-gray">
+			<div class="container">
+				<div class="row d-flex justify-content-center">
+					<div class="menu-content pb-40 col-lg-10">
+						<div class="title text-center">
+							<h1 class="mb-10">Featured Vechiles</h1>
+							<hr class="lines">
+						</div>
+					</div>
+				</div>
+				<div class="row d-flex justify-content-center">
+					<div id="adv_gp_products_3_columns_carousel" class="carousel slide gp_products_carousel_wrapper swipe_x ps_easeOutCirc" data-ride="carousel" data-duration="2000" data-interval="5000" data-pause="hover" data-column="3" data-m576="1" data-m768="2" data-m992="3" data-m1200="3">
+						<!--========= Wrapper for slides =========-->
+						<div class="carousel-inner" role="listbox">
+
+							<!--========= 1st slide =========-->
+							<div class="carousel-item active">
+								<div class="row"> <!-- Row -->
+								<div class="col gp_products_item">
+									<div class="gp_products_inner">
+										<div class="gp_products_item_image">
+											<a href="#">
+												<img src="{% static 'img/featured/pic1.jpg' %}" alt="gp product 001" />
+											</a>
+										</div>
+										<div class="gp_products_item_caption">
+											<ul class="gp_products_caption_name">
+												<li><a href="#">Hyundai Santa Fe Sport</a>
+													<a href="#" class="pull-right"><span class="mr-1">$</span>258</a>
+												</li>
+												<li><a href="#">Model 2018 , </a>
+													<a href="#" class=""><i class="fa fa-map-marker mr-1"></i>Colorada, USA</a>
+												</li>
+												<li><a href="#"><i class="fa fa-road mr-1"></i>5,000 Km</a>
+													<a class="ml-2" href="#"><i class="fa fa-tachometer mr-1"></i>3000 Miles</a>
+													<a class="ml-2" href="#"><i class="fa fa-car mr-1"></i>Diesel</a>
+												</li>
+											</ul>
+											<ul class="gp_products_caption_rating mt-2">
+												<li class=""><a class="" href="#">book now</a></li>
+												<li class="pull-right"><i class="fa fa-star-half-o"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												
+											</ul>
+										</div>
+									</div>
+								</div>
+								</div>
+							</div>
+
+							<!--========= 2nd slide =========-->
+							<div class="carousel-item">
+								<div class="row"> <!-- Row -->
+								<div class="col gp_products_item">
+									<div class="gp_products_inner">
+										<div class="gp_products_item_image">
+											<a href="#">
+												<img src="{% static 'img/featured/pic2.jpg' %}" alt="gp product 001" />
+											</a>
+										</div>
+										<div class="gp_products_item_caption">
+											<ul class="gp_products_caption_name">
+												<li><a href="#">Hyundai Santa Fe Sport</a>
+													<a href="#" class="pull-right"><span class="mr-1">$</span>268</a>
+												</li>
+												<li><a href="#">Model 2018 , </a>
+													<a href="#" class=""><i class="fa fa-map-marker mr-1"></i>Colorada, USA</a>
+												</li>
+												<li><a href="#"><i class="fa fa-road mr-1"></i>5,000 Km</a>
+													<a class="ml-2" href="#"><i class="fa fa-tachometer mr-1"></i>4000 Miles</a>
+													<a class="ml-2" href="#"><i class="fa fa-car mr-1"></i>Diesel</a>
+												</li>
+											</ul>
+											<ul class="gp_products_caption_rating mt-2">
+												<li class=""><a class="" href="#">book now</a></li>
+												<li class="pull-right"><i class="fa fa-star-half-o"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								</div>
+							</div>
+							
+							<!--========= 3rd slide =========-->
+							<div class="carousel-item">
+								<div class="row"> <!-- Row -->
+								<div class="col gp_products_item">
+									<div class="gp_products_inner">
+										<div class="gp_products_item_image">
+											<a href="#">
+												<img src="{% static 'img/featured/pic3.jpg' %}" alt="gp product 001" />
+											</a>
+										</div>
+										<div class="gp_products_item_caption">
+											<ul class="gp_products_caption_name">
+												<li><a href="#">Hyundai Santa Fe Sport</a>
+													<a href="#" class="pull-right"><span class="mr-1">$</span>278</a>
+												</li>
+												<li><a href="#">Model 2018 , </a>
+													<a href="#" class=""><i class="fa fa-map-marker mr-1"></i>Colorada, USA</a>
+												</li>
+												<li><a href="#"><i class="fa fa-road mr-1"></i>5,000 Km</a>
+													<a class="ml-2" href="#"><i class="fa fa-tachometer mr-1"></i>4500 Miles</a>
+													<a class="ml-2" href="#"><i class="fa fa-car mr-1"></i>Diesel</a>
+												</li>
+											</ul>
+											<ul class="gp_products_caption_rating mt-2">
+												<li class=""><a class="" href="#">book now</a></li>
+												<li class="pull-right"><i class="fa fa-star-half-o"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								</div>
+							</div>
+							
+							<!--========= 4th slide =========-->
+							<div class="carousel-item">
+								<div class="row"> <!-- Row -->
+								<div class="col gp_products_item">
+									<div class="gp_products_inner">
+										<div class="gp_products_item_image">
+											<a href="#">
+												<img src="{% static 'img/featured/pic4.jpg' %}" alt="gp product 001" />
+											</a>
+										</div>
+										<div class="gp_products_item_caption">
+											<ul class="gp_products_caption_name">
+												<li><a href="#">Hyundai Santa Fe Sport</a>
+													<a href="#" class="pull-right"><span class="mr-1">$</span>288</a>
+												</li>
+												<li><a href="#">Model 2018 , </a>
+													<a href="#" class=""><i class="fa fa-map-marker mr-1"></i>Colorada, USA</a>
+												</li>
+												<li><a href="#"><i class="fa fa-road mr-1"></i>5,000 Km</a>
+													<a class="ml-2" href="#"><i class="fa fa-tachometer mr-1"></i>5000 Miles</a>
+													<a class="ml-2" href="#"><i class="fa fa-car mr-1"></i>Diesel</a>
+												</li>
+											</ul>
+											<ul class="gp_products_caption_rating mt-2">
+												<li class=""><a class="" href="#">book now</a></li>
+												<li class="pull-right"><i class="fa fa-star-half-o"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								</div>
+							</div>
+
+							<!--========= 5th slide =========-->
+							<div class="carousel-item">
+								<div class="row"> <!-- Row -->
+								<div class="col gp_products_item">
+									<div class="gp_products_inner">
+										<div class="gp_products_item_image">
+											<a href="#">
+												<img src="{% static 'img/featured/pic5.jpg' %}" alt="gp product 001" />
+											</a>
+										</div>
+										<div class="gp_products_item_caption">
+											<ul class="gp_products_caption_name">
+												<li><a href="#">Hyundai Santa Fe Sport</a>
+													<a href="#" class="pull-right"><span class="mr-1">$</span>298</a>
+												</li>
+												<li><a href="#">Model 2018 , </a>
+													<a href="#" class=""><i class="fa fa-map-marker mr-1"></i>Colorada, USA</a>
+												</li>
+												<li><a href="#"><i class="fa fa-road mr-1"></i>10,000 Km</a>
+													<a class="ml-2" href="#"><i class="fa fa-tachometer mr-1"></i>5500 Miles</a>
+													<a class="ml-2" href="#"><i class="fa fa-car mr-1"></i>Diesel</a>
+												</li>
+											</ul>
+											<ul class="gp_products_caption_rating mt-2">
+												<li class=""><a class="" href="#">book now</a></li>
+												<li class="pull-right"><i class="fa fa-star-half-o"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								</div>
+							</div>
+
+							<!--========= 6th slide =========-->
+							<div class="carousel-item">
+								<div class="row"> <!-- Row -->
+								<div class="col gp_products_item">
+									<div class="gp_products_inner">
+										<div class="gp_products_item_image">
+											<a href="#">
+												<img src="{% static 'img/featured/pic6.jpg' %}" alt="gp product 001" />
+											</a>
+										</div>
+										<div class="gp_products_item_caption">
+											<ul class="gp_products_caption_name">
+												<li><a href="#">Hyundai Santa Fe Sport</a>
+													<a href="#" class="pull-right"><span class="mr-1">$</span>308</a>
+												</li>
+												<li><a href="#">Model 2018 , </a>
+													<a href="#" class=""><i class="fa fa-map-marker mr-1"></i>Colorada, USA</a>
+												</li>
+												<li><a href="#"><i class="fa fa-road mr-1"></i>10,000 Km</a>
+													<a class="ml-2" href="#"><i class="fa fa-tachometer mr-1"></i>6500 Miles</a>
+													<a class="ml-2" href="#"><i class="fa fa-car mr-1"></i>Diesel</a>
+												</li>
+											</ul>
+											<ul class="gp_products_caption_rating mt-2">
+												<li class=""><a class="" href="#">book now</a></li>
+												<li class="pull-right"><i class="fa fa-star-half-o"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								</div>
+							</div>
+
+						</div>
+
+						<!--======= Navigation Buttons =========-->
+
+						<!--======= Left Button =========-->
+						<a class="carousel-control-prev gp_products_carousel_control_left" href="#adv_gp_products_3_columns_carousel" data-slide="prev">
+							<span class="fa fa-angle-left gp_products_carousel_control_icons" aria-hidden="true"></span>
+							
+						</a>
+
+						<!--======= Right Button =========-->
+						<a class="carousel-control-next gp_products_carousel_control_right" href="#adv_gp_products_3_columns_carousel" data-slide="next">
+							<span class="fa fa-angle-right gp_products_carousel_control_icons" aria-hidden="true"></span>
+							
+						</a>
+
+					</div>
+				</div>
+			</div>
+		</section> <!--*-*-*-*-*-*-*-*-*-*- END BOOTSTRAP CAROUSEL Featured Items *-*-*-*-*-*-*-*-*-*-->
+
+		<!-- Start product Area -->
+			<section class="product-area section-full">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pb-40 col-lg-10">
+							<div class="title text-center">
+								<h1 class="mb-10">Our Products</h1> 
+								<!-- Add products like vechiles additional parts -->
+								<hr class="lines">
+							</div>
+						</div>
+					</div>
+					<div class="row d-flex justify-content-center mb-30">
+						<div class="col-md-4 col-sm-6 col-12 gp_products_item">
+							<div class="gp_products_inner">
+								<div class="gp_products_item_image">
+									<a href="#">
+										<img src="{% static 'img/featured/product1.jpg' %}" alt="gp product 001" />
+									</a>
+								</div>
+								<div class="gp_products_item_caption">
+											<ul class="gp_products_caption_name">
+												<li><a href="#">Hyundai Santa Fe Sport</a>
+													<a href="#" class="pull-right"><span class="mr-1">$</span>258</a>
+												</li>
+												<li><a href="#">Model 2018 , </a>
+													<a href="#" class=""><i class="fa fa-map-marker mr-1"></i>Colorada, USA</a>
+												</li>
+												<li><a href="#"><i class="fa fa-road mr-1"></i>5,000 Km</a>
+													<a class="ml-2" href="#"><i class="fa fa-tachometer mr-1"></i>3000 Miles</a>
+													<a class="ml-2" href="#"><i class="fa fa-car mr-1"></i>Diesel</a>
+												</li>
+											</ul>
+											<ul class="gp_products_caption_rating mt-2">
+												<li class=""><a class="" href="#">book now</a></li>
+												<li class="pull-right"><i class="fa fa-star-half-o"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												
+											</ul>
+										</div>
+							</div>
+						</div>
+
+						<div class="col-md-4 col-sm-6 col-12 gp_products_item">
+							<div class="gp_products_inner">
+								<div class="gp_products_item_image">
+									<a href="#">
+										<img src="{% static 'img/featured/product2.jpg' %}" alt="gp product 001" />
+									</a>
+								</div>
+								<div class="gp_products_item_caption">
+											<ul class="gp_products_caption_name">
+												<li><a href="#">Hyundai Santa Fe Sport</a>
+													<a href="#" class="pull-right"><span class="mr-1">$</span>360</a>
+												</li>
+												<li><a href="#">Model 2018 , </a>
+													<a href="#" class=""><i class="fa fa-map-marker mr-1"></i>Colorada, USA</a>
+												</li>
+												<li><a href="#"><i class="fa fa-road mr-1"></i>5,000 Km</a>
+													<a class="ml-2" href="#"><i class="fa fa-tachometer mr-1"></i>3000 Miles</a>
+													<a class="ml-2" href="#"><i class="fa fa-car mr-1"></i>Diesel</a>
+												</li>
+											</ul>
+											<ul class="gp_products_caption_rating mt-2">
+												<li class=""><a class="" href="#">book now</a></li>
+												<li class="pull-right"><i class="fa fa-star-half-o"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												
+											</ul>
+										</div>
+							</div>
+						</div>
+
+						<div class="col-md-4 col-sm-6 gp_products_item">
+							<div class="gp_products_inner">
+								<div class="gp_products_item_image">
+									<a href="#">
+										<img src="{% static 'img/featured/product3.jpg' %}" alt="gp product 001" />
+									</a>
+								</div>
+								<div class="gp_products_item_caption">
+											<ul class="gp_products_caption_name">
+												<li><a href="#">Hyundai Santa Fe Sport</a>
+													<a href="#" class="pull-right"><span class="mr-1">$</span>370</a>
+												</li>
+												<li><a href="#">Model 2018 , </a>
+													<a href="#" class=""><i class="fa fa-map-marker mr-1"></i>Colorada, USA</a>
+												</li>
+												<li><a href="#"><i class="fa fa-road mr-1"></i>5,000 Km</a>
+													<a class="ml-2" href="#"><i class="fa fa-tachometer mr-1"></i>3000 Miles</a>
+													<a class="ml-2" href="#"><i class="fa fa-car mr-1"></i>Diesel</a>
+												</li>
+											</ul>
+											<ul class="gp_products_caption_rating mt-2">
+												<li class=""><a class="" href="#">book now</a></li>
+												<li class="pull-right"><i class="fa fa-star-half-o"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												
+											</ul>
+										</div>
+							</div>
+						</div>
+					</div>
+					<div class="row d-flex justify-content-center">
+						<div class="col-md-4 col-sm-6  gp_products_item">
+							<div class="gp_products_inner">
+								<div class="gp_products_item_image">
+									<a href="#">
+										<img src="{% static 'img/featured/pic1.jpg' %}" alt="gp product 001" />
+									</a>
+								</div>
+								<div class="gp_products_item_caption">
+											<ul class="gp_products_caption_name">
+												<li><a href="#">Hyundai Santa Fe Sport</a>
+													<a href="#" class="pull-right"><span class="mr-1">$</span>400</a>
+												</li>
+												<li><a href="#">Model 2018 , </a>
+													<a href="#" class=""><i class="fa fa-map-marker mr-1"></i>Colorada, USA</a>
+												</li>
+												<li><a href="#"><i class="fa fa-road mr-1"></i>5,000 Km</a>
+													<a class="ml-2" href="#"><i class="fa fa-tachometer mr-1"></i>3000 Miles</a>
+													<a class="ml-2" href="#"><i class="fa fa-car mr-1"></i>Diesel</a>
+												</li>
+											</ul>
+											<ul class="gp_products_caption_rating mt-2">
+												<li class=""><a class="" href="#">book now</a></li>
+												<li class="pull-right"><i class="fa fa-star-half-o"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												
+											</ul>
+										</div>
+							</div>
+						</div>
+
+						<div class="col-md-4 col-sm-6 gp_products_item">
+							<div class="gp_products_inner">
+								<div class="gp_products_item_image">
+									<a href="#">
+										<img src="{% static 'img/featured/pic2.jpg' %}" alt="gp product 001" />
+									</a>
+								</div>
+								<div class="gp_products_item_caption">
+											<ul class="gp_products_caption_name">
+												<li><a href="#">Hyundai Santa Fe Sport</a>
+													<a href="#" class="pull-right"><span class="mr-1">$</span>420</a>
+												</li>
+												<li><a href="#">Model 2018 , </a>
+													<a href="#" class=""><i class="fa fa-map-marker mr-1"></i>Colorada, USA</a>
+												</li>
+												<li><a href="#"><i class="fa fa-road mr-1"></i>5,000 Km</a>
+													<a class="ml-2" href="#"><i class="fa fa-tachometer mr-1"></i>3000 Miles</a>
+													<a class="ml-2" href="#"><i class="fa fa-car mr-1"></i>Diesel</a>
+												</li>
+											</ul>
+											<ul class="gp_products_caption_rating mt-2">
+												<li class=""><a class="" href="#">book now</a></li>
+												<li class="pull-right"><i class="fa fa-star-half-o"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												
+											</ul>
+										</div>
+							</div>
+						</div>
+
+						<div class="col-md-4 col-sm-6 gp_products_item">
+							<div class="gp_products_inner">
+								<div class="gp_products_item_image">
+									<a href="#">
+										<img src="{% static 'img/featured/pic3.jpg' %}" alt="gp product 001" />
+									</a>
+								</div>
+								<div class="gp_products_item_caption">
+											<ul class="gp_products_caption_name">
+												<li><a href="#">Hyundai Santa Fe Sport</a>
+													<a href="#" class="pull-right"><span class="mr-1">$</span>430</a>
+												</li>
+												<li><a href="#">Model 2018 , </a>
+													<a href="#" class=""><i class="fa fa-map-marker mr-1"></i>Colorada, USA</a>
+												</li>
+												<li><a href="#"><i class="fa fa-road mr-1"></i>5,000 Km</a>
+													<a class="ml-2" href="#"><i class="fa fa-tachometer mr-1"></i>3000 Miles</a>
+													<a class="ml-2" href="#"><i class="fa fa-car mr-1"></i>Diesel</a>
+												</li>
+											</ul>
+											<ul class="gp_products_caption_rating mt-2">
+												<li class=""><a class="" href="#">book now</a></li>
+												<li class="pull-right"><i class="fa fa-star-half-o"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												<li class="pull-right"><i class="fa fa-star"></i></li>
+												
+											</ul>
+										</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+			</section>
+			<!-- End products Area -->
+
+			<!-- Start callto-action Area -->
+			<section class="callto-action-area" id="join">
+				<div class="container">
+		            <div class="row">
+		                <div class="col-md-3 col-sm-6">
+		                    <div class="single-promo">
+		                        <span class="promo-icon"><img class="img-fluid" src="{% static 'img/cta/medal.png' %}" alt=""></span>
+		                        <h3 class="promo-heading">Top Dealer Award</h3>
+		                        <p>experienced selling cars according to the Customers.</p>
+		                    </div>
+		                </div>
+		                <div class="col-md-3 col-sm-6">
+		                    <div class="single-promo">
+		                        <span class="promo-icon"><img class="img-fluid" src="{% static 'img/cta/award.png' %}" alt=""></span>
+		                        <h3 class="promo-heading">Best Selling Dealer</h3>
+		                        <p>Our Customer Services Managers will always help you.</p>
+		                    </div>
+		                </div>
+		                <div class="col-md-3 col-sm-6">
+		                    <div class="single-promo">
+		                        <span class="promo-icon"><img class="img-fluid" src="{% static 'img/cta/award-2.png' %}" alt=""></span>
+		                        <h3 class="promo-heading">Best Customer Service</h3>
+		                        <p>In case you are not satisfied with the purchased product, we’ll change it in a period of 3days.</p>
+		                    </div>
+		                </div>
+		                <div class="col-md-3 col-sm-6">
+		                    <div class="single-promo">
+		                        <span class="promo-icon"><img class="img-fluid" src="{% static 'img/cta/award-3.png' %}" alt=""></span>
+		                        <h3 class="promo-heading">Best Dealer Award</h3>
+		                        <p>We have a Rank in the industry and got high awards.</p>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>	
+			</section>
+			<!-- End calto-action Area -->
+
+			<!-- start Our Services Area -->
+			<section class="our_services section-full">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="menu-content pb-40 col-lg-10">
+							<div class="title text-center">
+								<h1 class="mb-10">Our Services</h1>
+								<hr class="lines">
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-lg-3 col-md-6 col-sm-6 text-center">
+							<div class="service_item">
+								<div class="section_icon">
+									<i class="fa fa-car fa-2x"></i>
+								</div>
+								<div class="service_item_content">
+									<h3>All Brands</h3>
+									<p>HotWheels.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-6 col-sm-6 text-center">
+							<div class="service_item">
+								<div class="section_icon">
+									<i class="fa fa-comments fa-2x"></i>
+								</div>
+								<div class="service_item_content">
+									<h3>Free Support</h3>
+									<p>HotWheels.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-6 col-sm-6 text-center">
+							<div class="service_item">
+								<div class="section_icon">
+									<i class="fa fa-key fa-2x"></i>
+								</div>
+								<div class="service_item_content">
+									<h3>DealerShip</h3>
+									<p>HotWheels.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-6 col-sm-6 text-center">
+							<div class="service_item">
+								<div class="section_icon">
+									<i class="fa fa-money fa-2x"></i>
+								</div>
+								<div class="service_item_content">
+									<h3>Affordable</h3>
+									<p>HotWheels.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-lg-3 col-md-6 col-sm-6 text-center">
+							<div class="service_item">
+								<div class="section_icon">
+									<i class="fa fa-shower fa-2x"></i>
+								</div>
+								<div class="service_item_content">
+									<h3>Oil Changes</h3>
+									<p>HotWheels.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-6 col-sm-6 text-center">
+							<div class="service_item">
+								<div class="section_icon">
+									<i class="fa fa-bath fa-2x"></i>
+								</div>
+								<div class="service_item_content">
+									<h3>Air Conditioning</h3>
+									<p>HotWheels.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-6 col-sm-6 text-center">
+							<div class="service_item">
+								<div class="section_icon">
+									<i class="fa fa-empire fa-2x"></i>
+								</div>
+								<div class="service_item_content">
+									<h3>Auto Electric</h3>
+									<p>HotWheels.</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-3 col-md-6 col-sm-6 text-center">
+							<div class="service_item">
+								<div class="section_icon">
+									<i class="fa fa-subway fa-2x"></i>
+								</div>
+								<div class="service_item_content">
+									<h3>Transmission</h3>
+									<p>HotWheels.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</section>
+			<!-- End Our Services Area -->
+
+			<!-- start footer Area -->		
+			<footer class="footer-area footer-section">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-3  col-md-3 col-sm-6">
+							<div class="single-footer-widget newsletter">
+								<img class="w-50 img-fluid mb-3" src="#" alt=""> <!-- {% static 'img/logo.png' %} -->
+								<p>HotWheels.</p>
+								<ul class="social-footer">
+									<li><a class="facebook" href="#"><img src="{% static 'img/icons8-facebook-30.png' %}"></a></li>
+									<!-- <i class="fa fa-facebook"></i></a></li>  -->
+									<li><a class="twitter" href="#"><img src="{% static 'img/icons8-twitter-30.png' %}"></a></li>
+									<!-- <i class="fa fa-twitter"></i></a></li> -->
+									<li><a class="linkedin" href="#"><img src="{% static 'img/icons8-linkedin-30.png' %}"></a></li>
+									<!-- <i class="fa fa-linkedin"></i></a></li> -->
+									<li><a class="google-plus" href="#"><img src="{% static 'img/icons8-google-plus-circled-30.png' %}"></a></li>
+									<!-- <i class="fa fa-google-plus"></i></a></li> -->
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-3  col-md-3 col-sm-6">
+							<div class="single-footer-widget">
+								<h6>Useful Links</h6>
+								<ul class="footer-nav">
+									<li><a href="">Change</a></li>
+									<li><a href="">Replacement</a></li>
+									<li><a href="">Contact Us</a></li>
+									<li><a href="">Pre-Purchase</a></li>
+									<li><a href="">Service</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-3  col-md-3 col-sm-6">
+							<div class="single-footer-widget">
+								<h6>Our Service</h6>
+								<ul class="footer-nav">
+									<li><a href="">Privacy Policy</a></li>
+									<li><a href="">About Us</a></li>
+									<li><a href="">Terms & Conditions</a></li>
+									<li><a href="">Support</a></li>
+									<li><a href="">About</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-lg-3  col-md-3 col-sm-6">
+							<div class="single-footer-widget mail-chimp">
+								<h6 class="mb-20">Keep In Touch</h6>
+								<ul class="footer-nav">
+									<li>
+									<strong><i class="fa fa-map-marker"></i></strong><span class="pl-2">1111 Nnn Nnn, Nnn Nnn</span>
+									</li>
+									<li>
+									<strong><i class="fa fa-mobile"></i></strong><span class="pl-2">+00 00 000 000</span>
+									</li>
+									<li>
+									<strong><i class="fa fa-envelope-o"></i></strong><span class="pl-2"><a href="#">ex@example.com</a></span>
+									</li>
+								</ul>
+								<div class="section_form">
+                                        <div class="col-auto">
+                                          <div class="input-group mb-2">
+                                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter Your Email">
+                                             <div class="input-group-prepend">
+                                              <div class="input-group-text"><a href="#"><img src="{% static 'img/icons8-telegram-app-20.png' %}"></a><i class="fa fa-paper-plane"></i></div>
+                                            </div>
+                                          </div>
+                                        </div>  
+                                    </div>
+							</div>
+						</div>						
+					</div>	
+				</div>
+			</footer>
+			<div class="copyright1">
+				<div class="container">
+					<div class="row"> 
+						<div class="col-md-6 col-sm-6">
+							<div class="bottom_footer_info">
+								<p> &copy; Copyright 2023. All rights reserved</p>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6">
+							<div class="bottom_footer_logo">
+								<ul class="list-inline">
+					                <li class="list-inline-item">
+					                	<a href="#">Privacy policy &nbsp;|</a>
+					                </li>
+					                <li class="list-inline-item">
+					                	<a href="#">Terms And Condition &nbsp;|</a>
+					                </li>
+					                <li class="list-inline-item">
+					                	<a href="#">Contact Us</a>
+					                </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End footer Area --> 	
+
+			<script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+			<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>			
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+  			<script src="{% static 'js/easing.min.js' %}"></script>			
+			<script src="{% static 'js/hoverIntent.js' %}"></script>
+			<!--======= Touch Swipe =========-->
+			<script src="{% static 'js/jquery.touchSwipe.min.js' %}"></script>	
+			<!--======= Customize =========-->
+			<script src="{% static 'js/responsive_bootstrap_carousel.js' %}"></script>
+			<script src="{% static 'js/superfish.min.js' %}"></script>	
+			<script src="{% static 'js/rangeslider.js' %}"></script>
+			<script src="{% static 'js/rangeslider.min.js' %}"></script>	
+			<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+			<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>	
+			<script src="{% static 'js/owl.carousel.min.js' %}"></script>			
+			<script src="{% static 'js/jquery.sticky.js' %}"></script>
+			<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>			
+			<script src="{% static 'js/parallax.min.js' %}"></script>		
+			<script src="{% static 'js/mail-script.js' %}"></script>	
+			<script src="{% static 'js/jquery.touchSwipe.min.js' %}"></script>
+			<script src="{% static 'js/responsive_bootstrap_carousel.js' %}"></script>
+			<script src="{% static 'js/paradise_slider_min.js' %}"></script>
+			<script src="{% static 'js/main.js' %}"></script>	
+		</body>
+	</html>
+
+
+
