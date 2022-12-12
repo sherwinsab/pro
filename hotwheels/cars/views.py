@@ -12,3 +12,6 @@ def signup(requset):
     template = loader.get_template('signup.html')
     return HttpResponse(template.render())
 
+def signin(requset):
+    template = loader.get_template('signin.html')
+    return HttpResponse(template.render())
