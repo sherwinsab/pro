@@ -15,3 +15,7 @@ def signup(requset):
 def signin(requset):
     template = loader.get_template('signin.html')
     return HttpResponse(template.render())
+
+def product_listing(requset):
+    template = loader.get_template('product_listing.html')
+    return HttpResponse(template.render())
