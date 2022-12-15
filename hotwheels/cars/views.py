@@ -23,3 +23,7 @@ def product_listing(requset):
 def product_listing_detail(requset):
     template = loader.get_template('product_listing_detail.html')
     return HttpResponse(template.render())
+
+def shopping_cart(requset):
+    template = loader.get_template('shopping_cart.html')
+    return HttpResponse(template.render())
