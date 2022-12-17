@@ -31,3 +31,8 @@ def shopping_cart(requset):
 def user_profile(requset):
     template = loader.get_template('user_profile.html')
     return HttpResponse(template.render())
+
+def favourite_products(requset):
+    template = loader.get_template('favourite_products.html')
+    return HttpResponse(template.render())
+    

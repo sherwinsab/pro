@@ -16,7 +16,6 @@
     <meta charset="UTF-8">
     <!-- Site Title -->
     <title>HotWheels - Home Buy Vechiles,Service Market Place</title>
-
     <link href="https://fonts.googleapis.com/css?family=Mina" rel="stylesheet"> 
         <!--
         CSS
@@ -27,7 +26,10 @@
         <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
         <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">					
         <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl.theme.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl.transitions.css' %}">
+        <link rel="stylesheet" href="{% static 'css/carousel_advance.css' %}">
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
     </head>
     <body>
@@ -52,7 +54,7 @@
                                     <li>
                                         <a href="#">
                                             <img src="{% static 'img/boogyman.png' %}" alt="">
-                                            NAME  <span>HI
+                                            NAME  <span> HI
                                             <i class="fa fa-angle-down"></i></span>
                                         </a>
                                         <ul class="profile">
@@ -145,9 +147,9 @@
                 <div class="row d-flex align-items-center justify-content-center">
                     <div class="about-content col-lg-12">
                         <h1 class="text-white">
-                            User Profile				
+                            Favourite Products				
                         </h1>	
-                        <p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href=""> User Profile</a></p>
+                        <p class="text-white link-nav"><a href="index.html">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href=""> Favourite Products</a></p>
                     </div>											
                 </div>
             </div>
@@ -163,7 +165,7 @@
                             <figure>
                                 <a href="#" class="employer-dashboard-thumb"><img src="{% static 'img/avatar_15.jpg' %}" alt=""></a>
                                 <figcaption>
-                                    <h2>Hellen Rebecca</h2>
+                                    <h2>Hellan Rebecca</h2>
                                     <p>Super Samurai Hyundai Los Angeles, Usa</p>
                                      <ul class="share_link">
                                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -192,282 +194,219 @@
                     <div class="col-lg-9 post-list">
                         <div class="profile_job_content col-lg-12">
                             <div class="headline">
-                                <h3> Welcome User</h3>
+                                <h3>Favourite Products</h3>
                             </div>
-                            <div class="profile_job_detail">
+                            <div class="profile_job_detail p">
                                 <div class="row">
-                                    
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Account Name *</h5>
-                                            <input class="form-control" type="text" placeholder="Account Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Website *</h5>
-                                            <input class="form-control" type="text" placeholder="website name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>New Password *</h5>
-                                            <input class="form-control" type="password" placeholder="new password">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Confirm Password *</h5>
-                                            <input class="form-control" type="password" placeholder="confirm password">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Email *</h5>
-                                            <input class="form-control" type="email" placeholder="example@example.com">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Profile Image *</h5>
-                                            <div class="careerfy-fileUpload">
-                                                <span class="clr_b"><i class="fa fa-plus careerfy-add"></i> Upload Photo</span>
-                                                <input type="file" class="careerfy-upload">
+
+                                    <div class="col-md-4 col-sm-6 col-12 gp_products_item mb-20">
+                                        <div class="gp_products_inner">
+                                            <div class="gp_products_item_image">
+                                                <a href="#">
+                                                    <img src="{% static 'img/featured/product1.jpg' %}" alt="gp product 001" />
+                                                </a>
+                                            </div>
+                                            <div class="gp_products_item_caption">
+                                                <ul class="gp_products_caption_name">
+                                                        <li>
+                                                            <a href="#">Hyundai Sport <span class="mr-1 pull-right">$ 258</span></a>
+                                                            
+                                                        </li>
+                                                        <li><a href="#">Model 2018 , <span><i class="fa fa-map-marker mr-1"> Colorada, USA</i></span></a>
+                                                        </li>
+                                                        <li><a href="#"><i class="fa fa-road mr-1"></i>500 Km <span class="pull-right"> <i class="fa fa-tachometer mr-1"></i>300 Miles</span></a>
+                                                        </li>
+                                                    </ul>
+                                                    <ul class="gp_products_caption_rating mt-2">
+                                                        <li class=""><a class="" href="#">Book Now</a></li>
+                                                        <li class="pull-right"><i class="fa fa-star-half-o"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        
+                                                    </ul>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-sm-12">
-                                        <div class="submit-field">
-                                            <h5>Country *</h5>
-                                            <select class="form-control">
-                                              <option>Select Country</option>
-                                              <option>China</option>
-                                              <option>Srilanka</option>
-                                              <option>Bangladesh</option>
-                                              <option>Pakistan</option>
-                                            </select>
+
+                                    <div class="col-md-4 col-sm-6 col-12 gp_products_item mb-20">
+                                        <div class="gp_products_inner">
+                                            <div class="gp_products_item_image">
+                                                <a href="#">
+                                                    <img src="{% static 'img/featured/product2.jpg' %}" alt="gp product 001" />
+                                                </a>
+                                            </div>
+                                            <div class="gp_products_item_caption">
+                                                <ul class="gp_products_caption_name">
+                                                        <li>
+                                                            <a href="#">Hyundai Sante Sport <span class="mr-1 pull-right">$ 268</span></a>
+                                                            
+                                                        </li>
+                                                        <li><a href="#">Model 2018 , <span><i class="fa fa-map-marker mr-1"> Colorada, USA</i></span></a>
+                                                        </li>
+                                                        <li><a href="#"><i class="fa fa-road mr-1"></i>500 Km <span class="pull-right"> <i class="fa fa-tachometer mr-1"></i>300 Miles</span></a>
+                                                        </li>
+                                                    </ul>
+                                                    <ul class="gp_products_caption_rating mt-2">
+                                                        <li class=""><a class="" href="#">Book Now</a></li>
+                                                        <li class="pull-right"><i class="fa fa-star-half-o"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        
+                                                    </ul>
+                                            </div>
                                         </div>
-                                    </div>										
-                                    <div class="col-md-12 col-sm-12">
-                                        <div class="submit-field">
-                                            <h5>Description *</h5>
-                                            <textarea class="form-control" rows="5" placeholder="Nulla bibendum commodo rhoncus. Sed mattis magna nunc, ac varius quam pharetra vitae. Praesent vitae ipsum eu magna pretium aliquam. Curabitur interdum quis velit non tincidunt.Donec pretium gravida erat, a faucibus velit egestas eget."></textarea>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-6 col-12 gp_products_item mb-20">
+                                        <div class="gp_products_inner">
+                                            <div class="gp_products_item_image">
+                                                <a href="#">
+                                                    <img src="{% static 'img/featured/product3.jpg' %}" alt="gp product 001" />
+                                                </a>
+                                            </div>
+                                            <div class="gp_products_item_caption">
+                                                <ul class="gp_products_caption_name">
+                                                        <li>
+                                                            <a href="#">Hyundai Fe Sport <span class="mr-1 pull-right">$ 278</span></a>
+                                                            
+                                                        </li>
+                                                        <li><a href="#">Model 2018 , <span><i class="fa fa-map-marker mr-1"> Colorada, USA</i></span></a>
+                                                        </li>
+                                                        <li><a href="#"><i class="fa fa-road mr-1"></i>500 Km <span class="pull-right"> <i class="fa fa-tachometer mr-1"></i>300 Miles</span></a>
+                                                        </li>
+                                                    </ul>
+                                                    <ul class="gp_products_caption_rating mt-2">
+                                                        <li class=""><a class="" href="#">Book Now</a></li>
+                                                        <li class="pull-right"><i class="fa fa-star-half-o"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        
+                                                    </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-6 col-12 gp_products_item">
+                                        <div class="gp_products_inner">
+                                            <div class="gp_products_item_image">
+                                                <a href="#">
+                                                    <img src="{% static 'img/featured/pic1.jpg' %}" alt="gp product 001" />
+                                                </a>
+                                            </div>
+                                            <div class="gp_products_item_caption">
+                                                <ul class="gp_products_caption_name">
+                                                        <li>
+                                                            <a href="#">Lexus G S <span class="mr-1 pull-right">$ 300</span></a>
+                                                            
+                                                        </li>
+                                                        <li><a href="#">Model 2018 , <span><i class="fa fa-map-marker mr-1"> Colorada, USA</i></span></a>
+                                                        </li>
+                                                        <li><a href="#"><i class="fa fa-road mr-1"></i>500 Km <span class="pull-right"> <i class="fa fa-tachometer mr-1"></i>300 Miles</span></a>
+                                                        </li>
+                                                    </ul>
+                                                    <ul class="gp_products_caption_rating mt-2">
+                                                        <li class=""><a class="" href="#">Book Now</a></li>
+                                                        <li class="pull-right"><i class="fa fa-star-half-o"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        
+                                                    </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-6 col-12 gp_products_item">
+                                        <div class="gp_products_inner">
+                                            <div class="gp_products_item_image">
+                                                <a href="#">
+                                                    <img src="{% static 'img/featured/pic2.jpg' %}" alt="gp product 001" />
+                                                </a>
+                                            </div>
+                                            <div class="gp_products_item_caption">
+                                                <ul class="gp_products_caption_name">
+                                                        <li>
+                                                            <a href="#">Acura Rxs Sport <span class="mr-1 pull-right">$ 288</span></a>
+                                                            
+                                                        </li>
+                                                        <li><a href="#">Model 2018 , <span><i class="fa fa-map-marker mr-1"> Colorada, USA</i></span></a>
+                                                        </li>
+                                                        <li><a href="#"><i class="fa fa-road mr-1"></i>500 Km <span class="pull-right"> <i class="fa fa-tachometer mr-1"></i>300 Miles</span></a>
+                                                        </li>
+                                                    </ul>
+                                                    <ul class="gp_products_caption_rating mt-2">
+                                                        <li class=""><a class="" href="#">Book Now</a></li>
+                                                        <li class="pull-right"><i class="fa fa-star-half-o"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        
+                                                    </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4 col-sm-6 col-12 gp_products_item">
+                                        <div class="gp_products_inner">
+                                            <div class="gp_products_item_image">
+                                                <a href="#">
+                                                    <img src="{% static 'img/featured/pic3.jpg' %}" alt="gp product 001" />
+                                                </a>
+                                            </div>
+                                            <div class="gp_products_item_caption">
+                                                <ul class="gp_products_caption_name">
+                                                        <li>
+                                                            <a href="#">Hyundai Fe Sport <span class="mr-1 pull-right">$ 298</span></a>
+                                                            
+                                                        </li>
+                                                        <li><a href="#">Model 2018 , <span><i class="fa fa-map-marker mr-1"> Colorada, USA</i></span></a>
+                                                        </li>
+                                                        <li><a href="#"><i class="fa fa-road mr-1"></i>500 Km <span class="pull-right"> <i class="fa fa-tachometer mr-1"></i>300 Miles</span></a>
+                                                        </li>
+                                                    </ul>
+                                                    <ul class="gp_products_caption_rating mt-2">
+                                                        <li class=""><a class="" href="#">Book Now</a></li>
+                                                        <li class="pull-right"><i class="fa fa-star-half-o"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
+                                                        
+                                                    </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 mt-30">
+                                            <nav aria-label="...">
+                                              <ul class="pagination justify-content-center">
+                                                <li class="page-item disabled">
+                                                  <span class="page-link">Previous</span>
+                                                </li>
+                                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                                <li class="page-item">
+                                                  <a class="page-link" href="#">Next</a>
+                                                </li>
+                                              </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
                             </div>
                         </div>
-
-                        <div class="profile_job_content col-lg-12 mt-5">
-                            <div class="headline">
-                                <h3>Biling Information</h3>
-                            </div>
-                            <div class="profile_job_detail">
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>First Name *</h5>
-                                            <input class="form-control" type="text" placeholder="first name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Last Name *</h5>
-                                            <input class="form-control" type="text" placeholder="last name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Company Name *</h5>
-                                            <input class="form-control" type="text" placeholder=" Company name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Email Address *</h5>
-                                            <input class="form-control" type="email" placeholder="email address">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Country *</h5>
-                                            <select class="form-control">
-                                              <option>United Kingdom</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>State/City *</h5>
-                                            <select class="form-control">
-                                              <option>London</option>
-                                              <option>Mancester</option>
-                                              <option>Oval</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>City / Town *</h5>
-                                            <select class="form-control">
-                                              <option>London</option>
-                                              <option>Mancester</option>
-                                              <option>Oval</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Postcode *</h5>
-                                            <input class="form-control" type="tel" placeholder="12345">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 col-sm-12">
-                                        <div class="submit-field">
-                                            <h5>Full Address *</h5>
-                                            <input class="form-control" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 col-sm-12">
-                                        <div class="submit-field">
-                                            <h5>Additional Notes</h5>
-                                            <textarea class="form-control" rows="5" placeholder="Nulla bibendum commodo rhoncus. Sed mattis magna nunc, ac varius quam pharetra vitae. Praesent vitae ipsum eu magna pretium aliquam. Curabitur interdum quis velit non tincidunt.Donec pretium gravida erat, a faucibus velit egestas eget."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>	
-
-                        <div class="profile_job_content col-lg-12 mt-5">
-                            <div class="headline">
-                                <h3>Company Social</h3>
-                            </div>
-                            <div class="profile_job_detail">
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Facebook</h5>
-                                            <input class="form-control" type="text" placeholder="http://www.facebook.com">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Twitter</h5>
-                                            <input class="form-control" type="text" placeholder="http://www.twitter.com">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Google Plus</h5>
-                                            <input class="form-control" type="text" placeholder="http://www.google-plus.com">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Youtube</h5>
-                                            <input class="form-control" type="text" placeholder="http://www.youtube.com">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Vimeo</h5>
-                                            <input class="form-control" type="text" placeholder="http://www.vimeo.com">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Linkedin</h5>
-                                            <input class="form-control" type="text" placeholder="http://www.linkedin.com">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="profile_job_content col-lg-12 mt-5">
-                            <div class="headline">
-                                <h3>Shipping Information</h3>
-                            </div>
-                            <div class="profile_job_detail">
-                                <div class="row">
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>First Name *</h5>
-                                            <input class="form-control" type="text" placeholder="first name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Last Name *</h5>
-                                            <input class="form-control" type="text" placeholder="last name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Company Name *</h5>
-                                            <input class="form-control" type="text" placeholder=" Company name">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Email Address *</h5>
-                                            <input class="form-control" type="email" placeholder="email address">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Country *</h5>
-                                            <select class="form-control">
-                                              <option>United Kingdom</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>State/City *</h5>
-                                            <select class="form-control">
-                                              <option>London</option>
-                                              <option>Mancester</option>
-                                              <option>Oval</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>City / Town *</h5>
-                                            <select class="form-control">
-                                              <option>London</option>
-                                              <option>Mancester</option>
-                                              <option>Oval</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-6">
-                                        <div class="submit-field">
-                                            <h5>Postcode *</h5>
-                                            <input class="form-control" type="tel" placeholder="12345">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 col-sm-12">
-                                        <div class="submit-field">
-                                            <h5>Full Address *</h5>
-                                            <input class="form-control" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 col-sm-12">
-                                        <div class="submit-field">
-                                            <h5>Additional Notes</h5>
-                                            <textarea class="form-control" rows="5" placeholder="Nulla bibendum commodo rhoncus. Sed mattis magna nunc, ac varius quam pharetra vitae. Praesent vitae ipsum eu magna pretium aliquam. Curabitur interdum quis velit non tincidunt.Donec pretium gravida erat, a faucibus velit egestas eget."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="add_job_btn col-lg-12 mt-5">
-                            <div class="submit-field">
-                                 <button type="submit" class="job_detail_btn">Submit</button>
-                            </div>
-                        </div>															
-
                     </div>
                     
                 </div>
@@ -520,13 +459,13 @@
                             <h6 class="mb-20">Keep In Touch</h6>
                             <ul class="footer-nav">
                                 <li>
-                                <strong><i class="fa fa-map-marker"></i></strong><span class="pl-2">1111 Nnn Nnn, Nnn Nnn</span>
+                                <strong><i class="fa fa-map-marker"></i></strong><span class="pl-2">1900 Pico Blvd, New York</span>
                                 </li>
                                 <li>
-                                <strong><i class="fa fa-mobile"></i></strong><span class="pl-2">+00 00 000 000</span>
+                                <strong><i class="fa fa-mobile"></i></strong><span class="pl-2">+48 123 456 789</span>
                                 </li>
                                 <li>
-                                <strong><i class="fa fa-envelope-o"></i></strong><span class="pl-2"><a href="#">ex@example.com</a></span>
+                                <strong><i class="fa fa-envelope-o"></i></strong><span class="pl-2"><a href="#">example@example.com</a></span>
                                 </li>
                             </ul>
                             <div class="section_form">
@@ -547,10 +486,10 @@
         <div class="copyright1">
             <div class="container">
                 <div class="row"> 
-                    <div class="col-md-6 col-sm-6 col-12">
+                    <div class="col-md-6 col-sm-6">
                         <div class="bottom_footer_info">
                             <span>&copy;Copyright All rights reserved &copy;<script>document.write(new Date().getFullYear())</script> HotWheels</span>
-                            <!-- <p> &copy; Copyright 2023. All rights reserved</p> -->
+                            <!-- <p> &copy; Copyright 2018. All rights reserved</p> -->
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-12">
@@ -577,7 +516,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>			
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-          <script src="{% static 'js/easing.min.js' %}"></script>			
+        <script src="{% static 'js/easing.min.js' %}"></script>			
         <script src="{% static 'js/hoverIntent.js' %}"></script>
         <script src="{% static 'js/superfish.min.js' %}"></script>	
         <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
