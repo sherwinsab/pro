@@ -35,4 +35,8 @@ def user_profile(requset):
 def favourite_products(requset):
     template = loader.get_template('favourite_products.html')
     return HttpResponse(template.render())
+
+def error404(requset):
+    template = loader.get_template('404.html')
+    return HttpResponse(template.render())
     
