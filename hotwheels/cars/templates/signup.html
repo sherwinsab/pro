@@ -8,532 +8,150 @@
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/icon-font.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/animate.min.css' %}">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="{% static 'css/hamburgers.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/select2.min.css' %}">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-	<link href="https://fonts.googleapis.com/css?family=Mina" rel="stylesheet"> 
-<!--===============================================================================================-->
+<style>
+	body {
+	  background-color: #f4f4f4;
+	}
+	form {
+	  max-width: 500px;
+	  margin: 0 auto;
+	  padding: 20px;
+	  background-color: white;
+	  border: 1px solid #ccc;
+	  border-radius: 10px;
+	}
+	h1 {
+	  text-align: center;
+	  margin-bottom: 30px;
+	}
+	label {
+	  display: block;
+	  margin-bottom: 10px;
+	}
+	input[type="text"], input[type="email"], input[type="password"] {
+	  width: 100%;
+	  padding: 12px 20px;
+	  margin-bottom: 20px;
+	  box-sizing: border-box;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	}
+	input[type="submit"] {
+	  width: 100%;
+	  background-color: #4e81da;
+	  color: white;
+	  padding: 14px 20px;
+	  margin-bottom: 20px;
+	  border: none;
+	  border-radius: 4px;
+	  cursor: pointer;
+	}
+	input[type="submit"]:hover {
+	  background-color: #e7d83e;
+	}
+  </style>
 </head>
 <body>
-	
-    <div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100 ">
-				<form class="login100-form validate-form">
-					<span class="login100-form-title p-b-55">
-						Sign Up
-					</span>
+	{% block content %}
 
+    <!-- {% for message in messages %} -->
+    <!-- <p> {{message}} </p>
+    {% endfor %} -->
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags %}  
+            <script>alert("{{ message }}")</script> 
+            {% endif %}
+        {% endfor %}
+    {% endif %}
 
-					<form onsubmit="return regvalidate()" action="{% url 'signup' %}" method="post" id="signup">
-						{% csrf_token %}
-						<script type="text/javascript">
-							var today = new Date().toISOString().split('T')[0];
-							document.getElementsByName("dob")[0].setAttribute('min', today);
-						</script>
-						<!-- {{error}} -->
-						<div id="f-name">
-							<input type="text" class="text" name="first_name" id="first_name" placeholder="First Name"
-								onkeyup="firstValidate()">
-                                <br><span class="error-msg" id="log-first"> </span><br>
-						</div><br>
+	{% endblock %} 
+	<h1>Sign up</h1>
+	<form action="{% url 'signup' %}" method="post" onsubmit="return validateInput()">
+		{% csrf_token %}
+		<label for="first-name">First Name:</label><br>
+		<input type="text"  name="first_name" onkeyup="validateInput(this)" required><br>
+		<label for="last-name">Last Name:</label><br>
+		<input type="text"  name="last_name"  onkeyup="validateInput(this)" required><br>
+		<label for="username">Username:</label><br>
+		<input type="text"  name="username" onkeyup="validateInput(this)" required><br>
+		<label for="email">Email:</label><br>
+		<input type="email"  name="email"  onkeyup="validateInput(this)" required><br>
+		<label for="password">Password:</label><br>
+		<input type="password" name="password" onkeyup="validateInput(this)" required><br>
+		<label for="confirm_password">Confirm Password:</label><br>
+		<input type="password"  name="confirm_password" onkeyup="validateInput(this)" required><br><br>
+		<input type="submit" value="Submit">
+	  </form>
+	  <p style="text-align:center;">Have Account?<a href="{% url 'signin' %}">Login</a><p> 
+		
+	  
+<script>
+function validateInput(input) {
 
-						<br><div id="l-name"><input type="text" class="text" name="last_name" id="last_name"
-								placeholder="Last Name" autocomplete="off" onkeyup="lastValidate()">
-                                <br><span class="error-msg" id="log-last"> </span><br></div>
+  var value = input.value;
 
-						<div id="e"><input type="email" class="text" name="email" id="email" placeholder="Email"
-								autocomplete="off"><span class="error-msg" id="log-email" onkeyup="emailValidate()">
-							</span><br></div><br>
-
-                            <br><div id="p"><input type="password" class="password" name="password" id="password"
-								placeholder="User Password" autocomplete="off" onkeyup="passwordValidate()"><br><span
-								class="error-msg" id="log-passwd">
-							</span><br></div>
-
-						<div id="cp"><input type="password" class="password" name="confirm_password"
-								id="confirm_password" placeholder="Confirm Password" onkeyup="confirmValidate()"><br><span
-								class="error-msg" id="log-confirm"> </span><br></div><br>
-
-						<br><div id="ph"><input type="tel" class="tel" name="contact" id="contact"
-								placeholder="Enter Contact Number" onkeyup="contactValidate()"><br><span class="error-msg"
-								id="log-contact">
-							</span><br></div>
-						<div id="d"><input type="text" class="date" name="dob" id="dob" placeholder="Date of Birth"
-								onfocus="(this.type='date')" onclick="dobValidate()"><span class="error-msg"
-								id="log-dob">
-							</span><br>
-						</div>
-						<span id="error_dob"></span>
-						<!-- dropdown gender -->
-						<div id="g"><select name="gender" id="gender" class="text" onclick="genderValidate()">
-								<option id="error_gender" value="" disable>Select Gender</option>
-								<option value="male">Male</option>
-								<option value="female">Female</option>
-								<option value="other">Other</option>
-
-							</select><span class="error-msg" id="log-gender"> </span></div>
-						<span id="error_gender"></span><br><br>
-						<div><select name="state" class="text" id="state" onclick="stateValidate()">
-								<option id="error_state" value="" selected disabled>Select your current state</option>
-								<option value="Kerala">Kerala</option>
-							</select><span class="error-msg" id="log-state"> </span></div><br><br>
-						<div><select name="district" class="text" id="district" onclick="districtValidate()">
-								<option id="error_district" value="" selected disabled>Select your current district
-								</option>
-								<option value="Trivandrum">Trivandrum</option>
-								<option value="Kollam">Kollam</option>
-								<option value="Pathanamthitta">Pathanamthitta</option>
-								<option value="Alappuzha">Alappuzha</option>
-								<option value="Kottayam">Kottayam</option>
-								<option value="Idukki">Idukki</option>
-								<option value="Ernakulam">Ernakulam</option>
-								<option value="Thrissur">Thrissur</option>
-								<option value="Palakkad">Palakkad</option>
-								<option value="Malappuram">Malappuram</option>
-								<option value="Kozhikode">Kozhikode</option>
-								<option value="Wayanad">Wayanad</option>
-								<option value="Kannur">Kannur</option>
-								<option value="Kasaragod">Kasaragod</option>
-							</select><span class="error-msg" id="log-dist"> </span></div>
-						<span id="error_district"></span>
-						<br><br><br><button class="btn" type="submit" name="signup" id="submit" style="margin-left: 37%;">Sign
-							Up</button>
-					</form>
-					<br><p style="margin-left: 32%;">Already Registered <br><br><a href="{% url 'signin' %}"><u style="margin-left: 15.5%;">Login</u></a></p>
-                    </div>
-                    <div class="w3l_form align-self">
-                        <div class="left_grid_info">
-                            <img src="" alt="" class="img-fluid">
-                            <!-- <img src="{% static 'img/demo1.png' %}" alt="" class="img-fluid"> -->
-                            <img src="" alt="" class="img-fluid">
-                            <img src="" alt="" class="img-fluid">
+ 
+  if (input.name == "first_name" || input.name == "last_name") {
+   
+    if (/^[a-zA-Z]+$/.test(value)) {
+   
+      input.setCustomValidity("");
+    } else {
+     
+      input.setCustomValidity("Please enter a valid name (letters only)");
+    }
+  }
+  if (input.name == "username") {
+ 
+    if (/^[a-zA-Z0-9]*$/.test(value)) {
+   
+      input.setCustomValidity("");
+    } else {
     
+      input.setCustomValidity("Please enter a valid user name (letters and number only)");
+    }
+  }
+
+
+  if (input.name == "email") {
+   
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
     
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- //form -->
-        </div>
+      input.setCustomValidity("");
+    } else {
+  
+      input.setCustomValidity("Please enter a valid email address (ex@gmail.com)");
+    }
+  }
 
-		<script type="text/javascript">
-			function clearBorder(e) {
-				document.getElementById(e).textContent = "";
-				document.getElementById(e).style.border = "1px solid white";
-				document.getElementById(e).style.color = "white";
-		
-			}
-		
-			function firstValidate() {
-				var first_name = document.getElementById('first_name').value;
-				const isFirstNameValid = (first_name) => {
-					const re = new RegExp(
-						"^[a-zA-Z]+$"
-					);
-					return re.test(first_name);
-				};
-		
-				if (first_name == "") {
-					document.getElementById('log-first').textContent = "Please enter your first name";
-					// document.getElementById('log-first').style.border = "1px solid red";
-					document.getElementById("log-first").style.color = "red";
-					return false;
-				} else if (!isFirstNameValid(first_name)) {
-					document.getElementById('log-first').textContent = "Please enter Valid first name";
-					// document.getElementById('log-first').style.border = "1px solid red";
-					document.getElementById("log-first").style.color = "red";
-					return false;
-				} else {
-					clearBorder('log-first')
-					// return true
-				}
-		
-			}
-		
-			function lastValidate() {
-				var last_name = document.getElementById('last_name').value;
-				const isLastNameValid = (first_name) => {
-					const re = new RegExp(
-						"^[a-zA-Z]+$"
-					);
-					return re.test(first_name);
-				};
-				if (last_name == "") {
-					document.getElementById('log-last').textContent = "Please enter your first name";
-					// document.getElementById('log-first').style.border = "1px solid red";
-					document.getElementById("log-last").style.color = "red";
-					return false;
-				} else if (!isLastNameValid(last_name)) {
-					document.getElementById('log-last').textContent = "Please enter Valid first name";
-					// document.getElementById('log-first').style.border = "1px solid red";
-					document.getElementById("log-last").style.color = "red";
-					return false;
-				} else {
-					clearBorder('log-last')
-					return true
-				}
-		
-			}
-		
-			function emailvalidate() {
-				var email = document.getElementById('email1').value;
-		
-				const isEmailValid = (email) => {
-					const re =
-						/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-					return re.test(email);
-				};
-				if (email == "") {
-					document.getElementById("log-email").textContent = "***please provide email";
-					// document.getElementById("log-email").style.border = "1px solid red";
-					document.getElementById("log-email").style.color = "red";
-					return false;
-				} else if (isEmailValid(email) == false) {
-					document.getElementById("log-email").textContent = "***Email is not valid";
-					// document.getElementById("log-email").style.border = "1px solid red";
-					document.getElementById("log-email").style.color = "red";
-					return false;
-				} else if (isEmailValid(email) == true) {
-					clearBorder('log-email')
-					return true;
-		
-				}
-		
-			}
-		
-			function passwordValidate() {
-				var password = document.getElementById("password").value;
-				const isPasswordSecure = (password) => {
-					const re = new RegExp(
-						"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
-					);
-					return re.test(password);
-		
-				};
-		
-				if (password == "") {
-					document.getElementById("log-passwd").textContent = "***Please provide password";
-					// document.getElementById("log-passwd").style.border = "1px solid red";
-					document.getElementById("log-passwd").style.color = "red";
-		
-				} else if (!isPasswordSecure(password)) {
-					document.getElementById('log-passwd').textContent =
-						"Password must has at least 8 characters that include at least 1 lowercase character, 1 uppercase characters, 1 number, and 1 special character in (!@#$%^&*)";
-					// document.getElementById('log-passwd').style.border = "1px solid red";
-					document.getElementById("log-passwd").style.color = "red";
-					return false;
-				} else {
-					clearBorder('log-passwd');
-				}
-			}
-		
-			function confirmValidate() {
-				var confirm_password = document.getElementById('confirm_password').value;
-				var password = document.getElementById("password").value;
-		
-				if (confirm_password == "") {
-					document.getElementById('log-confirm').textContent = "Please enter your confirm password";
-					// document.getElementById('log-confirm').style.border = "1px solid red";
-					document.getElementById("log-confirm").style.color = "red";
-					return false;
-				} else if (password != confirm_password) {
-					document.getElementById('log-confirm').textContent = "Password does not match";
-					// document.getElementById('log-confirm').style.border = "1px solid red";
-					document.getElementById("log-confirm").style.color = "red";
-					return false;
-				} else {
-					clearBorder('log-confirm');
-				}
-		
-		
-			}
-		
-			function contactValidate() {
-				var contact = document.getElementById('contact').value;
-				const isContactValid = (contact) => {
-					const re = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-					return re.test(contact);
-				};
-				if (contact == "") {
-					document.getElementById('log-contact').textContent = "Please enter your contact number";
-					// document.getElementById('log-contact').style.border = "1px solid red";
-					document.getElementById("log-contact").style.color = "red";
-					return false;
-				} else if (contact.length != 10) {
-					document.getElementById('log-contact').textContent = "Please enter valid contact number";
-					// document.getElementById('log-contact').style.border = "1px solid red";
-					document.getElementById("log-contact").style.color = "red";
-					return false;
-				} else if (!isContactValid(contact)) {
-					document.getElementById('log-contact').textContent = "Please enter valid contact number";
-					// document.getElementById('log-contact').style.border = "1px solid red";
-					document.getElementById("log-contact").style.color = "red";
-					return false;
-				} else {
-					clearBorder('log-contact');
-				}
-		
-		
-			}
-		
-			function dobValidate() {
-				var dob = document.getElementById('dob').value;
-				const isDobValid = (dob) => {
-					// check age greater than 18
-					var today = new Date();
-					var birthDate = new Date(dob);
-					var age = today.getFullYear() - birthDate.getFullYear();
-					var m = today.getMonth() - birthDate.getMonth();
-					if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-						age--;
-					}
-					if (age < 18) {
-						return false;
-					} else {
-						return true;
-					}
-				}
-		
-				if (dob == "") {
-					document.getElementById('log-dob').textContent = "Please enter your date of birth";
-					// document.getElementById('log-dob').style.border = "1px solid red";
-					document.getElementById("log-dob").style.color = "red";
-					return false;
-				} else if (!isDobValid(dob)) {
-					document.getElementById('log-dob').textContent = "You must be 18 years old to register";
-					// document.getElementById('log-dob').style.border = "1px solid red";
-					document.getElementById("log-dob").style.color = "red";
-					return false;
-				} else {
-					clearBorder('log-dob')
-				}
-		
-		
-			}
-		
-			function genderValidate() {
-				var gender = document.getElementById('gender').value;
-				if (gender == '') {
-					document.getElementById('log-gender').textContent = "Please select one of the following";
-					// document.getElementById('log-gender').style.border = "1px solid red";
-					document.getElementById("log-gender").style.color = "red";
-					return false;
-				} else {
-					clearBorder('log-gender');
-				}
-		
-			}
-		
-			function stateValidate() {
-				var state = document.getElementById('state').value;
-				if (gender == '') {
-					document.getElementById('log-gender').textContent = "Please select one of the following";
-					// document.getElementById('log-gender').style.border = "1px solid red";
-					document.getElementById("log-gender").style.color = "red";
-					return false;
-				} else {
-					clearBorder('log-gender');
-				}
-		
-			}
-		
-			function districtValidate() {
-				var district = document.getElementById('district').value;
-				if (district == '') {
-					document.getElementById('log-district').textContent = "Please select one of the following";
-					// document.getElementById('log-district').style.border = "1px solid red";
-					document.getElementById("log-district").style.color = "red";
-					return false;
-				} else {
-					clearBorder('log-district');
-				}
-		
-			}
-		
-			function regvalidate() {
-				var first_name = document.getElementById('first_name').value;
-				var last_name = document.getElementById('last_name').value;
-				var email = document.getElementById('email').value;
-				var password = document.getElementById('password').value;
-				var confirm_password = document.getElementById('confirm_password').value;
-				var contact = document.getElementById('contact').value;
-				var dob = document.getElementById('dob').value;
-				var gender = document.getElementById('gender').value;
-				var state = document.getElementById('state').value;
-				var district = document.getElementById('district').value;
-				const isPasswordSecure = (password) => {
-					const re = new RegExp(
-						"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
-					);
-					return re.test(password);
-		
-				};
-				const isFirstNameValid = (first_name) => {
-					const re = new RegExp(
-						"^[a-zA-Z]+$"
-					);
-					return re.test(first_name);
-				};
-				const isLastNameValid = (first_name) => {
-					const re = new RegExp(
-						"^[a-zA-Z]+$"
-					);
-					return re.test(first_name);
-				};
-		
-				const isContactValid = (contact) => {
-					const re = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-					return re.test(contact);
-				};
-				const isEmailValid = (email) => {
-					const re =
-						/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-					return re.test(email);
-				};
-		
-				const isDobValid = (dob) => {
-					// check age greater than 18
-					var today = new Date();
-					var birthDate = new Date(dob);
-					var age = today.getFullYear() - birthDate.getFullYear();
-					var m = today.getMonth() - birthDate.getMonth();
-					if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-						age--;
-					}
-					if (age < 18) {
-						return false;
-					} else {
-						return true;
-					}
-				}
-		
-				console.log(first_name);
-				if (first_name == "") {
-					document.getElementById('log-first').textContent = "Please enter your first name";
-					// document.getElementById('log-first').style.border = "1px solid red";
-					document.getElementById("log-first").style.color = "red";
-		
-					return false;
-				} else if (!isFirstNameValid(first_name)) {
-					document.getElementById('log-first').textContent = "Please enter valid first name";
-					// document.getElementById('log-first').style.border = "1px solid red";
-					document.getElementById("log-first").style.color = "red";
-					return false;
-				} else if (last_name == "") {
-					document.getElementById('log-last').textContent = "Please enter your last name";
-					// document.getElementById('log-last').style.border = "1px solid red";
-					document.getElementById("log-last").style.color = "red";
-					return false;
-				} else if (!isLastNameValid(last_name)) {
-					document.getElementById('log-last').textContent = "please enter valid name";
-					// document.getElementById('log-last').style.border = "1px solid red";
-					document.getElementById("log-last").style.color = "red";
-					return false;
-				} else if (email == "") {
-					document.getElementById('log-email').textContent = "Please enter your email";
-					// document.getElementById('log-email').style.border = "1px solid red";
-					document.getElementById("log-email").style.color = "red";
-					return false;
-				} else if (!isEmailValid(email)) {
-					document.getElementById('log-email').textContent = "enter a valid email";
-					// document.getElementById('log-email').style.color = "red";
-					document.getElementById("log-email").style.color = "red";
-		
-					return false;
-				} else if (password == "") {
-					document.getElementById('log-passwd').textContent = "Please enter your password";
-					// document.getElementById('log-passwd').style.border = "1px solid red";
-					document.getElementById("log-passwd").style.color = "red";
-					return false;
-				} else if (!isPasswordSecure(password)) {
-					document.getElementById('log-passwd').textContent =
-						"Password must has at least 8 characters that include at least 1 lowercase character, 1 uppercase characters, 1 number, and 1 special character in (!@#$%^&*)";
-					// document.getElementById('log-passwd').style.border = "1px solid red";
-					document.getElementById("log-passwd").style.color = "red";
-					return false;
-				} else if (confirm_password == "") {
-					document.getElementById('log-confirm').textContent = "Please enter your confirm password";
-					// document.getElementById('log-confirm').style.border = "1px solid red";
-					document.getElementById("log-confirm").style.color = "red";
-					return false;
-				} else if (password != confirm_password) {
-					document.getElementById('log-confirm').textContent = "Password does not match";
-					// document.getElementById('log-confirm').style.border = "1px solid red";
-					document.getElementById("log-confirm").style.color = "red";
-					return false;
-				} else if (contact == "") {
-					document.getElementById('log-contact').textContent = "Please enter your contact number";
-					// document.getElementById('log-contact').style.border = "1px solid red";
-					document.getElementById("log-contact").style.color = "red";
-					return false;
-				} else if (contact.length != 10) {
-					document.getElementById('log-contact').textContent = "Please enter valid contact number";
-					// document.getElementById('log-contact').style.border = "1px solid red";
-					document.getElementById("log-contact").style.color = "red";
-					return false;
-				} else if (!isContactValid(contact)) {
-					document.getElementById('log-contact').textContent = "Please enter valid contact number";
-					// document.getElementById('log-contact').style.border = "1px solid red";
-					document.getElementById("log-contact").style.color = "red";
-		
-					return false;
-				} else if (dob == "") {
-					document.getElementById('log-dob').textContent = "Please enter your date of birth";
-					// document.getElementById('log-dob').style.border = "1px solid red";
-					document.getElementById("log-dob").style.color = "red";
-					return false;
-				} else if (!isDobValid(dob)) {
-					document.getElementById('log-dob').textContent = "You must be 18 years old to register";
-					// document.getElementById('log-dob').style.border = "1px solid red";
-					document.getElementById("log-dob").style.color = "red";
-					return false;
-				} else if (gender == '') {
-					document.getElementById('log-gender').textContent = "Please select one of the following";
-					// document.getElementById('log-gender').style.border = "1px solid red";
-					document.getElementById("log-gender").style.color = "red";
-					return false;
-				} else if (state == '') {
-					document.getElementById('log-state').textContent = "Please select one of the following";
-					// document.getElementById('log-state').style.border = "1px solid red";
-					document.getElementById("log-state").style.color = "red";
-					return false;
-				} else if (district == '') {
-					document.getElementById('log-district').textContent = "Please select one of the following";
-					// document.getElementById('log-district').style.border = "1px solid red";
-					document.getElementById("log-district").style.color = "red";
-					return false;
-				} else {
-					return true;
-				}
-				return true;
-		
-			}
-		</script>
-	
-	
-	
+ 
+  if (input.name == "password") {
+   
+    if ( /(?=^.{8,}$)(?=.*\d)(?=.*\W+)(?![.\n])(?=.*[A-Z])(?=.*[@])(?=.*[a-z]).*$/.test(value)) {
+  
+      input.setCustomValidity("");
+    } else {
+      
+      input.setCustomValidity("Please enter a valid password (at least 8 characters, one uppercase letter, one lowercase letter, one number, one special character )");
+    }
+  }
 
-	
-<!--===============================================================================================-->	
-<script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'js/popper.js' %}"></script>
-	<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'js/select2.min.js' %}"></script>
-<!--===============================================================================================-->
-	<script src="{% static 'js/main.js' %}"></script>
+  
+  if (input.name == "confirm_password") {
+    
+    var password = document.getElementById("password").value;
+   
+    if (value == password) {
+     
+      input.setCustomValidity("");
+    } else {
+      
+      input.setCustomValidity("The password and confirm password fields must match");
+    }
+  }
+}
+
+</script>
 </body>
 </html>

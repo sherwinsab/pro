@@ -57,7 +57,7 @@
                                     <li>
                                         <a href="#">
                                             <img src="{% static 'img/boogyman.png' %}" alt="">
-                                            NAME  <span>HI 
+                                            NAME  <span> {{user.first_name}}
                                             <i class="fa fa-angle-down"></i></span>
                                         </a>
                                         <ul class="profile">
@@ -70,7 +70,7 @@
                                             <li><a href="#">Messages</a></li>
                                             <li><a href="#">Shopping Cart</a></li>
                                             <li><a href="#">Withdraw</a></li>
-                                            <li><a href="#">Sign Out</a></li>
+                                            <li><a href="{% url 'logout' %}">Sign Out</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -165,319 +165,31 @@
         <!-- End banner Area -->	
         
         <!-- Start item detail Area -->
-        <section class="item-product-area">
-            
-                        
-                               <div class="row d-flex justify-content-center pt-30 mb-30">
-                                <div class="col-md-4 col-sm-6 col-12 gp_products_item">
-                                    <div class="gp_products_inner">
-                                        <div class="gp_products_item_image">
-                                            <a href="#">
-                                                <img src="{% static 'img/featured/product1.jpg' %}" alt="gp product 001" />
-                                            </a>
-                                        </div>
-                                        <div class="gp_products_item_caption">
-                                                    <ul class="gp_products_caption_name">
-                                                        <li>
-                                                            <a href="#">Hyundai Sport <span class="mr-1 pull-right">$ 258</span></a>
-                                                            
-                                                        </li>
-                                                        <li><a href="#">Model 2018 , <span><i class="fa fa-map-marker mr-1"> Colorada, USA</i></span></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="fa fa-road mr-1"></i>500 Km <span class="pull-right"> <i class="fa fa-tachometer mr-1"></i>300 Miles</span></a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="gp_products_caption_rating mt-2">
-                                                        <li class=""><a class="" href="#">Know More</a></li>
-                                                        <li class="pull-right"><i class="fa fa-star-half-o"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        
-                                                    </ul>
-                                                </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 col-sm-6 col-12 gp_products_item">
-                                    <div class="gp_products_inner">
-                                        <div class="gp_products_item_image">
-                                            <a href="#">
-                                                <img src="{% static 'img/featured/product2.jpg' %}" alt="gp product 001" />
-                                            </a>
-                                        </div>
-                                        <div class="gp_products_item_caption">
-                                                    <ul class="gp_products_caption_name">
-                                                        <li>
-                                                            <a href="#">Hyundai Sante <span class="mr-1 pull-right">$ 268</span></a>
-                                                            
-                                                        </li>
-                                                        <li><a href="#">Model 2018 , <span><i class="fa fa-map-marker mr-1"> Colorada, USA</i></span></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="fa fa-road mr-1"></i>500 Km <span class="pull-right"> <i class="fa fa-tachometer mr-1"></i>300 Miles</span></a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="gp_products_caption_rating mt-2">
-                                                        <li class=""><a class="" href="#">Know More</a></li>
-                                                        <li class="pull-right"><i class="fa fa-star-half-o"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        
-                                                    </ul>
-                                                </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 col-sm-6 col-12 gp_products_item">
-                                    <div class="gp_products_inner">
-                                        <div class="gp_products_item_image">
-                                            <a href="#">
-                                                <img src="{% static 'img/featured/product3.jpg' %}" alt="gp product 001" />
-                                            </a>
-                                        </div>
-                                        <div class="gp_products_item_caption">
-                                                    <ul class="gp_products_caption_name">
-                                                        <li>
-                                                            <a href="#">Hyundai Fe Sport <span class="mr-1 pull-right">$ 278</span></a>
-                                                            
-                                                        </li>
-                                                        <li><a href="#">Model 2018 , <span><i class="fa fa-map-marker mr-1"> Colorada, USA</i></span></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="fa fa-road mr-1"></i>500 Km <span class="pull-right"> <i class="fa fa-tachometer mr-1"></i>300 Miles</span></a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="gp_products_caption_rating mt-2">
-                                                        <li class=""><a class="" href="#">Know More</a></li>
-                                                        <li class="pull-right"><i class="fa fa-star-half-o"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        
-                                                    </ul>
-                                                </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row d-flex justify-content-center mb-30">
-                                <div class="col-md-4 col-sm-6 col-12 gp_products_item">
-                                    <div class="gp_products_inner">
-                                        <div class="gp_products_item_image">
-                                            <a href="#">
-                                                <img src="{% static 'img/featured/pic1.jpg' %}" alt="gp product 001" />
-                                            </a>
-                                        </div>
-                                        <div class="gp_products_item_caption">
-                                                    <ul class="gp_products_caption_name">
-                                                        <li>
-                                                            <a href="#">Lexus G S <span class="mr-1 pull-right">$ 300</span></a>
-                                                            
-                                                        </li>
-                                                        <li><a href="#">Model 2018 , <span><i class="fa fa-map-marker mr-1"> Colorada, USA</i></span></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="fa fa-road mr-1"></i>500 Km <span class="pull-right"> <i class="fa fa-tachometer mr-1"></i>300 Miles</span></a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="gp_products_caption_rating mt-2">
-                                                        <li class=""><a class="" href="#">Know More</a></li>
-                                                        <li class="pull-right"><i class="fa fa-star-half-o"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        
-                                                    </ul>
-                                                </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 col-sm-6 col-12 gp_products_item">
-                                    <div class="gp_products_inner">
-                                        <div class="gp_products_item_image">
-                                            <a href="#">
-                                                <img src="{% static 'img/featured/pic2.jpg' %}" alt="gp product 001" />
-                                            </a>
-                                        </div>
-                                        <div class="gp_products_item_caption">
-                                                    <ul class="gp_products_caption_name">
-                                                        <li>
-                                                            <a href="#">Acura Rxs Sport <span class="mr-1 pull-right">$ 288</span></a>
-                                                            
-                                                        </li>
-                                                        <li><a href="#">Model 2018 , <span><i class="fa fa-map-marker mr-1"> Colorada, USA</i></span></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="fa fa-road mr-1"></i>500 Km <span class="pull-right"> <i class="fa fa-tachometer mr-1"></i>300 Miles</span></a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="gp_products_caption_rating mt-2">
-                                                        <li class=""><a class="" href="#">Know More</a></li>
-                                                        <li class="pull-right"><i class="fa fa-star-half-o"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        
-                                                    </ul>
-                                                </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 col-sm-6 col-12 gp_products_item">
-                                    <div class="gp_products_inner">
-                                        <div class="gp_products_item_image">
-                                            <a href="#">
-                                                <img src="{% static 'img/featured/pic3.jpg' %}" alt="gp product 001" />
-                                            </a>
-                                        </div>
-                                        <div class="gp_products_item_caption">
-                                                    <ul class="gp_products_caption_name">
-                                                        <li>
-                                                            <a href="#">Hyundai Fe Sport <span class="mr-1 pull-right">$ 298</span></a>
-                                                            
-                                                        </li>
-                                                        <li><a href="#">Model 2018 , <span><i class="fa fa-map-marker mr-1"> Colorada, USA</i></span></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="fa fa-road mr-1"></i>500 Km <span class="pull-right"> <i class="fa fa-tachometer mr-1"></i>300 Miles</span></a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="gp_products_caption_rating mt-2">
-                                                        <li class=""><a class="" href="#">Know More</a></li>
-                                                        <li class="pull-right"><i class="fa fa-star-half-o"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        
-                                                    </ul>
-                                                </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row d-flex justify-content-center mb-30">
-                                <div class="col-md-4 col-sm-6 col-12 gp_products_item">
-                                    <div class="gp_products_inner">
-                                        <div class="gp_products_item_image">
-                                            <a href="#">
-                                                <img src="{% static 'img/featured/product1.jpg' %}" alt="gp product 001" />
-                                            </a>
-                                        </div>
-                                        <div class="gp_products_item_caption">
-                                                    <ul class="gp_products_caption_name">
-                                                        <li>
-                                                            <a href="#">Gta Low Riders <span class="mr-1 pull-right">$ 310</span></a>
-                                                            
-                                                        </li>
-                                                        <li><a href="#">Model 2018 , <span><i class="fa fa-map-marker mr-1"> Colorada, USA</i></span></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="fa fa-road mr-1"></i>500 Km <span class="pull-right"> <i class="fa fa-tachometer mr-1"></i>300 Miles</span></a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="gp_products_caption_rating mt-2">
-                                                        <li class=""><a class="" href="#">Know More</a></li>
-                                                        <li class="pull-right"><i class="fa fa-star-half-o"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        
-                                                    </ul>
-                                                </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 col-sm-6 col-12 gp_products_item">
-                                    <div class="gp_products_inner">
-                                        <div class="gp_products_item_image">
-                                            <a href="#">
-                                                <img src="{% static 'img/featured/product2.jpg' %}" alt="gp product 001" />
-                                            </a>
-                                        </div>
-                                        <div class="gp_products_item_caption">
-                                                    <ul class="gp_products_caption_name">
-                                                        <li>
-                                                            <a href="#">Acura Rxs Sport <span class="mr-1 pull-right">$ 320</span></a>
-                                                            
-                                                        </li>
-                                                        <li><a href="#">Model 2018 , <span><i class="fa fa-map-marker mr-1"> Colorada, USA</i></span></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="fa fa-road mr-1"></i>500 Km <span class="pull-right"> <i class="fa fa-tachometer mr-1"></i>300 Miles</span></a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="gp_products_caption_rating mt-2">
-                                                        <li class=""><a class="" href="#">Know More</a></li>
-                                                        <li class="pull-right"><i class="fa fa-star-half-o"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        
-                                                    </ul>
-                                                </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4 col-sm-6 col-12 gp_products_item">
-                                    <div class="gp_products_inner">
-                                        <div class="gp_products_item_image">
-                                            <a href="#">
-                                                <img src="{% static 'img/featured/pic3.jpg' %}" alt="gp product 001" />
-                                            </a>
-                                        </div>
-                                        <div class="gp_products_item_caption">
-                                                    <ul class="gp_products_caption_name">
-                                                        <li>
-                                                            <a href="#">Toyota Hybrid <span class="mr-1 pull-right">$ 350</span></a>
-                                                            
-                                                        </li>
-                                                        <li><a href="#">Model 2018 , <span><i class="fa fa-map-marker mr-1"> Colorada, USA</i></span></a>
-                                                        </li>
-                                                        <li><a href="#"><i class="fa fa-road mr-1"></i>500 Km <span class="pull-right"> <i class="fa fa-tachometer mr-1"></i>300 Miles</span></a>
-                                                        </li>
-                                                    </ul>
-                                                    <ul class="gp_products_caption_rating mt-2">
-                                                        <li class=""><a class="" href="#">Know More</a></li>
-                                                        <li class="pull-right"><i class="fa fa-star-half-o"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        <li class="pull-right"><i class="fa fa-star"></i></li>
-                                                        
-                                                    </ul>
-                                                </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 mt-30">
-                                    <nav aria-label="...">
-                                      <ul class="pagination justify-content-center">
-                                        <li class="page-item disabled">
-                                          <span class="page-link">Previous</span>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                        <li class="page-item">
-                                          <a class="page-link" href="#">Next</a>
-                                        </li>
-                                      </ul>
-                                    </nav>
-                                </div>
-                            </div>
-
-                        </div>																		
-                    </div>
+    <section class="item-product-area">
+    <div class="container">
+        <div class="row">
+            <form method="get">
+                {{myFilter.form}}<br></br><button style="float: right;">Search</button>
+            </form>
+    {% for CARDETAILS in myFilter.qs %}
+        <div class="col-md-3">
+            <br></br><div class="card">
+                <img src="{{CARDETAILS.image3.url}}" class="card-img-top" alt="pic of the car">
+                <div class="card-body">
+                <h3 class="card-title"><label style="color:red"></label>{{CARDETAILS.car_name}}</h3>
+                <h7 class="card-title"><label style="color:red">Company</label> {{CARDETAILS.car_company}}</h7><br>
+                <h7 class="card-title"><label style="color:red">Type</label> {{CARDETAILS.car_type}}</h7><br>
+                <h7 class="card-title"><label style="color:red">₹</label> {{CARDETAILS.price}}</h7><br></br>
+                <a href="{% url 'product_listing_detail' %}"><button>More</button></a>
+                <!-- /cuspage/singlecars/{{cartbl.id}} -->
+                <p class="card-text"></p>
                 </div>
-            </div>	
-        </section>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+
+    </section>
         <!-- End item detail Area -->
         
     
