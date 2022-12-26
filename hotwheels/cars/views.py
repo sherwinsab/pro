@@ -84,6 +84,12 @@ def product_listing_detail(request,pk):
         return render(request,'product_listing_detail.html',{'CARDETAILS':CARDETAILS}) 
     return redirect('signin')
 
+def booknow(request,pk):
+    if 'username' in request.session:
+        CARDETAILS = DETAILS.objects.get(pk=pk)
+        return render(request,'booknow.html',{'CARDETAILS':CARDETAILS}) 
+    return redirect('signin')
+
 def shopping_cart(request):
     template = loader.get_template('shopping_cart.html')
     return HttpResponse(template.render())
