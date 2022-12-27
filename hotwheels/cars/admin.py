@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TYPE,COMPANY,DETAILS
+from .models import TYPE,COMPANY,DETAILS,Order
 
 class TYPEAdmin(admin.ModelAdmin):
     list_display = ["name"]
@@ -10,7 +10,10 @@ class COMPANYAdmin(admin.ModelAdmin):
 admin.site.register(COMPANY,COMPANYAdmin)
 
 class DETAILSAdmin(admin.ModelAdmin):
-    list_display = ['stock','car_name','car_type','car_company','price','fuel_efficiency','fuel_tank_capacity','front_suspension','rear_suspension','tyre_size','front_brake','rear_brake','ground_clearance','seating_capacity','boot_capacity','max_torque','trasmission','cylinders','engine_cc','image1','image1','image1']
+    list_display = ['stock','car_name','car_type','car_company']
 admin.site.register(DETAILS,DETAILSAdmin)
 
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ['customerid','carnameid','Date_of_booking']
+admin.site.register(Order,OrderAdmin)
 # Register your models here.

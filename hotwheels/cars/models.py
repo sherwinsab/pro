@@ -146,4 +146,22 @@ class DETAILS(models.Model):
         )
     def __str__(self):
         return self.car_name
+
+class Order(models.Model):
+    class Meta:
+        db_table = 'CUSTOMER ORDER DETAILS'
+    
+    id = models.BigAutoField(
+        primary_key= True,
+    )
+    Address = models.CharField(default=None,null=True,blank=True,max_length=255,verbose_name="House Address Of Customer")
+    LicenceIDNumber = models.CharField(default=None,null=True,blank=True,max_length=255,verbose_name="Licence ID Number Of Customer")
+    Pincode = models.IntegerField(verbose_name="Pincode Of Customer")
+    ContactNumber = models.CharField(default=None,null=True,blank=True,max_length=255,verbose_name="Contact Number Of Customer")
+    application_code = models.UUIDField(default = uuid.uuid4,editable = False,verbose_name="Application Id Of Order")
+    State = models.CharField(default=None,null=True,blank=True,max_length=255,verbose_name="State")
+    City = models.CharField(default=None,null=True,blank=True,max_length=255,verbose_name="City")
+    customerid = models.ForeignKey(User ,default=None,on_delete=models.CASCADE,verbose_name="Customer")
+    carnameid = models.ForeignKey(DETAILS,on_delete=models.CASCADE,verbose_name="Car Name")
+    Date_of_booking = models.DateTimeField(auto_now_add=True,verbose_name="Date Of Booking")
 # Create your models here.

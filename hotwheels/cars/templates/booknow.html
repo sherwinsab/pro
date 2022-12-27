@@ -215,10 +215,10 @@
                                 <h2>
                                     {{user.first_name}} {{user.last_name}} You Are Booking <h4 style="color:rgb(11, 10, 10)">Type : {{CARDETAILS.car_type}}</h4><br> <h4 style="color:rgb(0, 0, 0)">Company : {{CARDETAILS.car_company}}</h4><br> <h4 style="color:rgb(7, 7, 7)">Car Name : {{CARDETAILS.car_name}}</h4>  
                                 </h2>
-                                <blockquote class="generic-blockquote mt-3">Enter The Necessary Information And Pay 15000 Rupees As Booking Charge Then Submit To Proceed The Booking. Wiating Period Will Be ()                        
-                                </blockquote>
+                                <blockquote class="generic-blockquote mt-3" ><p style="font-weight: bold;">Enter The Necessary Information Then Submit To Proceed The Booking. Make Sure you pay 15,000 Rupess As A Booking Charge "All Payments Are Done In Cart" , Wiating Period Of The {{CARDETAILS.car_name}} Is ().                        
+                                </p></blockquote>
                                 <h2 style="text-align: center;">FILL THE FORM</h2>
-                                <form action="#" method="post" onsubmit="return validateInput()">
+                                <form action="{% url 'add_to_cart' oid=CARDETAILS.id %}" method="post" onsubmit="return validateInput()">
                                 {% csrf_token %}
                                 <p>
                                     <label for="DETAILS" style="font-weight: bold;">Address:</label>
