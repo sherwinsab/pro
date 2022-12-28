@@ -110,13 +110,25 @@ def add_to_cart(request, oid):
 
         return redirect('shopping_cart')
     return redirect('signin')
-    
+
+def cancelorder(request, oid):
+    if 'username' in request.session:
+        customer = Order.objects.get(id=oid)
+        car_name_id= DETAILS.objects.get(id=customer.carnameid_id)
+        car_name_id.stock += 1
+        car_name_id.save()
+        customer.delete()
+        return redirect('product_listing')
+    return redirect('signin')   
 
 def shopping_cart(request):
     if 'username' in request.session:
         
         customer = Order.objects.filter(customerid=request.user)
         carnameid = customer[0].carnameid
+
+        #imagefkref
+
 
         #carcompanyfkref
         car_company = DETAILS.objects.filter(car_name=carnameid).values('car_company')
@@ -134,10 +146,9 @@ def shopping_cart(request):
         
         a = 5000+15000+priceof
 
-        
         return render(request,'shopping_cart.html',{'customer':customer,'carscompanynames':carscompanynames,'cartypenames':cartypenames,'priceof':priceof,'a':a}) 
     return redirect('signin')
-    
+
 def user_profile(request):
     template = loader.get_template('user_profile.html')
     return HttpResponse(template.render())

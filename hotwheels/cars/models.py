@@ -165,3 +165,22 @@ class Order(models.Model):
     carnameid = models.ForeignKey(DETAILS,on_delete=models.CASCADE,verbose_name="Car Name")
     Date_of_booking = models.DateTimeField(auto_now_add=True,verbose_name="Date Of Booking")
 # Create your models here.
+
+class Information(models.Model):
+    class Meta:
+        db_table = 'INFORMATION OF CARS'
+    
+    id = models.BigAutoField(
+        primary_key= True,
+    )
+    description = models.CharField(default=None,null=True,blank=True,max_length=1200,verbose_name="Description Of The Vehicle")
+    general_information = models.CharField(default=None,null=True,blank=True,max_length=1200,verbose_name="General Information Of The Vehicle")
+    vehicle_overview = models.CharField(default=None,null=True,blank=True,max_length=1200,verbose_name="Vehicle overview")
+    carnameid = models.ForeignKey(DETAILS,on_delete=models.CASCADE,verbose_name="Car Name")
+    companyid = models.ForeignKey(COMPANY,on_delete=models.CASCADE,verbose_name="Car Company")
+    typeid = models.ForeignKey(TYPE,on_delete=models.CASCADE,verbose_name="Car Type")
+    tax_amount = models.IntegerField(verbose_name="Tax Amount Of Car")
+    delivery_days = models.IntegerField(verbose_name="Delivery Days Of Car")
+    delivery_cost = models.IntegerField(verbose_name="Delivery Cost Of The car")
+    booking_amount = models.IntegerField(verbose_name="Booking Amount")
+    
