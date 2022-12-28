@@ -170,8 +170,8 @@
                                         <div class="image">Company</div>
                                         <div class="image">Type</div>
                                         <div class="image">Price</div>
-                                        <div class="image">Oder Date</div>
-                                        <div class="remove">Remove</div>
+                                        <div class="image">Booked On</div>
+                                        <div class="image">Remove</div>
                                     </div>
                                     <div class="table-row">
                                         <div class="image"> <img src="{% static 'img/shopping-cart1.jpg' %}" alt="flag"></div>
@@ -179,8 +179,8 @@
                                         <div class="image">{{carscompanynames}}</div>
                                         <div class="image">{{cartypenames}}</div>
                                         <div class="image">₹{{priceof}}</div>
-                                        <div class="image">nill</div>
-                                        <div class="remove"><a href="#"><i class="fa fa-times"></i></a></div>
+                                        <div class="image">{{Order.Date_of_booking}}</div>
+                                        <div class="image"><a href="#"><i class="fa fa-times"></i></a></div>
                                     </div>
                                 </div>
                             </div>
