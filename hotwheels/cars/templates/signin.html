@@ -7,6 +7,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
+	<link href="https://fonts.googleapis.com/css?family=Mina" rel="stylesheet"> 
+       
+        <link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">					
+        <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+        <link rel="stylesheet" href="{% static 'css/shortcodes.css' %}">
+        <link rel="stylesheet" href="{% static 'css/thumbnails_bottom_center.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
 	<style>
 		body {
 		  background-color: #f4f4f4;
@@ -55,9 +67,9 @@
 	<form action="{% url 'signin' %}" method="post" onsubmit="return validateInput()">
 	{% csrf_token %}
 	  <label for="username">username:</label><br>
-	  <input type="text" name="username" onkeyup="validateInput(this)" required><br>
+	  <input type="text" placeholder="username" name="username" onkeyup="validateInput(this)" required><br>
 	  <label for="password">Password:</label><br>
-	  <input type="password" name="password" onkeyup="validateInput(this)" required><br><br>
+	  <input type="password" placeholder="password" name="password" onkeyup="validateInput(this)" required><br><br>
 	  <input type="submit" value="Sign In">
 	</form>
 	<p style="text-align:center;">Don't Have An Account?<a href="{% url 'signup' %}">Sign Up</a><p>  
