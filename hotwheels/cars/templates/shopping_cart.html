@@ -161,6 +161,9 @@
                     <div class="cart_content col-lg-10">
                         <div class="cart-top-border">
                             <h2 class="mb-30">Shopping Cart</h2>
+                            {% if Order %}
+                            <h3 class="generic-blockquote mt-3">{{a}} <i class="fa fa-frown-o" aria-hidden="true"></i></h3>
+                            {% else %}
                             {% for Order in customer %}
                             <div class="progress-table-wrap">
                                 <div class="progress-table">
@@ -186,6 +189,7 @@
                                 </div>
                             </div>
                             {% endfor %}
+                            {% endif %}
                         </div>
                     </div>
                 </div>	

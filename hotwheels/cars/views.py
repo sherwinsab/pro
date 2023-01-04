@@ -125,28 +125,31 @@ def shopping_cart(request):
     if 'username' in request.session:
         
         customer = Order.objects.filter(customerid=request.user)
-        carnameid = customer[0].carnameid
-
+        if not customer:
+            a = "YOUR CART IS EMPTY"
+            return render(request,'shopping_cart.html',{'a':a})
+        else:
+            carnameid = customer[0].carnameid
+        
         #imagefkref
 
-
         #carcompanyfkref
-        car_company = DETAILS.objects.filter(car_name=carnameid).values('car_company')
-        car_company_name = COMPANY.objects.filter(pk=car_company[0].get("car_company")).values('name')
-        carscompanynames = car_company_name[0].get("name")
+            car_company = DETAILS.objects.filter(car_name=carnameid).values('car_company')
+            car_company_name = COMPANY.objects.filter(pk=car_company[0].get("car_company")).values('name')
+            carscompanynames = car_company_name[0].get("name")
 
         #cartypefkref
-        car_type = DETAILS.objects.filter(car_name=carnameid).values('car_type')
-        car_type_name = TYPE.objects.filter(pk=car_type[0].get("car_type")).values('name')
-        cartypenames = car_type_name[0].get("name")
+            car_type = DETAILS.objects.filter(car_name=carnameid).values('car_type')
+            car_type_name = TYPE.objects.filter(pk=car_type[0].get("car_type")).values('name')
+            cartypenames = car_type_name[0].get("name")
 
         #carprice
-        price = DETAILS.objects.filter(car_name=carnameid).values('price')
-        priceof = price[0].get("price")
+            price = DETAILS.objects.filter(car_name=carnameid).values('price')
+            priceof = price[0].get("price")
         
-        a = 5000+15000+priceof
+            a = 5000+15000+priceof
 
-        return render(request,'shopping_cart.html',{'customer':customer,'carscompanynames':carscompanynames,'cartypenames':cartypenames,'priceof':priceof,'a':a}) 
+            return render(request,'shopping_cart.html',{'customer':customer,'carscompanynames':carscompanynames,'cartypenames':cartypenames,'priceof':priceof,'a':a}) 
     return redirect('signin')
 
 def user_profile(request):
