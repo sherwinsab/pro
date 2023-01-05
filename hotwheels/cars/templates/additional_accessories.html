@@ -17,7 +17,7 @@
     <!-- Site Title -->
     <title>HotWheels - Home Buy Vechiles,Service Market Place</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Mina" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Mina" rel="stylesheet">
         <!--
         CSS
         ============================================= -->
@@ -27,17 +27,12 @@
         <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
         <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">					
         <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/owl.theme.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/owl.transitions.css' %}">
-        <link rel="stylesheet" href="{% static 'css/carousel_advance.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
-        <link rel="stylesheet" href="{% static 'css/rangeslider.css' %}">
-        <!--======= Responsive Bootstrap Carousel StyleSheet =========-->
-    <link href="css/testimonial_speech_bubble_border_carousel.css" rel="stylesheet" media="all">
     </head>
     <body>
-    <!-- #header Start-->
+
+          <!-- #header Start-->
           <header id="header">
               <div class="header-top bg-1">
                 <div class="container">
@@ -46,8 +41,8 @@
                             <div class="header-top-menu">
                                 <ul>
                                     <!-- <li><a href="#">Partners</a></li>
-                                    <li><a href="#">Community</a></li> -->
-                                    <!-- <li><a href="sell_a_product.html">Become A Seller</a></li> -->
+                                    <li><a href="#">Community</a></li>
+                                    <li><a href="sell_a_product.html">Become A Seller</a></li> -->
                                 </ul>
                             </div>
                         </div>
@@ -74,20 +69,20 @@
                                         </ul>
                                     </li>
                                 </ul>
-                                <ul class="notification_icons">
-                                    <!-- <li>
+                                <!-- <ul class="notification_icons">
+                                    <li>
                                         <a href="#"><i class="fa fa-bell-o"></i><span class="number">11</span></a>
                                     </li>
                                     <li>
                                         <a href="#"><i class="fa fa-envelope-o"></i><span class="number">5</span></a>
-                                    </li> -->
+                                    </li>
                                     <li>
-                                        <a href="{% url 'shopping_cart' %}">
+                                        <a href="#">
                                             <i class="fa fa-shopping-basket"></i>
                                         </a>
                                     </li> 
 
-                                </ul>
+                                </ul> -->
                             </div>
                         </div>
                     </div>
@@ -98,7 +93,7 @@
                     <div class="row align-items-center d-flex">
                         <div class="col-lg-2 col-md-2">
                             <div id="logo">
-                                <a href="index.html"><img src="#" alt="" /></a>
+                                <a href="index.html"><img src="" alt="" /></a>
                             </div>
                         </div>
                            <div class="col-lg-10 col-md-2">				
@@ -120,24 +115,19 @@
                                     <li><a href="404.html">404 Page</a></li>
                                 </ul>
                               </li>
-                              <li class="menu-has-children"><a href="#">About</a>
-                                <!-- about_us.html -->
+                              <li class="menu-has-children"><a href="about_us.html">About</a>
                               </li>  
-                              <li class="menu-has-children"><a href="#">Services</a>
-                                <!-- services.html -->
+                              <li class="menu-has-children"><a href="services.html">Services</a>
                               </li>
-                              <li class="menu-has-children"><a href="#">Blog</a>
-                                <!-- blog_home.html -->
+                              <li class="menu-has-children"><a href="blog_home.html">Blog</a>
                                   <ul>
-                                    <li><a href="#">Blog Page</a></li>
-                                    <!-- blog_home.html -->
-                                    <li><a href="#">Blog Detail</a></li>
-                                    <!-- blog_single.html -->
+                                    <li><a href="blog_home.html">Blog Page</a></li>
+                                    <li><a href="blog_single.html">Blog Detail</a></li>
                                 </ul>
                               </li>
                               
-                              <li class="menu-has-children"><a href="#">Contact</a></li><!-- contact.html -->
-                              <!-- <li class="menu-has-children"><a href="#" class="rounded ml-3 text-white sell-btn">My Cart</a> -->
+                              <li class="menu-has-children"><a href="contact.html">Contact</a></li>
+                              <!-- <li class="menu-has-children"><a href="sell_a_product.html" class="rounded ml-3 text-white sell-btn">Sell My Car</a> -->
                               </li>			        	          
                             </ul>
                           </nav><!-- #nav-menu-container -->
@@ -146,62 +136,78 @@
                 </div>
             </div>
           </header><!-- #header -->
-        
+
 
         <!-- start banner Area -->
-        <section class="banner-area relative">	
+        <section class="banner-area relative" id="home">	
             <div class="overlay overlay-bg"></div>
             <div class="container">
                 <div class="row d-flex align-items-center justify-content-center">
                     <div class="about-content col-lg-12">
                         <h1 class="text-white">
-                            Product Listing			
+                            Additional Accessories		
                         </h1>	
-                        <p class="text-white link-nav"><a href="{% url 'index' %}">Home </a>  <span class="lnr lnr-arrow-right"></span> Product List</p>
+                        <p class="text-white link-nav"><a href="{% url 'index' %}">Home </a>  <span class="lnr lnr-arrow-right"></span> <a href="{% url 'product_listing' %}"> Product Listing</a> <span class="lnr lnr-arrow-right"></span> Product Listing detail  <span class="lnr lnr-arrow-right"></span> Additional Accessories</p>
                     </div>											
                 </div>
             </div>
         </section>
         <!-- End banner Area -->	
-        
-        <!-- Start item detail Area -->
-    <section class="item-product-area">
-    <div class="container">
-        <div class="row">
-            <form method="get">
-                {{myFilter.form}}<br></br><button style="float: right;">Search</button>
-            </form>
-    {% for CARDETAILS in myFilter.qs %}
-        <div class="col-md-3">
-            <br></br><div class="card">
-                <img src="{{CARDETAILS.image3.url}}" class="card-img-top" alt="pic of the car">
-                <div class="card-body">
-                <h3 class="card-title"><label style="color:red"></label>{{CARDETAILS.car_name}}</h3>
-                <h7 class="card-title"><label style="color:red">Company</label> {{CARDETAILS.car_company}}</h7><br>
-                <h7 class="card-title"><label style="color:red">Type</label> {{CARDETAILS.car_type}}</h7><br>
-                <h7 class="card-title"><label style="color:red">₹</label> {{CARDETAILS.price}}</h7><br></br>
-                <a href="/cars/product_listing_detail/{{CARDETAILS.id}}"><button>More</button></a>
-                <!-- <a href="/cuspage/singlecars/{{CARDETAILS.id}}"><button>More</button></a> -->
-                <!-- /cuspage/singlecars/{{cartbl.id}} -->
-                <p class="card-text"></p>
-                </div>
-        </div>
-    </div>
-    {% endfor %}
-    </div>
-    </div>
 
-    </section>
-        <!-- End item detail Area -->
+        <!-- Start Shopping Cart Area -->
+        <section class="cart_area mb-30 pt-120">
+            <div class="container">
+                <div class="row d-flex justify-content-center">  
+                    <div class="cart_content col-lg-10">
+                        <div class="cart-top-border">
+                            <h2 class="mb-30">Additional Accessories </h2>
+                            <div class="progress-table-wrap">
+                                <div class="progress-table">
+                                    <div class="table-head">
+                                        <div class="image">Image</div>
+                                        <div class="image">Product Name</div>
+                                        <div class="image">Price</div>
+                                        <div class="product-details">Add Accessories</div>
+                                        <!-- remove -->
+                                    </div>
+                                    {% for x in ACCESSORIES %}
+                                    <div class="table-row">
+                                        <div class="image"><img src="{{x.image.url}}" alt="flag"></div>
+                                        <div class="image">{{x.Product}}</div>
+                                        <div class="image">₹ {{x.price}}</div>
+                                        <div class="product-details"><a href=""><i class="fa fa-window-close" aria-hidden="true" style="font-size:15px;"></i></a></div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                                    <h3><br>Total Price</h3>		
+                                    <hr class="line-separator">
+                                    <div class="row mt-4 mb-4">
+                                        <div class="col-md-5 col-6 pt-1">
+                                            <h3>₹<small></small></h3>
+                                        </div>
+                                    </div>
+                                    <a href="" class="btn btn-danger btn-block">Add Accessories And Continue Booking </a>
+                                    <a href="/cars/booknow/{{CARDETAILS.id}}" class="btn btn-danger btn-block">Skip And Continue Booking</a>
+                        </div>
+                    </div>
+                </div>	
+            </div>
+        </section>
+       
+        <!-- End Shopping Cart Area -->
+
+       
         
-    
-       <!-- start footer Area -->		
+        <!-- End blog-posts Area -->
+
+        <!-- start footer Area -->		
         <footer class="footer-area footer-section">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3  col-md-3 col-sm-6">
                         <div class="single-footer-widget newsletter">
-                            <img class="w-50 img-fluid mb-3" src="#" alt="">
+                            <img class="w-50 img-fluid mb-3" src="" alt="">
                             <p>HotWheels.</p>
                             <ul class="social-footer">
                                 <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
@@ -270,7 +276,7 @@
                     <div class="col-md-6 col-sm-6 col-12">
                         <div class="bottom_footer_info">
                             <span>&copy;Copyright All rights reserved &copy;<script>document.write(new Date().getFullYear())</script> HotWheels</span>
-                            <!-- <p> &copy; Copyright 2023. All rights reserved</p> -->
+                            <!-- <p> &copy; Copyright 2018. All rights reserved</p> -->
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-12">
@@ -291,21 +297,15 @@
                 </div>
             </div>
         </div>
-        <!-- End footer Area --> 	
+        <!-- End footer Area --> 				
 
         <script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>			
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-          <script src="{% static 'js/easing.min.js' %}"></script>			
+        <script src="{% static 'js/easing.min.js' %}"></script>			
         <script src="{% static 'js/hoverIntent.js' %}"></script>
-        <!--======= Touch Swipe =========-->
-        <script src="{% static 'js/jquery.touchSwipe.min.js' %}"></script>	
-        <!--======= Customize =========-->
-        <script src="{% static 'js/responsive_bootstrap_carousel.js' %}"></script>
         <script src="{% static 'js/superfish.min.js' %}"></script>	
-        <script src="{% static 'js/rangeslider.js' %}"></script>
-        <script src="{% static 'js/rangeslider.min.js' %}"></script>	
         <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
         <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>	
         <script src="{% static 'js/owl.carousel.min.js' %}"></script>			
@@ -313,9 +313,9 @@
         <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>			
         <script src="{% static 'js/parallax.min.js' %}"></script>		
         <script src="{% static 'js/mail-script.js' %}"></script>	
-        <script src="{% static 'js/jquery.touchSwipe.min.js' %}"></script>
-        <script src="{% static 'js/responsive_bootstrap_carousel.js' %}"></script>
-        <script src="{% static 'js/paradise_slider_min.js' %}"></script>
         <script src="{% static 'js/main.js' %}"></script>	
     </body>
 </html>
+
+
+

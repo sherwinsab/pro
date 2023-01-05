@@ -5,6 +5,8 @@ import uuid
 class TYPE(models.Model):
     class Meta:
         db_table = 'CAR TYPE'
+        verbose_name = "Car Type"
+        verbose_name_plural = "Car Type"
     
     id = models.BigAutoField(
         primary_key= True,
@@ -21,6 +23,8 @@ class TYPE(models.Model):
 class COMPANY(models.Model):
     class Meta:
         db_table = 'CAR COMPANY'
+        verbose_name = "Car Company"
+        verbose_name_plural = "Car Company"
     
     id = models.BigAutoField(
         primary_key= True,
@@ -37,6 +41,8 @@ class COMPANY(models.Model):
 class DETAILS(models.Model):
     class Meta:
         db_table = 'CAR DETAILS'
+        verbose_name = "Details"
+        verbose_name_plural = "Details"
 
     id = models.BigAutoField(
         primary_key= True,
@@ -150,6 +156,8 @@ class DETAILS(models.Model):
 class Order(models.Model):
     class Meta:
         db_table = 'CUSTOMER ORDER DETAILS'
+        verbose_name = "Order"
+        verbose_name_plural = "Order"
     
     id = models.BigAutoField(
         primary_key= True,
@@ -169,6 +177,8 @@ class Order(models.Model):
 class Information(models.Model):
     class Meta:
         db_table = 'INFORMATION OF CARS'
+        verbose_name = "Information"
+        verbose_name_plural = "Information"
     
     id = models.BigAutoField(
         primary_key= True,
@@ -183,4 +193,24 @@ class Information(models.Model):
     delivery_days = models.IntegerField(verbose_name="Delivery Days Of Car")
     delivery_cost = models.IntegerField(verbose_name="Delivery Cost Of The car")
     booking_amount = models.IntegerField(verbose_name="Booking Amount")
+
+class AdditionalAccessories(models.Model):
+    class Meta:
+        db_table = 'Additional Accessories'
+        verbose_name = "Additional Accessories"
+        verbose_name_plural = "Additional Accessories"
     
+    id = models.BigAutoField(
+        primary_key= True,
+    )
+    image = models.ImageField(
+        upload_to="image/media/",
+        blank=True,
+        null=True,
+        verbose_name="Product Image"
+        )
+    price = models.IntegerField(
+        verbose_name="Price Of Product"
+        )
+    Product = models.CharField(default=None,null=True,blank=True,max_length=255,verbose_name="Product Name (Pixel Size 62x62)")
+

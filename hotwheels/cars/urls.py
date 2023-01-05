@@ -8,6 +8,7 @@ urlpatterns = [
     path('logout/', views.logout, name='logout'),
     path('product_listing/', views.product_listing, name='product_listing'),
     path('product_listing_detail/<int:pk>', views.product_listing_detail, name='product_listing_detail'),
+    path('addaccessories', views.addaccessories, name='addaccessories'),
     path('booknow/<int:pk>', views.booknow, name='booknow'),
     path('add_to_cart/<int:oid>',views.add_to_cart,name='add_to_cart'),
     path('shopping_cart/', views.shopping_cart, name='shopping_cart'),
@@ -16,4 +17,5 @@ urlpatterns = [
     path('favourite_products/', views.favourite_products, name='favourite_products'),
     path('error404/', views.error404, name='error404'),
     path('trail/', views.trail, name='trail'),
+    path('trail2/', views.trail2, name='trail2'),
 ]

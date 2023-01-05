@@ -8,7 +8,7 @@ from django.contrib import auth
 from django.shortcuts import redirect
 from django.contrib import messages
 from urllib import request
-from .models import TYPE,COMPANY,DETAILS,Order
+from .models import TYPE,COMPANY,DETAILS,Order,AdditionalAccessories
 from .filters import CarDETAILSFilter
 
 
@@ -89,6 +89,12 @@ def booknow(request,pk):
         CARDETAILS = DETAILS.objects.get(pk=pk)
         return render(request,'booknow.html',{'CARDETAILS':CARDETAILS}) 
     return redirect('signin')
+    
+def addaccessories(request):
+    if 'username' in request.session:
+        ACCESSORIES =  AdditionalAccessories.objects.all()
+        return render(request,'additional_accessories.html',{'ACCESSORIES':ACCESSORIES})
+    return redirect('signin')
 
 def add_to_cart(request, oid):
     if 'username' in request.session:
@@ -101,7 +107,6 @@ def add_to_cart(request, oid):
             City = request.POST['City']
             carnameid= DETAILS.objects.get(id=oid)
             
-
             customer=Order(Address=Address,LicenceIDNumber=LicenceIDNumber,Pincode=Pincode,ContactNumber=ContactNumber,State=State,City=City,carnameid=carnameid)
             customer.customerid = request.user
             customer.save();
@@ -166,4 +171,8 @@ def error404(request):
     
 def trail(request):
     template = loader.get_template('trail.html')
+    return HttpResponse(template.render())
+
+def trail2(request):
+    template = loader.get_template('trail2.html')
     return HttpResponse(template.render())
