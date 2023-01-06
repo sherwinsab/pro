@@ -145,9 +145,9 @@
                 <div class="row d-flex align-items-center justify-content-center">
                     <div class="about-content col-lg-12">
                         <h1 class="text-white">
-                            Additional Accessories		
+                            Tax And Additional Accessories Total	
                         </h1>	
-                        <p class="text-white link-nav"><a href="{% url 'index' %}">Home </a>  <span class="lnr lnr-arrow-right"></span> <a href="{% url 'product_listing' %}"> Product Listing</a> <span class="lnr lnr-arrow-right"></span> Product Listing detail  <span class="lnr lnr-arrow-right"></span> Additional Accessories</p>
+                        <p class="text-white link-nav"><a href="{% url 'index' %}">Home </a>  <span class="lnr lnr-arrow-right"></span> <a href="{% url 'product_listing' %}"> Product Listing</a> <span class="lnr lnr-arrow-right"></span> Product Listing detail  <span class="lnr lnr-arrow-right"></span> Additional Accessories <span class="lnr lnr-arrow-right"></span> Tax And Additional Accessories</p>
                     </div>											
                 </div>
             </div>
@@ -160,35 +160,18 @@
                 <div class="row d-flex justify-content-center">  
                     <div class="cart_content col-lg-10">
                         <div class="cart-top-border">
-                            <h2 class="mb-30">Additional Accessories </h2>
-                            <div class="progress-table-wrap">
-                                <div class="progress-table">
-                                    <div class="table-head">
-                                        <div class="image">Image</div>
-                                        <div class="image">Product Name</div>
-                                        <div class="image">Price</div>
-                                        <div class="product-details">Add Accessories</div>
-                                        <!-- remove -->
-                                    </div>
-                                    {% for x in ACCESSORIES %}
-                                    <div class="table-row">
-                                        <div class="image"><img src="{{x.image.url}}" alt="flag"></div>
-                                        <div class="image">{{x.Product}}</div>
-                                        <div class="image">₹ {{x.price}}</div>
-                                        <div class="product-details"><a href=""><i class="fa fa-check-square-o" aria-hidden="true" style="font-size:15px;"></i></a></div>
-                                    </div>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                                    <h3><br>Total Price</h3>		
+                            <h2 class="mb-30">Tax And Additional Accessories Total</h2>
+                                    <h4><br>Car Price              : ₹ </h4>
+                                    <h4><br>Road Tax               : ₹ </h4>		
+                                    <h4><br>Insurance              : ₹ </h4>
+                                    <h4><br>Registration Amount    : ₹ </h4>
+                                    <h4><br>Additional Accessories : ₹ </h4>
+                                    <h4><br>Car Price              : ₹ </h4>
+                                    <h4><br>Total                  : ₹ </h4>
                                     
-                                    <div class="row mt-4 mb-4">
-                                        <div class="col-md-5 col-6 pt-1">
-                                            <h3>₹<small></small></h3>
-                                        </div>
-                                    </div>
-                                    <a href="{% url 'taxinfo' %}" class="btn btn-danger btn-block">Add Accessories And Continue Booking </a>
-                                    <a href="{% url 'taxinfo' %}" class="btn btn-danger btn-block">Skip And Continue Booking</a>
+                                    <br>
+                                    <a href="/cars/booknow/{{CARDETAILS.id}}" class="btn btn-danger btn-block">Continue Booking</a>
+                                    <a href="{% url 'product_listing' %}" class="btn btn-danger btn-block">Cancel Booking</a>
                         </div>
                     </div>
                 </div>	

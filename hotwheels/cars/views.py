@@ -8,7 +8,7 @@ from django.contrib import auth
 from django.shortcuts import redirect
 from django.contrib import messages
 from urllib import request
-from .models import TYPE,COMPANY,DETAILS,Order,AdditionalAccessories
+from .models import TYPE,COMPANY,DETAILS,Order,AdditionalAccessories,Taxandother
 from .filters import CarDETAILSFilter
 
 
@@ -83,17 +83,23 @@ def product_listing_detail(request,pk):
         CARDETAILS = DETAILS.objects.get(pk=pk)
         return render(request,'product_listing_detail.html',{'CARDETAILS':CARDETAILS}) 
     return redirect('signin')
-
-def booknow(request,pk):
-    if 'username' in request.session:
-        CARDETAILS = DETAILS.objects.get(pk=pk)
-        return render(request,'booknow.html',{'CARDETAILS':CARDETAILS}) 
-    return redirect('signin')
     
 def addaccessories(request):
     if 'username' in request.session:
         ACCESSORIES =  AdditionalAccessories.objects.all()
         return render(request,'additional_accessories.html',{'ACCESSORIES':ACCESSORIES})
+    return redirect('signin')
+
+def taxinfo(request):
+    if 'username' in request.session:
+        tax =  Taxandother.objects.all()
+        return render(request,'tax_andother_info.html',{'tax':tax})
+    return redirect('signin')
+
+def booknow(request,pk):
+    if 'username' in request.session:
+        CARDETAILS = DETAILS.objects.get(pk=pk)
+        return render(request,'booknow.html',{'CARDETAILS':CARDETAILS}) 
     return redirect('signin')
 
 def add_to_cart(request, oid):

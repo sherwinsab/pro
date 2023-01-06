@@ -5,7 +5,7 @@ import uuid
 class TYPE(models.Model):
     class Meta:
         db_table = 'CAR TYPE'
-        verbose_name = "Car Type"
+        verbose_name = "Add Car Type And"
         verbose_name_plural = "Car Type"
     
     id = models.BigAutoField(
@@ -23,7 +23,7 @@ class TYPE(models.Model):
 class COMPANY(models.Model):
     class Meta:
         db_table = 'CAR COMPANY'
-        verbose_name = "Car Company"
+        verbose_name = "Add Car Company And"
         verbose_name_plural = "Car Company"
     
     id = models.BigAutoField(
@@ -41,8 +41,8 @@ class COMPANY(models.Model):
 class DETAILS(models.Model):
     class Meta:
         db_table = 'CAR DETAILS'
-        verbose_name = "Details"
-        verbose_name_plural = "Details"
+        verbose_name = "Vechile Information"
+        verbose_name_plural = "Vechile Information"
 
     id = models.BigAutoField(
         primary_key= True,
@@ -156,8 +156,8 @@ class DETAILS(models.Model):
 class Order(models.Model):
     class Meta:
         db_table = 'CUSTOMER ORDER DETAILS'
-        verbose_name = "Order"
-        verbose_name_plural = "Order"
+        verbose_name = "Customer Orders"
+        verbose_name_plural = "Customer Booking"
     
     id = models.BigAutoField(
         primary_key= True,
@@ -177,8 +177,8 @@ class Order(models.Model):
 class Information(models.Model):
     class Meta:
         db_table = 'INFORMATION OF CARS'
-        verbose_name = "Information"
-        verbose_name_plural = "Information"
+        verbose_name = "Vechile Description"
+        verbose_name_plural = "Vechile Description"
     
     id = models.BigAutoField(
         primary_key= True,
@@ -189,10 +189,6 @@ class Information(models.Model):
     carnameid = models.ForeignKey(DETAILS,on_delete=models.CASCADE,verbose_name="Car Name")
     companyid = models.ForeignKey(COMPANY,on_delete=models.CASCADE,verbose_name="Car Company")
     typeid = models.ForeignKey(TYPE,on_delete=models.CASCADE,verbose_name="Car Type")
-    tax_amount = models.IntegerField(verbose_name="Tax Amount Of Car")
-    delivery_days = models.IntegerField(verbose_name="Delivery Days Of Car")
-    delivery_cost = models.IntegerField(verbose_name="Delivery Cost Of The car")
-    booking_amount = models.IntegerField(verbose_name="Booking Amount")
 
 class AdditionalAccessories(models.Model):
     class Meta:
@@ -213,4 +209,26 @@ class AdditionalAccessories(models.Model):
         verbose_name="Price Of Product"
         )
     Product = models.CharField(default=None,null=True,blank=True,max_length=255,verbose_name="Product Name (Pixel Size 62x62)")
+
+class Taxandother(models.Model):
+    class Meta:
+        db_table = 'TAX AND OTHER'
+        verbose_name = "Add Tax And Other Detalis"
+        verbose_name_plural = "Tax And Other Info"
+
+    id = models.BigAutoField(
+        primary_key= True,
+    )
+    carnameid = models.ForeignKey(DETAILS,on_delete=models.CASCADE,verbose_name="Car Name")
+    companyid = models.ForeignKey(COMPANY,on_delete=models.CASCADE,verbose_name="Car Company")
+    typeid = models.ForeignKey(TYPE,on_delete=models.CASCADE,verbose_name="Car Type")
+    Road_tax = models.IntegerField(verbose_name="Road tax Amount")
+    Insurance = models.IntegerField(verbose_name="Insurance Amount")
+    Reg_amt = models.IntegerField(verbose_name="Registration Amount")
+    delivery_days = models.IntegerField(verbose_name="Delivery Days Of Car")
+    delivery_cost = models.IntegerField(verbose_name="Delivery Cost Of The car")
+    booking_amount = models.IntegerField(verbose_name="Booking Amount")
+    
+
+
 

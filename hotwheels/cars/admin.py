@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TYPE,COMPANY,DETAILS,Order,Information,AdditionalAccessories
+from .models import TYPE,COMPANY,DETAILS,Order,Information,AdditionalAccessories,Taxandother
 
 class TYPEAdmin(admin.ModelAdmin):
     list_display = ["name"]
@@ -18,10 +18,14 @@ class OrderAdmin(admin.ModelAdmin):
 admin.site.register(Order,OrderAdmin)
 
 class InformationAdmin(admin.ModelAdmin):
-    list_display = ['carnameid','companyid','typeid','delivery_days']
+    list_display = ['carnameid','companyid','typeid']
 admin.site.register(Information,InformationAdmin)
 
 class AdditionalAccessoriesAdmin(admin.ModelAdmin):
     list_display = ['Product','price']
 admin.site.register(AdditionalAccessories,AdditionalAccessoriesAdmin)
+
+class TaxandotherAdmin(admin.ModelAdmin):
+    list_display = ['carnameid','Road_tax','Insurance','Reg_amt','booking_amount','delivery_days']
+admin.site.register(Taxandother,TaxandotherAdmin)
 # Register your models here.
