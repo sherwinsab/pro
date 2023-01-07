@@ -161,13 +161,14 @@
                     <div class="cart_content col-lg-10">
                         <div class="cart-top-border">
                             <h2 class="mb-30">Tax And Additional Accessories Total</h2>
-                                    <h4><br>Car Price              : ₹ </h4>
-                                    <h4><br>Road Tax               : ₹ </h4>		
-                                    <h4><br>Insurance              : ₹ </h4>
-                                    <h4><br>Registration Amount    : ₹ </h4>
-                                    <h4><br>Additional Accessories : ₹ </h4>
-                                    <h4><br>Car Price              : ₹ </h4>
-                                    <h4><br>Total                  : ₹ </h4>
+                                    <h4><br>Car Price              : ₹ {{CARDETAILS.price}}</h4>
+                                    <h4><br>Road Tax               : ₹ {{tax.Road_tax}}</h4>		
+                                    <h4><br>Insurance              : ₹ {{tax.Insurance}}</h4>
+                                    <h4><br>Registration Amount    : ₹ {{tax.Reg_amt}}</h4>
+                                    <h4><br>Additional Accessories Total : ₹ {{accssamt}}</h4>
+                                    <h4><br>Car Price              : ₹ {{tax.Road_tax}}</h4>
+                                    <h4><br>Tax                  : ₹ {{taxamt}}</h4>
+                                    <h4><br>Total                  : ₹ {{total}}</h4>
                                     
                                     <br>
                                     <a href="/cars/booknow/{{CARDETAILS.id}}" class="btn btn-danger btn-block">Continue Booking</a>

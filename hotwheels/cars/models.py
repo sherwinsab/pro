@@ -42,7 +42,7 @@ class DETAILS(models.Model):
     class Meta:
         db_table = 'CAR DETAILS'
         verbose_name = "Vechile Information"
-        verbose_name_plural = "Vechile Information"
+        verbose_name_plural = "CAR DETAILS"
 
     id = models.BigAutoField(
         primary_key= True,
@@ -172,6 +172,9 @@ class Order(models.Model):
     customerid = models.ForeignKey(User ,default=None,on_delete=models.CASCADE,verbose_name="Customer")
     carnameid = models.ForeignKey(DETAILS,on_delete=models.CASCADE,verbose_name="Car Name")
     Date_of_booking = models.DateTimeField(auto_now_add=True,verbose_name="Date Of Booking")
+    Accessorieslist = models.TextField(default=None,null=True,verbose_name="Accessories Added")
+    tax = models.FloatField(default=None,null=True,verbose_name="Tax Total")
+    total = models.FloatField(default=None,null=True,verbose_name="Sum Total Of Car")
 # Create your models here.
 
 class Information(models.Model):
@@ -183,9 +186,9 @@ class Information(models.Model):
     id = models.BigAutoField(
         primary_key= True,
     )
-    description = models.CharField(default=None,null=True,blank=True,max_length=1200,verbose_name="Description Of The Vehicle")
-    general_information = models.CharField(default=None,null=True,blank=True,max_length=1200,verbose_name="General Information Of The Vehicle")
-    vehicle_overview = models.CharField(default=None,null=True,blank=True,max_length=1200,verbose_name="Vehicle overview")
+    description = models.TextField(default=None,null=True,blank=True,verbose_name="Description Of The Vehicle")
+    general_information = models.TextField(default=None,null=True,blank=True,verbose_name="General Information Of The Vehicle")
+    vehicle_overview = models.TextField(default=None,null=True,blank=True,verbose_name="Vehicle overview")
     carnameid = models.ForeignKey(DETAILS,on_delete=models.CASCADE,verbose_name="Car Name")
     companyid = models.ForeignKey(COMPANY,on_delete=models.CASCADE,verbose_name="Car Company")
     typeid = models.ForeignKey(TYPE,on_delete=models.CASCADE,verbose_name="Car Type")

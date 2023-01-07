@@ -10,6 +10,8 @@ from django.contrib import messages
 from urllib import request
 from .models import TYPE,COMPANY,DETAILS,Order,AdditionalAccessories,Taxandother
 from .filters import CarDETAILSFilter
+import ast
+
 
 
 
@@ -80,26 +82,51 @@ def product_listing(request):
 
 def product_listing_detail(request,pk):
     if 'username' in request.session:
+        
         CARDETAILS = DETAILS.objects.get(pk=pk)
-        return render(request,'product_listing_detail.html',{'CARDETAILS':CARDETAILS}) 
+        print(CARDETAILS)
+        data = {
+            "id": CARDETAILS.id,
+            "user" : request.user
+        }
+        return render(request,'product_listing_detail.html',{'CARDETAILS':CARDETAILS,'data':data}) 
+
     return redirect('signin')
     
-def addaccessories(request):
+def addaccessories(request,pk):
     if 'username' in request.session:
+        order_verify = Order.objects.filter(customerid=request.user)
+        if order_verify:
+            return render(request,'trail.html')
+        CARDETAILS = DETAILS.objects.get(pk=pk)
         ACCESSORIES =  AdditionalAccessories.objects.all()
-        return render(request,'additional_accessories.html',{'ACCESSORIES':ACCESSORIES})
+        return render(request,'additional_accessories.html',{'ACCESSORIES':ACCESSORIES,'CARDETAILS':CARDETAILS})
     return redirect('signin')
 
-def taxinfo(request):
+def taxinfo(request,pk):
     if 'username' in request.session:
-        tax =  Taxandother.objects.all()
-        return render(request,'tax_andother_info.html',{'tax':tax})
+        if request.method == 'POST':
+            options = request.POST.getlist('options')
+            tax = Taxandother.objects.get(carnameid=pk)
+            CARDETAILS = DETAILS.objects.get(pk=pk)
+            accssamt = 0
+            for i in options:
+                accssdetail = AdditionalAccessories.objects.get(pk=int(i))
+                accssamt += accssdetail.price
+            taxamt = (CARDETAILS.price + tax.Road_tax + tax.Insurance + tax.Reg_amt + accssamt) * 0.1
+            total = taxamt + CARDETAILS.price + tax.Road_tax + tax.Insurance + tax.Reg_amt + accssamt
+            request.session['Assessories_list']=options
+            request.session['Tax_Amount']=taxamt
+            request.session['total']=total
+        return render(request,'tax_andother_info.html',{'options':options,'tax':tax,'CARDETAILS':CARDETAILS,'accssamt':accssamt,'taxamt':taxamt,'total':total})
     return redirect('signin')
 
 def booknow(request,pk):
     if 'username' in request.session:
         CARDETAILS = DETAILS.objects.get(pk=pk)
-        return render(request,'booknow.html',{'CARDETAILS':CARDETAILS}) 
+        total = request.session.get('total')
+        print(total)
+        return render(request,'booknow.html',{'CARDETAILS':CARDETAILS,'total':total}) 
     return redirect('signin')
 
 def add_to_cart(request, oid):
@@ -111,9 +138,14 @@ def add_to_cart(request, oid):
             ContactNumber = request.POST['ContactNumber']
             State = request.POST['State']
             City = request.POST['City']
+            Accessorieslist = request.session.get('Assessories_list')
+            tax = request.session.get('Tax_Amount')
+            total = request.session.get('total')
+            print(request.session)
             carnameid= DETAILS.objects.get(id=oid)
             
-            customer=Order(Address=Address,LicenceIDNumber=LicenceIDNumber,Pincode=Pincode,ContactNumber=ContactNumber,State=State,City=City,carnameid=carnameid)
+            customer=Order(Address=Address,LicenceIDNumber=LicenceIDNumber,Pincode=Pincode,ContactNumber=ContactNumber,
+            State=State,City=City,carnameid=carnameid,Accessorieslist=Accessorieslist,tax=tax,total=total)
             customer.customerid = request.user
             customer.save();
             carnameid.stock -= 1
@@ -155,12 +187,18 @@ def shopping_cart(request):
             cartypenames = car_type_name[0].get("name")
 
         #carprice
-            price = DETAILS.objects.filter(car_name=carnameid).values('price')
-            priceof = price[0].get("price")
-        
-            a = 5000+15000+priceof
+            
+            ass_list = ast.literal_eval(customer[0].Accessorieslist)
 
-            return render(request,'shopping_cart.html',{'customer':customer,'carscompanynames':carscompanynames,'cartypenames':cartypenames,'priceof':priceof,'a':a}) 
+            a =''
+            for i in list(ass_list):
+                
+                accssdetail = AdditionalAccessories.objects.get(pk=int(i))
+                a +=accssdetail.Product+', '
+            a = a[:-2]
+
+            
+            return render(request,'shopping_cart.html',{'customer':customer,'carscompanynames':carscompanynames,'cartypenames':cartypenames,'a':a}) 
     return redirect('signin')
 
 def user_profile(request):
