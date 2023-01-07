@@ -169,8 +169,11 @@
     <div class="container">
         <div class="row">
             <form method="get">
-                {{myFilter.form}}<br></br><button style="float: right;">Search</button>
+                {{myFilter.form}} <input style="color: rgb(255, 255, 255);font-size: large;background-color: rgb(255, 6, 6);
+                font-family: 'Times New Roman', Times, serif;" type="submit" value=" Sreach ">
+                
             </form>
+    {% if myFilter.qs %}
     {% for CARDETAILS in myFilter.qs %}
         <div class="col-md-3">
             <br></br><div class="card">
@@ -188,6 +191,12 @@
         </div>
     </div>
     {% endfor %}
+    {% else %}
+    <script>
+         alert("No results found");
+    </script>
+    <!-- <p>No results found</p> -->
+    {% endif %}
     </div>
     </div>
 

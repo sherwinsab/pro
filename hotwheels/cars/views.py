@@ -96,7 +96,11 @@ def product_listing_detail(request,pk):
 def addaccessories(request,pk):
     if 'username' in request.session:
         order_verify = Order.objects.filter(customerid=request.user)
-        if order_verify:
+        stock_verify = DETAILS.objects.filter(stock=0,pk=pk)
+        print(stock_verify)
+        if stock_verify:
+            return render(request,'trail2.html')
+        elif order_verify:
             return render(request,'trail.html')
         CARDETAILS = DETAILS.objects.get(pk=pk)
         ACCESSORIES =  AdditionalAccessories.objects.all()
@@ -141,7 +145,6 @@ def add_to_cart(request, oid):
             Accessorieslist = request.session.get('Assessories_list')
             tax = request.session.get('Tax_Amount')
             total = request.session.get('total')
-            print(request.session)
             carnameid= DETAILS.objects.get(id=oid)
             
             customer=Order(Address=Address,LicenceIDNumber=LicenceIDNumber,Pincode=Pincode,ContactNumber=ContactNumber,
@@ -187,7 +190,9 @@ def shopping_cart(request):
             cartypenames = car_type_name[0].get("name")
 
         #carprice
-            
+            price = DETAILS.objects.filter(car_name=carnameid).values('price')
+            priceof = price[0].get("price")
+
             ass_list = ast.literal_eval(customer[0].Accessorieslist)
 
             a =''
@@ -197,8 +202,9 @@ def shopping_cart(request):
                 a +=accssdetail.Product+', '
             a = a[:-2]
 
+
             
-            return render(request,'shopping_cart.html',{'customer':customer,'carscompanynames':carscompanynames,'cartypenames':cartypenames,'a':a}) 
+            return render(request,'shopping_cart.html',{'customer':customer,'carscompanynames':carscompanynames,'cartypenames':cartypenames,'a':a,'priceof':priceof}) 
     return redirect('signin')
 
 def user_profile(request):
@@ -219,4 +225,8 @@ def trail(request):
 
 def trail2(request):
     template = loader.get_template('trail2.html')
+    return HttpResponse(template.render())
+
+def trail3(request):
+    template = loader.get_template('trail3.html')
     return HttpResponse(template.render())

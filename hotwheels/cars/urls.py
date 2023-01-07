@@ -19,4 +19,5 @@ urlpatterns = [
     path('error404/', views.error404, name='error404'),
     path('trail/', views.trail, name='trail'),
     path('trail2/', views.trail2, name='trail2'),
+    path('trail3/', views.trail3, name='trail3'),
 ]

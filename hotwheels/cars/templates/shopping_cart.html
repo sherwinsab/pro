@@ -210,12 +210,14 @@
                                 <div class="single-widget category-widget">
                                     <h3 class="title text-center">Pay Here</h3>
                                     <blockquote class="generic-blockquote mt-3" style="font-weight: bold;">
-                                        Pay The Booking Amount ₹ 15,000 In 10 hour Or Your Order Will be Cancelled. @ ❝Delivery Time And Tax Is Different Every Vechile❞.
+                                        Pay The Booking Amount In 10 hour Or Your Order Will be Cancelled. @ ❝Delivery Time And Tax Is Different Every Vechile❞.
                                     </blockquote>
                                     <ul>
-                                        <li><a href="#" class="justify-content-between align-items-center d-flex"><h6>Tax</h6> <span>₹</span></a></li>
-                                        <li><a href="#" class="justify-content-between align-items-center d-flex"><h6>Delivery Cost</h6> <span>₹</span></a></li>
-                                        <li><a href="#" class="justify-content-between align-items-center d-flex"><h6>Booking Amount</h6> <span>₹</span></a></li>
+                                        <li style="font-size: x-large;"><h3>Car Price</h3><br><span>₹</span>{{priceof}}</li>
+                                        {% for Order in customer %}
+                                        <li style="font-size: x-large;"><h3>Tax Amount</h3><br><span>₹</span>{{Order.tax}}</li>
+                                        <li style="font-size: x-large;"><h3>Total Amount(Accessories and Other Charges)</h3><br><span>₹</span>{{Order.total}}</li>
+                                        {% endfor %}
                                         <li><button class="btn btn-success btn-block">Pay Here</button></li>
                                     </ul>
                                 </div>																					
