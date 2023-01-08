@@ -11,6 +11,7 @@ from urllib import request
 from .models import TYPE,COMPANY,DETAILS,Order,AdditionalAccessories,Taxandother
 from .filters import CarDETAILSFilter
 import ast
+from datetime import datetime,timedelta
 
 
 
@@ -172,8 +173,7 @@ def shopping_cart(request):
         
         customer = Order.objects.filter(customerid=request.user)
         if not customer:
-            a = "YOUR CART IS EMPTY"
-            return render(request,'shopping_cart.html',{'a':a})
+            return render(request,'trail3.html')
         else:
             carnameid = customer[0].carnameid
         
@@ -207,6 +207,32 @@ def shopping_cart(request):
             return render(request,'shopping_cart.html',{'customer':customer,'carscompanynames':carscompanynames,'cartypenames':cartypenames,'a':a,'priceof':priceof}) 
     return redirect('signin')
 
+def tracking_order(request):
+    if 'username' in request.session:
+        customer = Order.objects.filter(customerid=request.user)
+        carnameid = customer[0].carnameid
+
+        car_company = DETAILS.objects.filter(car_name=carnameid).values('car_company')
+        car_company_name = COMPANY.objects.filter(pk=car_company[0].get("car_company")).values('name')
+        carscompanynames = car_company_name[0].get("name")
+
+        car_type = DETAILS.objects.filter(car_name=carnameid).values('car_type')
+        car_type_name = TYPE.objects.filter(pk=car_type[0].get("car_type")).values('name')
+        cartypenames = car_type_name[0].get("name")
+
+        delivery_time = Taxandother.objects.filter(carnameid=carnameid)
+        delivery_days = delivery_time[0].delivery_days
+        current_date = datetime.now()
+        purchase_date = customer[0].Date_of_booking.replace(tzinfo=None)
+        nodays = current_date - purchase_date
+        estmid_date = purchase_date + timedelta(days=delivery_days)
+        print(estmid_date)
+        nodayss = (nodays.total_seconds())/86400
+        value = (nodayss/delivery_days)*100
+
+        return render(request,'tracking_page.html',{'customer':customer,'carscompanynames':carscompanynames,'cartypenames':cartypenames,'value':value,'estmid_date':estmid_date}) 
+    return redirect('signin') 
+
 def user_profile(request):
     template = loader.get_template('user_profile.html')
     return HttpResponse(template.render())
@@ -229,4 +255,8 @@ def trail2(request):
 
 def trail3(request):
     template = loader.get_template('trail3.html')
+    return HttpResponse(template.render())
+
+def trail4(request):
+    template = loader.get_template('trail4.html')
     return HttpResponse(template.render())
