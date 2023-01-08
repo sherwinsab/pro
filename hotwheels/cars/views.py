@@ -230,7 +230,9 @@ def tracking_order(request):
         value = (nodayss/delivery_days)*100
         if value <=1:
             value = 0
-        elif value >1 and value <= 25:
+        elif value >1 and value <= 15:
+            value=10
+        elif value >15 and value <= 25:
             value=25
         elif value > 25 and value <= 50:
             value=50
