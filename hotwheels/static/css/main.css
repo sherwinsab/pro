@@ -6724,4 +6724,8 @@ figcaption .share_link li{
     float: left !important;
   }
 }
-License Terms
+@media (max-width: 600px) {
+  div {
+    display:flex;
+}
+}

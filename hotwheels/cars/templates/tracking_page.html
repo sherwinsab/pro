@@ -179,11 +179,25 @@
                                 </div>
                             </article>
                             <hr>
-                            <div class="progress">
-                                <div  class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: {{value}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
+                            <p>
+                            <i style="margin-right: 110px;">Order confirmed</i> 
+                            <i style="margin-right: 150px;">Picked By Delivery Team</i> 
+                            <i style="margin-right: 105px;">On The way</i> 
+                            <i>Arrived At HotWheels</i>
+                            </p>
+                            
+                            <div class="progress" style="height:23px">
+                                <div  class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: {{value}}%" ></div>
+                                
+                            </div>
+                            <p>
+                                <i class="fa fa-check-circle fa-2x" style="margin-right: 250px;"></i>
+                                <i class="fa fa-check-circle fa-2x" style="margin-right: 250px;"></i>
+                                <i class="fa fa-check-circle fa-2x" style="margin-right: 248px;"></i>
+                                <i class="fa fa-check-circle fa-2x"></i>
+                                </p>
                             <hr>
-                            <a href="#" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to orders</a>
+                            <a href="{% url 'shopping_cart' %}" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to orders</a>
                         </div>
                     </div>
                     </article>

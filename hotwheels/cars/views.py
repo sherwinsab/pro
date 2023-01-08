@@ -226,10 +226,20 @@ def tracking_order(request):
         purchase_date = customer[0].Date_of_booking.replace(tzinfo=None)
         nodays = current_date - purchase_date
         estmid_date = purchase_date + timedelta(days=delivery_days)
-        print(estmid_date)
         nodayss = (nodays.total_seconds())/86400
         value = (nodayss/delivery_days)*100
-
+        if value <=1:
+            value = 0
+        elif value >1 and value <= 25:
+            value=25
+        elif value > 25 and value <= 50:
+            value=50
+        elif value > 50 and value <= 75:
+            value = 75
+        elif value > 75 and value <100:
+            value = 85
+        else:
+            value=100
         return render(request,'tracking_page.html',{'customer':customer,'carscompanynames':carscompanynames,'cartypenames':cartypenames,'value':value,'estmid_date':estmid_date}) 
     return redirect('signin') 
 
