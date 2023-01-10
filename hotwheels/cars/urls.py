@@ -21,5 +21,7 @@ urlpatterns = [
     path('trail/', views.trail, name='trail'),
     path('trail2/', views.trail2, name='trail2'),
     path('trail3/', views.trail3, name='trail3'),
-    path('trail4/', views.trail3, name='trail3'),
+    path('trail4/', views.trail3, name='trail4'),
+    path('trail5/',views.trail5, name='trail5'),
+    path('trail6/',views.trail6, name='trail6'),
 ]

@@ -272,3 +272,11 @@ def trail3(request):
 def trail4(request):
     template = loader.get_template('trail4.html')
     return HttpResponse(template.render())
+
+def trail5(request):
+    template = loader.get_template('trail5.html')
+    return HttpResponse(template.render())
+
+def trail6(request):
+    template = loader.get_template('trail6.html')
+    return HttpResponse(template.render())
