@@ -145,7 +145,7 @@
                 <div class="row d-flex align-items-center justify-content-center">
                     <div class="about-content col-lg-12">
                         <h1 class="text-white">
-                            Additional Accessories		
+                            Additional Accessories + Insurance Type	
                         </h1>	
                         <p class="text-white link-nav"><a href="{% url 'index' %}">Home </a>  <span class="lnr lnr-arrow-right"></span> <a href="{% url 'product_listing' %}"> Product Listing</a> <span class="lnr lnr-arrow-right"></span> Product Listing detail  <span class="lnr lnr-arrow-right"></span> Additional Accessories</p>
                     </div>											
@@ -183,6 +183,13 @@
                                     </div>
                                     {% endfor %}
                                 </div>
+                                <h2><br>Insurance              : </h2><br>
+                                    {% for y in insutype %}
+                                    <h5 style="font-weight: bold;">Insurance Type And Amount: </h5>
+                                        <br><label style="font-size: large;font-weight: bold;">{{y.name}}</label>
+                                        <br><label style="font-size: large;font-weight: bold;">Price : {{y.Insurance_amt}}</label>
+                                        <input type="checkbox" id="option2" name="optionss" value="{{y.id}}">
+                                    {% endfor %}
                             </div>
                                     <input type="submit" class="btn btn-danger btn-block" value="Continue Booking">
                         </form>

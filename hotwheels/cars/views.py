@@ -8,7 +8,7 @@ from django.contrib import auth
 from django.shortcuts import redirect
 from django.contrib import messages
 from urllib import request
-from .models import TYPE,COMPANY,DETAILS,Order,AdditionalAccessories,Taxandother
+from .models import TYPE,COMPANY,DETAILS,Order,AdditionalAccessories,Taxandother,INSURANCE
 from .filters import CarDETAILSFilter
 import ast
 from datetime import datetime,timedelta
@@ -105,33 +105,45 @@ def addaccessories(request,pk):
             return render(request,'trail.html')
         CARDETAILS = DETAILS.objects.get(pk=pk)
         ACCESSORIES =  AdditionalAccessories.objects.all()
-        return render(request,'additional_accessories.html',{'ACCESSORIES':ACCESSORIES,'CARDETAILS':CARDETAILS})
+        insutype = INSURANCE.objects.all()
+        return render(request,'additional_accessories.html',{'ACCESSORIES':ACCESSORIES,'CARDETAILS':CARDETAILS,'insutype':insutype})
     return redirect('signin')
 
 def taxinfo(request,pk):
     if 'username' in request.session:
         if request.method == 'POST':
             options = request.POST.getlist('options')
+            optionss = request.POST.getlist('optionss')
             tax = Taxandother.objects.get(carnameid=pk)
             CARDETAILS = DETAILS.objects.get(pk=pk)
             accssamt = 0
             for i in options:
                 accssdetail = AdditionalAccessories.objects.get(pk=int(i))
                 accssamt += accssdetail.price
-            taxamt = (CARDETAILS.price + tax.Road_tax + tax.Insurance + tax.Reg_amt + accssamt) * 0.1
-            total = taxamt + CARDETAILS.price + tax.Road_tax + tax.Insurance + tax.Reg_amt + accssamt
+
+            insuramt = 0
+            for j in optionss:
+                insurdetail = INSURANCE.objects.get(pk=int(j))
+                insuramt += insurdetail.Insurance_amt
+            
+            road_tax = (CARDETAILS.price + accssamt) * tax.Road_tax
+            regst_amt = (CARDETAILS.price + accssamt) * tax.Reg_amt
+            total = (CARDETAILS.price + accssamt + road_tax + regst_amt + insuramt + tax.booking_amount + tax.delivery_cost)
+            
+            
             request.session['Assessories_list']=options
-            request.session['Tax_Amount']=taxamt
+            request.session['Insurance']=optionss
             request.session['total']=total
-        return render(request,'tax_andother_info.html',{'options':options,'tax':tax,'CARDETAILS':CARDETAILS,'accssamt':accssamt,'taxamt':taxamt,'total':total})
+        return render(request,'tax_andother_info.html',{'options':options,'insuramt':insuramt,'optionss':optionss,'tax':tax,'CARDETAILS':CARDETAILS,'accssamt':accssamt,'total':total,'road_tax':road_tax,'regst_amt':regst_amt})
     return redirect('signin')
 
 def booknow(request,pk):
     if 'username' in request.session:
         CARDETAILS = DETAILS.objects.get(pk=pk)
         total = request.session.get('total')
+        insurance = request.session.get('Insurance')
         print(total)
-        return render(request,'booknow.html',{'CARDETAILS':CARDETAILS,'total':total}) 
+        return render(request,'booknow.html',{'CARDETAILS':CARDETAILS,'total':total,'insurance':insurance}) 
     return redirect('signin')
 
 def add_to_cart(request, oid):
@@ -144,12 +156,12 @@ def add_to_cart(request, oid):
             State = request.POST['State']
             City = request.POST['City']
             Accessorieslist = request.session.get('Assessories_list')
-            tax = request.session.get('Tax_Amount')
+            insurance = request.session.get('Insurance')
             total = request.session.get('total')
             carnameid= DETAILS.objects.get(id=oid)
             
             customer=Order(Address=Address,LicenceIDNumber=LicenceIDNumber,Pincode=Pincode,ContactNumber=ContactNumber,
-            State=State,City=City,carnameid=carnameid,Accessorieslist=Accessorieslist,tax=tax,total=total)
+            State=State,City=City,carnameid=carnameid,Accessorieslist=Accessorieslist,total=total,insurance=insurance)
             customer.customerid = request.user
             customer.save();
             carnameid.stock -= 1

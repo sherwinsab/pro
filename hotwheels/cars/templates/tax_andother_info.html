@@ -161,18 +161,20 @@
                     <div class="cart_content col-lg-10">
                         <div class="cart-top-border">
                             <h2 class="mb-30">Tax And Additional Accessories Total</h2>
+                            <form action="/cars/booknow/{{CARDETAILS.id}}" method="post">
+                                {% csrf_token %} 
                                     <h4><br>Car Price              : ₹ {{CARDETAILS.price}}</h4>
-                                    <h4><br>Road Tax               : ₹ {{tax.Road_tax}}</h4>		
-                                    <h4><br>Insurance              : ₹ {{tax.Insurance}}</h4>
-                                    <h4><br>Registration Amount    : ₹ {{tax.Reg_amt}}</h4>
                                     <h4><br>Additional Accessories Total : ₹ {{accssamt}}</h4>
-                                    <h4><br>Car Price              : ₹ {{tax.Road_tax}}</h4>
-                                    <h4><br>Tax                  : ₹ {{taxamt}}</h4>
+                                    <h4><br>Road Tax               : ₹ {{road_tax}}</h4>		
+                                    <h4><br>Registration Amount    : ₹ {{regst_amt}}</h4>
+                                    <h4><br>Insurance              : ₹ {{insuramt}}</h4>
+                                    <h4><br>Booking Amount              : ₹ {{tax.booking_amount}}</h4>
+                                    <h4><br>Delivery Cost              : ₹ {{tax.delivery_cost}}</h4>
                                     <h4><br>Total                  : ₹ {{total}}</h4>
-                                    
                                     <br>
-                                    <a href="/cars/booknow/{{CARDETAILS.id}}" class="btn btn-danger btn-block">Continue Booking</a>
-                                    <a href="{% url 'product_listing' %}" class="btn btn-danger btn-block">Cancel Booking</a>
+                                    <input type="submit" class="btn btn-danger btn-block" value="Continue Booking">
+                            </form>
+                                    <br><a href="{% url 'product_listing' %}" class="btn btn-danger btn-block">Cancel Booking</a>
                         </div>
                     </div>
                 </div>	

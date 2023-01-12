@@ -42,7 +42,7 @@ class DETAILS(models.Model):
     class Meta:
         db_table = 'CAR DETAILS'
         verbose_name = "Vechile Information"
-        verbose_name_plural = "CAR DETAILS"
+        verbose_name_plural = "Car Details"
 
     id = models.BigAutoField(
         primary_key= True,
@@ -173,7 +173,7 @@ class Order(models.Model):
     carnameid = models.ForeignKey(DETAILS,on_delete=models.CASCADE,verbose_name="Car Name")
     Date_of_booking = models.DateTimeField(auto_now_add=True,verbose_name="Date Of Booking")
     Accessorieslist = models.TextField(default=None,null=True,verbose_name="Accessories Added")
-    tax = models.FloatField(default=None,null=True,verbose_name="Tax Total")
+    insurance = models.TextField(default=None,null=True,verbose_name="Insurance Amount")
     total = models.FloatField(default=None,null=True,verbose_name="Sum Total Of Car")
 # Create your models here.
 
@@ -213,6 +213,19 @@ class AdditionalAccessories(models.Model):
         )
     Product = models.CharField(default=None,null=True,blank=True,max_length=255,verbose_name="Product Name (Pixel Size 62x62)")
 
+class INSURANCE(models.Model):
+    class Meta:
+        db_table = 'INSURANCE'
+        verbose_name = "Add Insurance"
+        verbose_name_plural = "Insurance"
+
+    id = models.BigAutoField(
+        primary_key=True,
+    )
+    name = models.CharField(default=None,null=True,blank=True,max_length=255,verbose_name="Insurance Company")
+    Insurance_amt = models.IntegerField(verbose_name="Insurance Amount")
+
+
 class Taxandother(models.Model):
     class Meta:
         db_table = 'TAX AND OTHER'
@@ -225,13 +238,15 @@ class Taxandother(models.Model):
     carnameid = models.ForeignKey(DETAILS,on_delete=models.CASCADE,verbose_name="Car Name")
     companyid = models.ForeignKey(COMPANY,on_delete=models.CASCADE,verbose_name="Car Company")
     typeid = models.ForeignKey(TYPE,on_delete=models.CASCADE,verbose_name="Car Type")
-    Road_tax = models.IntegerField(verbose_name="Road tax Amount")
-    Insurance = models.IntegerField(verbose_name="Insurance Amount")
-    Reg_amt = models.IntegerField(verbose_name="Registration Amount")
+    Road_tax = models.FloatField(verbose_name="Road tax Amount In Percentage %")
+    Reg_amt = models.FloatField(verbose_name="Registration Amount In Percentage %")
     delivery_days = models.IntegerField(verbose_name="Delivery Days Of Car")
     delivery_cost = models.IntegerField(verbose_name="Delivery Cost Of The car")
     booking_amount = models.IntegerField(verbose_name="Booking Amount")
     
+
+
+   
 
 
 
