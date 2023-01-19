@@ -12,8 +12,7 @@ from .models import TYPE,COMPANY,DETAILS,Order,AdditionalAccessories,Taxandother
 from .filters import CarDETAILSFilter
 import ast
 from datetime import datetime,timedelta
-
-
+from .sms import sendsms
 
 
 def index(request):
@@ -227,6 +226,7 @@ def tracking_order(request):
         car_company = DETAILS.objects.filter(car_name=carnameid).values('car_company')
         car_company_name = COMPANY.objects.filter(pk=car_company[0].get("car_company")).values('name')
         carscompanynames = car_company_name[0].get("name")
+        
 
         car_type = DETAILS.objects.filter(car_name=carnameid).values('car_type')
         car_type_name = TYPE.objects.filter(pk=car_type[0].get("car_type")).values('name')
@@ -252,6 +252,8 @@ def tracking_order(request):
             value = 75
         elif value > 75 and value <100:
             value = 85
+            sendsms()
+    
         else:
             value=100
         return render(request,'tracking_page.html',{'customer':customer,'carscompanynames':carscompanynames,'cartypenames':cartypenames,'value':value,'estmid_date':estmid_date}) 
