@@ -17,6 +17,7 @@ urlpatterns = [
     path('cancelorder/<int:oid>',views.cancelorder,name='cancelorder'),
     path('user_profile/', views.user_profile, name='user_profile'),
     path('favourite_products/', views.favourite_products, name='favourite_products'),
+    path('checkout/', views.checkout, name='checkout'),
     path('error404/', views.error404, name='error404'),
     path('trail/', views.trail, name='trail'),
     path('trail2/', views.trail2, name='trail2'),

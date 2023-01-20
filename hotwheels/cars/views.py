@@ -12,8 +12,8 @@ from .models import TYPE,COMPANY,DETAILS,Order,AdditionalAccessories,Taxandother
 from .filters import CarDETAILSFilter
 import ast
 from datetime import datetime,timedelta
-from .sms import sendsms
-
+from twilio.rest import Client
+import razorpay
 
 def index(request):
     template = loader.get_template('index.html')
@@ -252,12 +252,40 @@ def tracking_order(request):
             value = 75
         elif value > 75 and value <100:
             value = 85
-            sendsms()
-    
+            
+            account_sid = 'ACbd373e62581246849c1d7d98f3f1f560'
+            auth_token = '5ce15071bacc9cc0909ea8fc8813a44b'
+            client = Client(account_sid, auth_token)
+
+            message = client.messages.create(
+                                                body=f"HotWheels, Your New Car {carnameid} Has Arrived At The Showroom Delivery Will Be in 5 Days",
+                                                from_='+14109364038',
+                                                to='+917560893894'
+                                            )
+
+            
+          
         else:
             value=100
         return render(request,'tracking_page.html',{'customer':customer,'carscompanynames':carscompanynames,'cartypenames':cartypenames,'value':value,'estmid_date':estmid_date}) 
     return redirect('signin') 
+
+def checkout(request):
+    if 'username' in request.session:
+        client = razorpay.Client(auth=("rzp_test_1sFSQT1jdm1swd", "PYkvqUl4Zx2EfNeRAAf9FXJs"))
+        
+        DATA = {
+            "amount": 100,
+            "currency": "INR",
+            "receipt": "receipt#1",
+            "notes": {
+                "key1": "value3",
+                "key2": "value2"
+            }
+        }
+        client.order.create(data=DATA)
+        return render(request,'checkout.html')
+    return redirect('signin')
 
 def user_profile(request):
     template = loader.get_template('user_profile.html')

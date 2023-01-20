@@ -218,7 +218,7 @@
                                         <!-- <li style="font-size: x-large;"><h3>Tax Amount</h3><br><span>₹</span>{{Order.insurance}}</li> -->
                                         <li style="font-size: x-large;"><h3>Total Amount</h3><br><span>₹</span>{{Order.total}}</li>
                                         {% endfor %}
-                                        <li><button class="btn btn-success btn-block">Pay Here</button></li>
+                                        <li><a href="{% url 'checkout' %}"><button class="btn btn-success btn-block">Pay Here</button></a></li>
                                     </ul>
                                 </div>																					
                             </div>
