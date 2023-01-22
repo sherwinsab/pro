@@ -7,13 +7,16 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from django.shortcuts import redirect
 from django.contrib import messages
-from urllib import request
-from .models import TYPE,COMPANY,DETAILS,Order,AdditionalAccessories,Taxandother,INSURANCE
+from .models import TYPE,COMPANY,DETAILS,Order,AdditionalAccessories,Taxandother,INSURANCE,Payment
 from .filters import CarDETAILSFilter
 import ast
 from datetime import datetime,timedelta
 from twilio.rest import Client
 import razorpay
+import json
+from .constants import PaymentStatus
+from django.views.decorators.csrf import csrf_exempt
+
 
 def index(request):
     template = loader.get_template('index.html')
@@ -84,7 +87,6 @@ def product_listing_detail(request,pk):
     if 'username' in request.session:
         
         CARDETAILS = DETAILS.objects.get(pk=pk)
-        print(CARDETAILS)
         data = {
             "id": CARDETAILS.id,
             "user" : request.user
@@ -97,7 +99,6 @@ def addaccessories(request,pk):
     if 'username' in request.session:
         order_verify = Order.objects.filter(customerid=request.user)
         stock_verify = DETAILS.objects.filter(stock=0,pk=pk)
-        print(stock_verify)
         if stock_verify:
             return render(request,'trail2.html')
         elif order_verify:
@@ -141,7 +142,6 @@ def booknow(request,pk):
         CARDETAILS = DETAILS.objects.get(pk=pk)
         total = request.session.get('total')
         insurance = request.session.get('Insurance')
-        print(total)
         return render(request,'booknow.html',{'CARDETAILS':CARDETAILS,'total':total,'insurance':insurance}) 
     return redirect('signin')
 
@@ -272,20 +272,108 @@ def tracking_order(request):
 
 def checkout(request):
     if 'username' in request.session:
-        client = razorpay.Client(auth=("rzp_test_1sFSQT1jdm1swd", "PYkvqUl4Zx2EfNeRAAf9FXJs"))
+        customer = Order.objects.filter(customerid=request.user)
+        carnameid = customer[0].carnameid
+
+        car_company = DETAILS.objects.filter(car_name=carnameid).values('car_company')
+        car_company_name = COMPANY.objects.filter(pk=car_company[0].get("car_company")).values('name')
+        carscompanynames = car_company_name[0].get("name")
         
-        DATA = {
-            "amount": 100,
-            "currency": "INR",
-            "receipt": "receipt#1",
-            "notes": {
-                "key1": "value3",
-                "key2": "value2"
-            }
-        }
-        client.order.create(data=DATA)
-        return render(request,'checkout.html')
+
+        car_type = DETAILS.objects.filter(car_name=carnameid).values('car_type')
+        car_type_name = TYPE.objects.filter(pk=car_type[0].get("car_type")).values('name')
+        cartypenames = car_type_name[0].get("name")
+
+
+        price = int(customer[0].total)*100
+
+        
+        return render(request,'checkout.html',{'price':price,'customer':customer,'carscompanynames':carscompanynames,'cartypenames':cartypenames})
     return redirect('signin')
+
+def order_payment(request):
+    if 'username' in request.session:
+        if request.method == "POST":
+            customer = Order.objects.filter(customerid=request.user)
+            carnameid = customer[0].carnameid
+
+            car_company = DETAILS.objects.filter(car_name=carnameid).values('car_company')
+            car_company_name = COMPANY.objects.filter(pk=car_company[0].get("car_company")).values('name')
+            carscompanynames = car_company_name[0].get("name")
+        
+
+            car_type = DETAILS.objects.filter(car_name=carnameid).values('car_type')
+            car_type_name = TYPE.objects.filter(pk=car_type[0].get("car_type")).values('name')
+            cartypenames = car_type_name[0].get("name")
+
+            contactnumber = customer[0].ContactNumber
+
+            price = int(customer[0].total)
+            
+            
+            
+            name = customer[0].customerid
+            auth_cust = User.objects.filter(username=name)
+            names = auth_cust[0].first_name + ' ' + auth_cust[0].last_name
+            email = auth_cust[0].email
+            amount = price/2
+            amount1 = 40000
+
+            client = razorpay.Client(auth=("rzp_test_1sFSQT1jdm1swd", "PYkvqUl4Zx2EfNeRAAf9FXJs"))
+            razorpay_order = client.order.create(
+            {"amount": amount1, "currency": "INR", "payment_capture": "0"}
+            )
+            order = Payment.objects.create(
+            name=names, amount=amount1, provider_order_id=razorpay_order["id"]
+            )
+            order.save()
+            print("wer:",order)
+            return render(request,'payment.html',{'email':email,'contactnumber':contactnumber,'customer':customer,'carscompanynames':carscompanynames,'cartypenames':cartypenames,
+            "callback_url": "http://" + "127.0.0.1:8000" + "/cars/callback/",
+            "razorpay_key": "rzp_test_1sFSQT1jdm1swd",
+            "order": order,
+            }
+            )
+    return render(request, "payment.html")
+
+@csrf_exempt
+def callback(request):
+    print("12443:",json.dumps(request.POST))
+    def verify_signature(response_data):
+        client = razorpay.Client(auth=("rzp_test_1sFSQT1jdm1swd", "PYkvqUl4Zx2EfNeRAAf9FXJs"))
+        return client.utility.verify_payment_signature(response_data)
+    print('wdwdwdwwdwddddddddddddddddddddddddddddddddddddddddddddddddddddd')
+    if "razorpay_signature" in request.POST:
+        print("first")
+        payment_id = request.POST.get("razorpay_payment_id", "")
+        provider_order_id = request.POST.get("razorpay_order_id", "")
+        signature_id = request.POST.get("razorpay_signature", "")
+        order = Payment.objects.get(provider_order_id=provider_order_id)
+        order.payment_id = payment_id
+        order.signature_id = signature_id
+        order.save()
+        if not verify_signature(request.POST):
+            print("second")
+            order.status = PaymentStatus.SUCCESS
+            order.save()
+            return render(request, "callback.html", context={"status": order.status})
+        else:
+            print("3rd")
+            order.status = PaymentStatus.FAILURE
+            order.save()
+            return render(request, "callback.html", context={"status": order.status})
+    else:
+        payment_id = json.loads(request.POST.get("error[metadata]")).get("payment_id")
+        provider_order_id = json.loads(request.POST.get("error[metadata]")).get(
+        "order_id"
+        )
+        order = Payment.objects.get(provider_order_id=provider_order_id)
+        order.payment_id = payment_id
+        order.status = PaymentStatus.FAILURE
+        order.save()
+        return render(request, "callback.html", context={"status": order.status})
+    
+
 
 def user_profile(request):
     template = loader.get_template('user_profile.html')
