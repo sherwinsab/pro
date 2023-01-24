@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'cars.apps.CarsConfig',
     'django_filters',
     'bootstrapform',
+    
 ]
 
 MIDDLEWARE = [
@@ -136,3 +138,81 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 RAZORPAY_KEY_ID = "rzp_test_1sFSQT1jdm1swd"
 RAZORPAY_KEY_SECRET = "PYkvqUl4Zx2EfNeRAAf9FXJs"
+
+#jazzmin settings
+JAZZMIN_SETTINGS = {
+    "site_title": "HOTWHEELS",
+    "site_header": "HOTWHEELS",
+    "site_brand": "HotWheels",
+    "site_logo": "img/favicon.png",
+    "login_logo": "img/favicon.png",
+    "site_logo_classes": "img-circle",
+    "welcome_sign": "Welcome to the HotWheels",
+    "copyright": "HotWheels Car DealerShip",
+    "search_model": ["auth.User", "auth.Group"],
+    
+     "topmenu_links": [
+
+        # Url that gets reversed (Permissions can be added)
+        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
+
+        # external url that opens in a new window (Permissions can be added)
+        
+
+        # model admin to link to (Permissions checked against model)
+        {"model": "auth.User"},
+
+        # App with dropdown menu to all its models pages (Permissions checked against models)
+        {"app": "cars"},
+    ],
+    "usermenu_links": [
+        
+        {"model": "auth.user"}
+    ],
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+    },
+    "show_ui_builder": True,
+    "changeform_format": "horizontal_tabs",
+    # override change forms on a per modeladmin basis
+    "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
+    
+}
+JAZZMIN_UI_TWEAKS = {
+     "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": True,
+    "brand_colour": "navbar-success",
+    "accent": "accent-navy",
+    "navbar": "navbar-success navbar-dark",
+    "no_navbar_border": False,
+    "navbar_fixed": False,
+    "layout_boxed": False,
+    "footer_fixed": False,
+    "sidebar_fixed": False,
+    "sidebar": "sidebar-dark-success",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": False,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "litera",
+    "dark_mode_theme": None,
+    "button_classes": {
+        "primary": "btn-outline-primary",
+        "secondary": "btn-outline-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success"
+    },
+    "actions_sticky_top": False,
+    "custom_css": "common/css/main.css",
+    "custom_js": "common/js/main.js",
+    "use_google_fonts_cdn": True,
+    "user_avatar": "img/favicon.png"
+}
