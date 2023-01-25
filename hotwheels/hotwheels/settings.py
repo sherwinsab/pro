@@ -150,7 +150,6 @@ JAZZMIN_SETTINGS = {
     "welcome_sign": "Welcome to the HotWheels",
     "copyright": "HotWheels Car DealerShip",
     "search_model": ["auth.User", "auth.Group"],
-    
      "topmenu_links": [
 
         # Url that gets reversed (Permissions can be added)
