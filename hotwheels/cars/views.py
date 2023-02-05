@@ -43,7 +43,7 @@ def signup(request):
             else:
                 user = User.objects.create_user(username=username,first_name=first_name,last_name=last_name,email=email,password=confirm_password)
                 user.save();
-                print('user created')
+             
         else:
             messages.info(request,'Password not matching')
             return redirect('signup')
@@ -160,7 +160,7 @@ def add_to_cart(request, oid):
             carnameid= DETAILS.objects.get(id=oid)
             
             customer=Order(Address=Address,LicenceIDNumber=LicenceIDNumber,Pincode=Pincode,ContactNumber=ContactNumber,
-            State=State,City=City,carnameid=carnameid,Accessorieslist=Accessorieslist,total=total,insurance=insurance)
+            State=State,City=City,carnameid=carnameid,Accessorieslist=Accessorieslist,total=total,insurance=insurance,balance_amount=total)
             customer.customerid = request.user
             customer.save();
             carnameid.stock -= 1
@@ -317,34 +317,37 @@ def order_payment(request):
             names = auth_cust[0].first_name + ' ' + auth_cust[0].last_name
             email = auth_cust[0].email
             amount = price/2
-            amount1 = 40000
-
+            amount1 = 25000
+            amount2 = 25000
+           
             client = razorpay.Client(auth=("rzp_test_1sFSQT1jdm1swd", "PYkvqUl4Zx2EfNeRAAf9FXJs"))
             razorpay_order = client.order.create(
-            {"amount": amount1, "currency": "INR", "payment_capture": "0"}
+            {"amount": amount1*100, "currency": "INR", "payment_capture": "1"}
             )
-            order = Payment.objects.create(
-            name=names, amount=amount1, provider_order_id=razorpay_order["id"]
+            
+            order = Payment.objects.create( 
+            name=names, amount=amount2, provider_order_id=razorpay_order["id"]
             )
             order.save()
-            print("wer:",order)
+
             return render(request,'payment.html',{'email':email,'contactnumber':contactnumber,'customer':customer,'carscompanynames':carscompanynames,'cartypenames':cartypenames,
             "callback_url": "http://" + "127.0.0.1:8000" + "/cars/callback/",
             "razorpay_key": "rzp_test_1sFSQT1jdm1swd",
             "order": order,
             }
             )
-    return render(request, "payment.html")
-
+            print("before",request)
+        return render(request, "payment.html")
+#from here edit
 @csrf_exempt
 def callback(request):
-    print("12443:",json.dumps(request.POST))
+    print("after:",request.POST)
     def verify_signature(response_data):
+        print("123",response_data)
         client = razorpay.Client(auth=("rzp_test_1sFSQT1jdm1swd", "PYkvqUl4Zx2EfNeRAAf9FXJs"))
         return client.utility.verify_payment_signature(response_data)
-    print('wdwdwdwwdwddddddddddddddddddddddddddddddddddddddddddddddddddddd')
     if "razorpay_signature" in request.POST:
-        print("first")
+        
         payment_id = request.POST.get("razorpay_payment_id", "")
         provider_order_id = request.POST.get("razorpay_order_id", "")
         signature_id = request.POST.get("razorpay_signature", "")
@@ -352,17 +355,35 @@ def callback(request):
         order.payment_id = payment_id
         order.signature_id = signature_id
         order.save()
-        if not verify_signature(request.POST):
-            print("second")
+        
+        
+
+        if verify_signature(request.POST):
+            print("true")
             order.status = PaymentStatus.SUCCESS
             order.save()
+            #reduce 25000 advance from total  amount
+            customer_name = order.name
+            split_name = customer_name.split()
+            first_name = split_name[0]
+            last_name = split_name[-1]
+            
+            customer_id = User.objects.filter(first_name = first_name, last_name=last_name)
+            cus_id = customer_id[0].id
+            
+            customer = Order.objects.get(customerid=cus_id)
+
+            balance = customer.balance_amount - 25000
+            customer.balance_amount = balance
+            customer.save()
             return render(request, "callback.html", context={"status": order.status})
         else:
-            print("3rd")
+            print("false")
             order.status = PaymentStatus.FAILURE
             order.save()
             return render(request, "callback.html", context={"status": order.status})
     else:
+        print("truefalse")
         payment_id = json.loads(request.POST.get("error[metadata]")).get("payment_id")
         provider_order_id = json.loads(request.POST.get("error[metadata]")).get(
         "order_id"
@@ -373,7 +394,6 @@ def callback(request):
         order.save()
         return render(request, "callback.html", context={"status": order.status})
     
-
 
 def user_profile(request):
     template = loader.get_template('user_profile.html')

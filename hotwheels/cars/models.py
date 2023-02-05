@@ -180,6 +180,7 @@ class Order(models.Model):
     Accessorieslist = models.TextField(default=None,null=True,verbose_name="Accessories Added")
     insurance = models.TextField(default=None,null=True,verbose_name="Insurance Amount")
     total = models.FloatField(default=None,null=True,verbose_name="Sum Total Of Car")
+    balance_amount = models.FloatField(default=None,null=True,verbose_name="Balance Amount After Advance")
 # Create your models here.
 
 class Information(models.Model):

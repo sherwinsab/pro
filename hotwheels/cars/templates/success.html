@@ -1,6 +1,6 @@
-<h1>hi callback</h1>
+<h1>Payment Success</h1>
 <a href="{% url 'product_listing' %}"><h2>Refresh Page</h2></a>
-
+{% extends 'base.html' %}
 {% block content %}
 <div class="text-center" style="margin-top:20%">
     {% if status == "Success" %}

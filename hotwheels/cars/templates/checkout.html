@@ -171,6 +171,10 @@
                           <label for="exampleInputPassword1" class="form-label" style="font-size: xx-large;font-weight: bold;">Amount:</label><br><br>
                           <label  name="amount" class="form-label" style="font-size: x-large;">{{Order.total}}</label>
                         </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label" style="font-size: xx-large;font-weight: bold;">Remaining Amount:</label><br><br>
+                            <label  name="amount" class="form-label" style="font-size: x-large;">{{Order.balance_amount}}</label>
+                          </div>
                         <div>
                         <button type="submit" class="btn btn-primary">Pay Now</button>
                         </div>
