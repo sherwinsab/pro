@@ -17,6 +17,13 @@ import json
 from .constants import PaymentStatus
 from django.views.decorators.csrf import csrf_exempt
 
+from django.http import FileResponse
+import io
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import inch
+from reportlab.lib.pagesizes import letter
+
+
 
 def index(request):
     template = loader.get_template('index.html')
@@ -217,6 +224,93 @@ def shopping_cart(request):
             
             return render(request,'shopping_cart.html',{'customer':customer,'carscompanynames':carscompanynames,'cartypenames':cartypenames,'a':a,'priceof':priceof}) 
     return redirect('signin')
+
+def shopping_cart_pdf(request):
+    #create bytestream buffer
+    buf = io.BytesIO()
+    #create canvas
+    c = canvas.Canvas(buf, pagesize=letter, bottomup=0)
+    #create text obj
+    textob = c.beginText()
+    textob.setTextOrigin(inch, inch)
+    textob.setFont("Helvetica",14)
+    
+    #add lines text
+    # lines = [
+    #         "This is Line 1",
+    #         "This is Line 2",
+    #         "This is Line 3",
+    # ]
+    customer = Order.objects.filter(customerid=request.user)
+    carnameid = customer[0].carnameid
+
+    car_company = DETAILS.objects.filter(car_name=carnameid).values('car_company')
+    car_company_name = COMPANY.objects.filter(pk=car_company[0].get("car_company")).values('name')
+    carscompanynames = car_company_name[0].get("name")
+
+#cartypefkref
+    car_type = DETAILS.objects.filter(car_name=carnameid).values('car_type')
+    car_type_name = TYPE.objects.filter(pk=car_type[0].get("car_type")).values('name')
+    cartypenames = car_type_name[0].get("name")
+
+#carprice
+    price = DETAILS.objects.filter(car_name=carnameid).values('price')
+    priceof = price[0].get("price")
+    
+    ass_list = ast.literal_eval(customer[0].Accessorieslist)
+
+    a =''
+    for i in list(ass_list):
+        
+        accssdetail = AdditionalAccessories.objects.get(pk=int(i))
+        a +=accssdetail.Product+', '
+    a = a[:-2]
+
+    name = customer[0].customerid
+    auth_cust = User.objects.filter(username=name)
+    names = auth_cust[0].first_name + ' ' + auth_cust[0].last_name
+    email = auth_cust[0].email
+
+    ins_list = ast.literal_eval(customer[0].insurance)
+
+    b =''
+    for j in list(ins_list):
+        insdetails = INSURANCE.objects.get(pk=int(j))
+        b +=insdetails.name+', '
+    b = b[:-2]
+
+    lines =[]
+    
+    for order in customer:
+        lines.append(names)
+        lines.append(str(order.carnameid)),
+        lines.append(carscompanynames),
+        lines.append(cartypenames),
+        lines.append(str(order.total)),
+        lines.append(str(order.Date_of_booking))
+        lines.append(email)
+        lines.append(str(order.Address))
+        lines.append(str(order.LicenceIDNumber))
+        lines.append(str(order.Pincode))
+        lines.append(str(order.ContactNumber))
+        lines.append(str(order.application_code))
+        lines.append(str(order.State))
+        lines.append(str(order.City))
+        lines.append(a)
+        lines.append(b)
+        lines.append(str(order.balance_amount))
+
+        lines.append("")
+    #loop
+    for line in lines:
+        textob.textLine(line)
+
+    c.drawText(textob)
+    c.showPage()
+    c.save()
+    buf.seek(0)
+
+    return FileResponse(buf, as_attachment=True, filename='Booking.pdf')
 
 def tracking_order(request):
     if 'username' in request.session:

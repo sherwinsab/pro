@@ -175,7 +175,8 @@
                                         <div class="image">Price</div>
                                         <div class="image">Booked On</div>
                                         <div class="image">Accessories</div>
-                                        <div class="product-details">Cancel Booking</div>
+                                        <div class="image">Cancel Booking</div>
+                                        
                                         <!-- remove -->
                                     </div>
                                     <div class="table-row">
@@ -186,15 +187,15 @@
                                         <div class="image">₹{{Order.total}}</div>
                                         <div class="image">{{Order.Date_of_booking}}</div>
                                         <div class="image">{{a}}</div>
-
-                                        <div class="product-details"><a href="{% url 'cancelorder' oid=Order.id %}"><i class="fa fa-window-close" aria-hidden="true" style="font-size:15px;"></i></a></div>
+                                        <div class="image"><a href="{% url 'cancelorder' oid=Order.id %}"><i class="fa fa-window-close" aria-hidden="true" style="font-size:15px;"></i></a></div>
                                     </div>
                                 </div>
                             </div>
                             {% endfor %}
                             {% endif %}
                         </div>
-                    </div>
+                        <br><div><p >Dear {{user.first_name}} {{user.last_name}} You Can Download the Order Details By Clicking The Download Link.
+                            <button style="float: right;background-color: red;border-radius: 5%;" ><a href="{% url 'shopping_cart_pdf' %}" style="color: white;">Download Pdf</button></a></p></div>
                 </div>	
             </div>	
         </section>
