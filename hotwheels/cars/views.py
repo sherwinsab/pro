@@ -308,7 +308,7 @@ def shopping_cart_pdf(request):
         c.drawString(33, 173, "EMAIL:",lines.append("                               " +  email)),
         c.drawString(33, 190, "ADDRESS:",lines.append("                               " +  str(order.Address))),
         c.drawString(33, 207, "LICENCE ID:",lines.append(str("                               " +  order.LicenceIDNumber))),
-        c.drawString(33, 222, "PINCODE:",lines.append("                                " +  str(order.Pincode))),
+        c.drawString(33, 222, "PINCODE:",lines.append("                               " +  str(order.Pincode))),
         c.drawString(33, 239, "PHONE NUMBER:",lines.append("                               " +  str(order.ContactNumber))),
         c.drawString(33, 256, "APPLICATION CODE:",lines.append("                               " +  str(order.application_code))),
         c.drawString(33, 273, "STATE:",lines.append(str("                               " +  order.State))),
