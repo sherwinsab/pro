@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'cars.apps.CarsConfig',
     'django_filters',
     'bootstrapform',
+    'import_export',
     
 ]
 

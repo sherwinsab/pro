@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import TYPE,COMPANY,DETAILS,Order,Information,AdditionalAccessories,Taxandother,INSURANCE,Payment
+from import_export.admin import ImportExportModelAdmin
 
 class TYPEAdmin(admin.ModelAdmin):
     list_display = ["name"]
@@ -13,7 +14,8 @@ class DETAILSAdmin(admin.ModelAdmin):
     list_display = ['stock','car_name','car_type','car_company']
 admin.site.register(DETAILS,DETAILSAdmin)
 
-class OrderAdmin(admin.ModelAdmin):
+
+class OrderAdmin(ImportExportModelAdmin):
     list_display = ['customerid','carnameid','Date_of_booking']
 admin.site.register(Order,OrderAdmin)
 
@@ -36,4 +38,6 @@ admin.site.register(INSURANCE,INSURANCEAdmin)
 class PaymentAdmin(admin.ModelAdmin):
     list_display = ['name','amount','status']
 admin.site.register(Payment,PaymentAdmin)
+
+
 # Register your models here.
