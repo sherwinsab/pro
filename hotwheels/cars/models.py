@@ -181,6 +181,10 @@ class Order(models.Model):
     insurance = models.TextField(default=None,null=True,verbose_name="Insurance Amount")
     total = models.FloatField(default=None,null=True,verbose_name="Sum Total Of Car")
     balance_amount = models.FloatField(default=None,null=True,verbose_name="Balance Amount After Advance")
+    accssamt = models.FloatField(default=None,null=True,verbose_name="Accessories Total")
+    road_tax = models.FloatField(default=None,null=True,verbose_name="Road Tax")
+    regst_amt = models.FloatField(default=None,null=True,verbose_name="Registration Amount")
+    insuramt = models.FloatField(default=None,null=True,verbose_name="Insurance Amount")
 # Create your models here.
 
 class Information(models.Model):

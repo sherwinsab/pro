@@ -137,11 +137,16 @@ def taxinfo(request,pk):
             regst_amt = (CARDETAILS.price + accssamt) * tax.Reg_amt
             total = (CARDETAILS.price + accssamt + road_tax + regst_amt + insuramt + tax.booking_amount + tax.delivery_cost)
             
+            request.session['road_tax']=road_tax
+            request.session['regst_amt']=regst_amt
+            request.session['insuramt']=insuramt
+            request.session['accssamt']=accssamt
             
             request.session['Assessories_list']=options
             request.session['Insurance']=optionss
             request.session['total']=total
-        return render(request,'tax_andother_info.html',{'options':options,'insuramt':insuramt,'optionss':optionss,'tax':tax,'CARDETAILS':CARDETAILS,'accssamt':accssamt,'total':total,'road_tax':road_tax,'regst_amt':regst_amt})
+        return render(request,'tax_andother_info.html',{'options':options,'insuramt':insuramt,'optionss':optionss,
+        'tax':tax,'CARDETAILS':CARDETAILS,'accssamt':accssamt,'total':total,'road_tax':road_tax,'regst_amt':regst_amt})
     return redirect('signin')
 
 def booknow(request,pk):
@@ -149,6 +154,7 @@ def booknow(request,pk):
         CARDETAILS = DETAILS.objects.get(pk=pk)
         total = request.session.get('total')
         insurance = request.session.get('Insurance')
+        
         return render(request,'booknow.html',{'CARDETAILS':CARDETAILS,'total':total,'insurance':insurance}) 
     return redirect('signin')
 
@@ -164,9 +170,16 @@ def add_to_cart(request, oid):
             Accessorieslist = request.session.get('Assessories_list')
             insurance = request.session.get('Insurance')
             total = request.session.get('total')
+            accssamt = request.session.get('accssamt')
+            road_tax = request.session.get('road_tax')
+            regst_amt = request.session.get('regst_amt')
+            insuramt = request.session.get('insuramt')
+            
+
             carnameid= DETAILS.objects.get(id=oid)
             
             customer=Order(Address=Address,LicenceIDNumber=LicenceIDNumber,Pincode=Pincode,ContactNumber=ContactNumber,
+            accssamt=accssamt,road_tax=road_tax,regst_amt=regst_amt,insuramt=insuramt,
             State=State,City=City,carnameid=carnameid,Accessorieslist=Accessorieslist,total=total,insurance=insurance,balance_amount=total)
             customer.customerid = request.user
             customer.save();
@@ -229,7 +242,10 @@ def shopping_cart_pdf(request):
     #create bytestream buffer
     buf = io.BytesIO()
     #create canvas
-    c = canvas.Canvas(buf, pagesize=letter, bottomup=0)
+    c = canvas.Canvas(buf,pagesize=letter, bottomup=0)
+    c.drawString(10,20,"HotWheels")
+    c.drawString(13, 770, "HOTWHEELS")
+    c.rect(10, 23, 593, 750, stroke=1)
     #create text obj
     textob = c.beginText()
     textob.setTextOrigin(inch, inch)
@@ -282,24 +298,28 @@ def shopping_cart_pdf(request):
     lines =[]
     
     for order in customer:
-        lines.append(names)
-        lines.append(str(order.carnameid)),
-        lines.append(carscompanynames),
-        lines.append(cartypenames),
-        lines.append(str(order.total)),
-        lines.append(str(order.Date_of_booking))
-        lines.append(email)
-        lines.append(str(order.Address))
-        lines.append(str(order.LicenceIDNumber))
-        lines.append(str(order.Pincode))
-        lines.append(str(order.ContactNumber))
-        lines.append(str(order.application_code))
-        lines.append(str(order.State))
-        lines.append(str(order.City))
-        lines.append(a)
-        lines.append(b)
-        lines.append(str(order.balance_amount))
-
+        
+        c.drawString(33, 71, "NAME:",lines.append("                               " +  names))
+        c.drawString(33, 88, "CAR:", lines.append("                               " + str(order.carnameid))),
+        c.drawString(33, 105, "COMPANY:",lines.append("                               " +  carscompanynames)),
+        c.drawString(33, 122, "TYPE:",lines.append("                               " +  cartypenames)),
+        c.drawString(33, 139, "ON ROAD PRICE:",lines.append("                               " +  str(order.total))),
+        c.drawString(33, 156, "DATE OF BOOKING:",lines.append("                               " +  str(order.Date_of_booking))),
+        c.drawString(33, 173, "EMAIL:",lines.append("                               " +  email)),
+        c.drawString(33, 190, "ADDRESS:",lines.append("                               " +  str(order.Address))),
+        c.drawString(33, 207, "LICENCE ID:",lines.append(str("                               " +  order.LicenceIDNumber))),
+        c.drawString(33, 222, "PINCODE:",lines.append("                                " +  str(order.Pincode))),
+        c.drawString(33, 239, "PHONE NUMBER:",lines.append("                               " +  str(order.ContactNumber))),
+        c.drawString(33, 256, "APPLICATION CODE:",lines.append("                               " +  str(order.application_code))),
+        c.drawString(33, 273, "STATE:",lines.append(str("                               " +  order.State))),
+        c.drawString(33, 290, "CITY:",lines.append(str("                               " +  order.City))),
+        c.drawString(33, 307, "ACCESSORIES:",lines.append("                               " +  a)),
+        c.drawString(33, 323, "INSURANCE:",lines.append("                               " +  b)),
+        c.drawString(33, 340, "BALANCE AMOUNT:",lines.append("                               " +  str(order.balance_amount))),
+        c.drawString(33, 356, "ROAD TAX rs:",lines.append("                               " +  str(order.road_tax))),
+        c.drawString(33, 374, "REGISTRATION AMOUNT:",lines.append("                               " +  str(order.regst_amt))),
+        c.drawString(33, 391, "INSURANCE AMOUNT:",lines.append("                               " +  str(order.insuramt))),
+        c.drawString(33, 408, "ACCESSORIES AMOUNT:",lines.append("                               " +  str(order.accssamt))),
         lines.append("")
     #loop
     for line in lines:
