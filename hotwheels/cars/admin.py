@@ -1,6 +1,14 @@
 from django.contrib import admin
 from .models import TYPE,COMPANY,DETAILS,Order,Information,AdditionalAccessories,Taxandother,INSURANCE,Payment
 from import_export.admin import ImportExportModelAdmin
+from django.http import HttpResponse
+import decimal, csv
+from django.contrib.auth.models import User
+from django.http import FileResponse
+import io
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import inch
+from reportlab.lib.pagesizes import letter
 
 class TYPEAdmin(admin.ModelAdmin):
     list_display = ["name"]
@@ -14,9 +22,95 @@ class DETAILSAdmin(admin.ModelAdmin):
     list_display = ['stock','car_name','car_type','car_company']
 admin.site.register(DETAILS,DETAILSAdmin)
 
+def export_books(modeladmin, request, queryset):
+    
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="Order.csv"'
+    writer = csv.writer(response)
+    writer.writerow([
+        'customer name','car name','Date_of_booking','Address','LicenceIDNumber','Pincode',
+        'ContactNumber','application_code','State','City','Accessorieslist','insurance',
+        'total','balance_amount','accssamt','road_tax','regst_amt','insuramt'
+    ])
+    
+    order = queryset.values_list('customerid','carnameid','Date_of_booking','Address','LicenceIDNumber','Pincode',
+        'ContactNumber','application_code','State','City','Accessorieslist','insurance',
+        'total','balance_amount','accssamt','road_tax','regst_amt','insuramt')
+    for Order in order:
+        writer.writerow(Order)
+    return response
+export_books.short_description = 'Export to csv'
+
+def export_order(modeladmin, request, queryset):
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="Order.pdf"'
+    
+    buffer = io.BytesIO()
+    pdf = canvas.Canvas(buffer,pagesize=letter, bottomup=0)
+    
+    
+    
+    
+    order = queryset.values_list('customerid','carnameid','Date_of_booking','Address','LicenceIDNumber','Pincode',
+        'ContactNumber','application_code','State','City','Accessorieslist','insurance',
+        'total','balance_amount','accssamt','road_tax','regst_amt','insuramt')
+    for Order in order:
+        pdf.drawString(10,20,"HotWheels")
+        pdf.drawString(13, 770, "HOTWHEELS")
+        pdf.rect(10, 23, 593, 750, stroke=1)
+        pdf.setTitle("HotWheels")
+        pdf.setFont('Helvetica', 14)
+        pdf.drawString(33, 71, "NAME:")
+        pdf.drawString(33, 88, "CAR:")
+        pdf.drawString(33, 105, "DATE OF BOOKING:")
+        pdf.drawString(33, 122, "ADDRESS:")
+        pdf.drawString(33, 139, "LICENCE ID:")
+        pdf.drawString(33, 156, "PINCODE:")
+        pdf.drawString(33, 173, "PHONE NUMBER:")
+        pdf.drawString(33, 190, "APPLICATION CODE:")
+        pdf.drawString(33, 207, "STATE")
+        pdf.drawString(33, 222, "CITY")
+        pdf.drawString(33, 239, "ACCESSORIES")
+        pdf.drawString(33, 256, "INSURANCE")
+        pdf.drawString(33, 273, "total")
+        pdf.drawString(33, 290, "BALANCE AMOUNT:")
+        pdf.drawString(33, 307, "ACCESSORIES AMOUNT")
+        pdf.drawString(33, 323, "ROAD TAX rs")
+        pdf.drawString(33, 340, "REGISTRATION AMOUNT:")
+        pdf.drawString(33, 356, "INSURANCE AMOUNT")
+        
+        pdf.drawString(250, 71, str(Order[0]))
+        pdf.drawString(250, 88, str(Order[1]))
+        pdf.drawString(250, 105, str(Order[2]))
+        pdf.drawString(250, 122, str(Order[3]))
+        pdf.drawString(250, 139, str(Order[4]))
+        pdf.drawString(250, 156, str(Order[5]))
+        pdf.drawString(250, 173, str(Order[6]))
+        pdf.drawString(250, 190, str(Order[7]))
+        pdf.drawString(250, 207, str(Order[8]))
+        pdf.drawString(250, 222, str(Order[9]))
+        pdf.drawString(250, 239, str(Order[10]))
+        pdf.drawString(250, 256, str(Order[11]))
+        pdf.drawString(250, 273, str(Order[12]))
+        pdf.drawString(250, 290, str(Order[13]))
+        pdf.drawString(250, 307, str(Order[14]))
+        pdf.drawString(250, 323, str(Order[15]))
+        pdf.drawString(250, 340, str(Order[16]))
+        pdf.drawString(250, 356, str(Order[17]))
+        pdf.showPage()
+        
+        
+    
+    pdf.save()
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+export_order.short_description = "Export to pdf"
 
 class OrderAdmin(ImportExportModelAdmin):
     list_display = ['customerid','carnameid','Date_of_booking']
+    actions = [export_books,export_order]
 admin.site.register(Order,OrderAdmin)
 
 class InformationAdmin(admin.ModelAdmin):
