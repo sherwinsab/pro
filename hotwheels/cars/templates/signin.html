@@ -63,6 +63,13 @@
 	  </style>
 </head>
 <body>
+	{% if messages %}
+        {% for message in messages %}
+            {% if message.tags %}  
+            <script>alert("{{ message }}")</script> 
+            {% endif %}
+        {% endfor %}
+    {% endif %}
 	<h1>Sign In</h1>
 	<form action="{% url 'signin' %}" method="post" onsubmit="return validateInput()">
 	{% csrf_token %}
@@ -73,6 +80,7 @@
 	  <input type="submit" value="Sign In">
 	</form>
 	<p style="text-align:center;">Don't Have An Account?<a href="{% url 'signup' %}">Sign Up</a><p>  
+		<p style="text-align:center;"><a href="">Forgot password</a><p>
 <script>
 function validateInput(input) {
 

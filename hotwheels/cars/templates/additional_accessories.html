@@ -57,14 +57,14 @@
                                         </a>
                                         <ul class="profile">
                                             <li><a href="#">User Profile</a></li>
-                                            <li><a href="#">Upload Products</a></li>
-                                            <li><a href="#">Favourite Products</a></li>
-                                            <li><a href="#">Change Password</a></li>
-                                            <li><a href="#">Manage Products</a></li>
-                                            <li><a href="#">Notifications</a></li>
-                                            <li><a href="#">Messages</a></li>
-                                            <li><a href="#">Shopping Cart</a></li>
-                                            <li><a href="#">Withdraw</a></li>
+                                            <!-- <li><a href="#">Upload Products</a></li> -->
+                                            <!-- <li><a href="#">Favourite Products</a></li> -->
+                                            <!-- <li><a href="#">Change Password</a></li> -->
+                                            <li><a href="{% url 'shopping_cart' %}">Manage Products</a></li>
+                                            <!-- <li><a href="#">Notifications</a></li> -->
+                                            <!-- <li><a href="#">Messages</a></li> -->
+                                            <li><a href="{% url 'shopping_cart' %}">Shopping Cart</a></li>
+                                            <!-- <li><a href="#">Withdraw</a></li> -->
                                             <li><a href="{% url 'logout' %}">Sign Out</a></li>
                                         </ul>
                                     </li>
@@ -88,7 +88,7 @@
                     </div>
                 </div>
             </div>
-            <div class="header-bottom">
+            <!-- <div class="header-bottom">
                 <div class="container">
                     <div class="row align-items-center d-flex">
                         <div class="col-lg-2 col-md-2">
@@ -127,14 +127,14 @@
                               </li>
                               
                               <li class="menu-has-children"><a href="contact.html">Contact</a></li>
-                              <!-- <li class="menu-has-children"><a href="sell_a_product.html" class="rounded ml-3 text-white sell-btn">Sell My Car</a> -->
-                              </li>			        	          
+                               <li class="menu-has-children"><a href="sell_a_product.html" class="rounded ml-3 text-white sell-btn">Sell My Car</a> -->
+                              <!-- </li>			        	          
                             </ul>
-                          </nav><!-- #nav-menu-container -->
+                          </nav>
                       </div>	    		
                     </div>
                 </div>
-            </div>
+            </div> -->
           </header><!-- #header -->
 
 

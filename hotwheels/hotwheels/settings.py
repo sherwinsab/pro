@@ -140,6 +140,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 RAZORPAY_KEY_ID = "rzp_test_1sFSQT1jdm1swd"
 RAZORPAY_KEY_SECRET = "PYkvqUl4Zx2EfNeRAAf9FXJs"
 
+
+#SMTP CONFIGURATION
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'sherwinsabu@mca.ajce.in'
+EMAIL_HOST_PASSWORD = ''
+
+
+
 #jazzmin settings
 JAZZMIN_SETTINGS = {
     "site_title": "HOTWHEELS",
@@ -216,3 +228,4 @@ JAZZMIN_UI_TWEAKS = {
     "use_google_fonts_cdn": True,
     "user_avatar": "img/favicon.png"
 }
+

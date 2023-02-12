@@ -522,17 +522,20 @@ def error404(request):
     return HttpResponse(template.render())
     
 def trail(request):
-    template = loader.get_template('trail.html')
-    return HttpResponse(template.render())
+    if 'username' in request.session:
+        return render(request,'trail.html')
+    return redirect('signin')
 
 def trail2(request):
-    template = loader.get_template('trail2.html')
-    return HttpResponse(template.render())
-
+    if 'username' in request.session:
+        return render(request,'trail2.html')
+    return redirect('signin')
+    
 def trail3(request):
-    template = loader.get_template('trail3.html')
-    return HttpResponse(template.render())
-
+    if 'username' in request.session:
+        return render(request,'trail3.html')
+    return redirect('signin')
+    
 def trail4(request):
     template = loader.get_template('trail4.html')
     return HttpResponse(template.render())

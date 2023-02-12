@@ -62,14 +62,14 @@
                                         </a>
                                         <ul class="profile">
                                             <li><a href="#">User Profile</a></li>
-                                            <li><a href="#">Upload Products</a></li>
-                                            <li><a href="#">Favourite Products</a></li>
-                                            <li><a href="#">Change Password</a></li>
-                                            <li><a href="#">Manage Products</a></li>
-                                            <li><a href="#">Notifications</a></li>
-                                            <li><a href="#">Messages</a></li>
-                                            <li><a href="#">Shopping Cart</a></li>
-                                            <li><a href="#">Withdraw</a></li>
+                                            <!-- <li><a href="#">Upload Products</a></li> -->
+                                            <!-- <li><a href="#">Favourite Products</a></li> -->
+                                            <!-- <li><a href="#">Change Password</a></li> -->
+                                            <li><a href="{% url 'shopping_cart' %}">Manage Products</a></li>
+                                            <!-- <li><a href="#">Notifications</a></li> -->
+                                            <!-- <li><a href="#">Messages</a></li> -->
+                                            <li><a href="{% url 'shopping_cart' %}">Shopping Cart</a></li>
+                                            <!-- <li><a href="#">Withdraw</a></li> -->
                                             <li><a href="{% url 'logout' %}">Sign Out</a></li>
                                         </ul>
                                     </li>
@@ -108,25 +108,25 @@
                               </li>
                               <li class="menu-has-children"><a href="">Pages</a>
                                 <ul>
-                                    <li><a href="product_listing.html">Product Listing</a></li>
-                                    <li><a href="product_listing_detail.html">Product Listing Detail</a></li>
-                                    <li><a href="search.html">search</a></li>
-                                    <li><a href="upload_products.html">Upload Products</a></li>
-                                    <li><a href="favourite_products.html">Favourite Products</a></li>
-                                    <li><a href="signin.html">Signin Page</a></li>
-                                    <li><a href="signup.html">Signup Page</a></li>					
-                                    <li><a href="terms_and_conditions.html">Terms & Conditions</a></li>
-                                    <li><a href="privcy_policy.html">Privacy Policy</a></li>
-                                    <li><a href="404.html">404 Page</a></li>
+                                    <li><a href="">Product Listing</a></li>
+                                    <li><a href="">Product Listing Detail</a></li>
+                                    <!-- <li><a href="search.html">search</a></li> -->
+                                    <!-- <li><a href="upload_products.html">Upload Products</a></li> -->
+                                    <!-- <li><a href="favourite_products.html">Favourite Products</a></li> -->
+                                    <li><a href="">Signin Page</a></li>
+                                    <li><a href="">Signup Page</a></li>					
+                                    <li><a href="">Terms & Conditions</a></li>
+                                    <li><a href="">Privacy Policy</a></li>
+                                    <li><a href="">404 Page</a></li>
                                 </ul>
                               </li>
-                              <li class="menu-has-children"><a href="#">About</a>
+                              <!-- <li class="menu-has-children"><a href="#">About</a> -->
                                 <!-- about_us.html -->
                               </li>  
-                              <li class="menu-has-children"><a href="#">Services</a>
+                              <!-- <li class="menu-has-children"><a href="#">Services</a> -->
                                 <!-- services.html -->
                               </li>
-                              <li class="menu-has-children"><a href="#">Blog</a>
+                              <!-- <li class="menu-has-children"><a href="#">Blog</a> -->
                                 <!-- blog_home.html -->
                                   <ul>
                                     <li><a href="#">Blog Page</a></li>
@@ -136,7 +136,7 @@
                                 </ul>
                               </li>
                               
-                              <li class="menu-has-children"><a href="#">Contact</a></li><!-- contact.html -->
+                              <!-- <li class="menu-has-children"><a href="contact.html">Contact</a></li> -->
                               <!-- <li class="menu-has-children"><a href="#" class="rounded ml-3 text-white sell-btn">My Cart</a> -->
                               </li>			        	          
                             </ul>
@@ -170,7 +170,7 @@
         <div class="row">
             <form method="get">
                 {{myFilter.form}} <input style="color: rgb(255, 255, 255);font-size: large;background-color: rgb(255, 6, 6);
-                font-family: 'Times New Roman', Times, serif;" type="submit" value=" Sreach ">
+                font-family: 'Times New Roman', Times, serif;" type="submit" value=" Search ">
                 
             </form>
     {% if myFilter.qs %}
