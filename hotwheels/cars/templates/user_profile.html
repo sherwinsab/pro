@@ -52,32 +52,31 @@
                                     <li>
                                         <a href="#">
                                             <img src="{% static 'img/boogyman.png' %}" alt="">
-                                            NAME  <span>HI
+                                            NAME  <span>{{user.first_name}}
                                             <i class="fa fa-angle-down"></i></span>
                                         </a>
                                         <ul class="profile">
-                                            <li><a href="user_profile.html">User Profile</a></li>
-                                            <li><a href="upload_products.html">Upload Products</a></li>
-                                            <li><a href="favourite_products.html">Favourite Products</a></li>
-                                            <li><a href="change_password.html">Change Password</a></li>
-                                            <li><a href="manage_products.html">Manage Products</a></li>
-                                            <li><a href="product_notification.html">Notifications</a></li>
-                                            <li><a href="product_message.html">Messages</a></li>
-                                            <li><a href="shopping_cart.html">Shopping Cart</a></li>
-                                            <li><a href="withdraw.html">Withdraw</a></li>
-                                            <li><a href="#">Sign Out</a></li>
+                                            <!-- <li><a href="#">Upload Products</a></li> -->
+                                            <!-- <li><a href="#">Favourite Products</a></li> -->
+                                            <!-- <li><a href="#">Change Password</a></li> -->
+                                            <li><a href="{% url 'shopping_cart' %}">Manage Products</a></li>
+                                            <!-- <li><a href="#">Notifications</a></li> -->
+                                            <!-- <li><a href="#">Messages</a></li> -->
+                                            <li><a href="{% url 'shopping_cart' %}">Shopping Cart</a></li>
+                                            <!-- <li><a href="#">Withdraw</a></li> -->
+                                            <li><a href="{% url 'logout' %}">Sign Out</a></li>
                                         </ul>
                                     </li>
                                 </ul>
                                 <ul class="notification_icons">
-                                    <li>
+                                    <!-- <li>
                                         <a href="#"><i class="fa fa-bell-o"></i><span class="number">11</span></a>
-                                    </li>
-                                    <li>
+                                    </li> -->
+                                    <!-- <li>
                                         <a href="#"><i class="fa fa-envelope-o"></i><span class="number">5</span></a>
-                                    </li>
+                                    </li> -->
                                     <li>
-                                        <a href="#">
+                                        <a href="{% url 'shopping_cart' %}">
                                             <i class="fa fa-shopping-basket"></i>
                                         </a>
                                     </li> 
@@ -96,7 +95,7 @@
                                 <a href="index.html"><img src="" alt="" /></a>
                             </div>
                         </div>
-                           <div class="col-lg-10 col-md-2">				
+                           <!-- <div class="col-lg-10 col-md-2">				
                           <nav id="nav-menu-container">
                             <ul class="nav-menu float-right">
                               <li class="menu-has-children"><a href="index.html">Home</a>
@@ -127,11 +126,11 @@
                               </li>
                               
                               <li class="menu-has-children"><a href="contact.html">Contact</a></li>
-                              <!-- <li class="menu-has-children"><a href="sell_a_product.html" class="rounded ml-3 text-white sell-btn">Sell My Car</a> -->
-                              </li>			        	          
+                              <li class="menu-has-children"><a href="sell_a_product.html" class="rounded ml-3 text-white sell-btn">Sell My Car</a> -->
+                              <!-- </li>			        	          
                             </ul>
-                          </nav><!-- #nav-menu-container -->
-                      </div>	    		
+                          </nav>
+                      </div>	    		 -->
                     </div>
                 </div>
             </div>
@@ -158,7 +157,7 @@
         <section class="post-area section-gap">
             <div class="container">
                 <div class="row justify-content-center d-flex">
-                    <div class="col-lg-3 sidebar">
+                    <!-- <div class="col-lg-3 sidebar">
                         <div class="single-slidebar-profile">
                             <figure>
                                 <a href="#" class="employer-dashboard-thumb"><img src="{% static 'img/avatar_15.jpg' %}" alt=""></a>
@@ -188,7 +187,9 @@
                             </ul>
                         </div>							
 
-                    </div>
+                    </div> -->
+                    <form class="form"  action="{% url 'updaterecord' %}" method="post" enctype="multipart/form-data"> 
+                     {% csrf_token %}
                     <div class="col-lg-9 post-list">
                         <div class="profile_job_content col-lg-12">
                             <div class="headline">
@@ -199,35 +200,48 @@
                                     
                                     <div class="col-md-6 col-sm-6">
                                         <div class="submit-field">
-                                            <h5>Account Name *</h5>
-                                            <input class="form-control" type="text" placeholder="Account Name">
+                                            <h5>Account Name :</h5>
+                                            <label class="form-control">{{user.first_name}} {{user.last_name}} </label>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-6">
                                         <div class="submit-field">
-                                            <h5>Website *</h5>
-                                            <input class="form-control" type="text" placeholder="website name">
+                                            <h5>Joined At : </h5>
+                                            <label class="form-control">{{user.date_joined}}</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-6">
                                         <div class="submit-field">
-                                            <h5>New Password *</h5>
+                                            <h5>New Password :</h5>
                                             <input class="form-control" type="password" placeholder="new password">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-6">
                                         <div class="submit-field">
-                                            <h5>Confirm Password *</h5>
+                                            <h5>Confirm Password :</h5>
                                             <input class="form-control" type="password" placeholder="confirm password">
                                         </div>
                                     </div>
                                     <div class="col-md-12 col-sm-6">
                                         <div class="submit-field">
-                                            <h5>Email *</h5>
-                                            <input class="form-control" type="email" placeholder="example@example.com">
+                                            <h5>Email :</h5>
+                                            <label class="form-control">{{user.email}}</label>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-sm-6">
+                                        <div class="submit-field">
+                                            <h5>First Name *</h5>
+                                            <input class="form-control" type="text" value="{{user.first_name}}" name="first_name">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="submit-field">
+                                            <h5>Last Name *</h5>
+                                            <input class="form-control" type="text" value="{{user.last_name}}" name="last_name">
+                                            <input class="form-control" type="text" value="{{user.id}}" name="id" hidden>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-md-6 col-sm-6">
                                         <div class="submit-field">
                                             <h5>Profile Image *</h5>
                                             <div class="careerfy-fileUpload">
@@ -235,8 +249,8 @@
                                                 <input type="file" class="careerfy-upload">
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6 col-sm-12">
+                                    </div> -->
+                                    <!-- <div class="col-md-6 col-sm-12">
                                         <div class="submit-field">
                                             <h5>Country *</h5>
                                             <select class="form-control">
@@ -247,18 +261,18 @@
                                               <option>Pakistan</option>
                                             </select>
                                         </div>
-                                    </div>										
-                                    <div class="col-md-12 col-sm-12">
+                                    </div>										 -->
+                                    <!-- <div class="col-md-12 col-sm-12">
                                         <div class="submit-field">
                                             <h5>Description *</h5>
                                             <textarea class="form-control" rows="5" placeholder="Nulla bibendum commodo rhoncus. Sed mattis magna nunc, ac varius quam pharetra vitae. Praesent vitae ipsum eu magna pretium aliquam. Curabitur interdum quis velit non tincidunt.Donec pretium gravida erat, a faucibus velit egestas eget."></textarea>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
 
-                        <div class="profile_job_content col-lg-12 mt-5">
+                        <!-- <div class="profile_job_content col-lg-12 mt-5">
                             <div class="headline">
                                 <h3>Biling Information</h3>
                             </div>
@@ -461,15 +475,63 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="add_job_btn col-lg-12 mt-5">
-                            <div class="submit-field">
-                                 <button type="submit" class="job_detail_btn">Submit</button>
-                            </div>
-                        </div>															
+                        </div> -->
+                        
 
+                       															
+                        <div class="container">
+                            <h4>View Which Car Added To The Cart</h4>
+                            <!-- Trigger the modal with a button -->
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">View</button><br></br>
+                          
+                            <!-- Modal -->
+                            <div class="modal fade" id="myModal" role="dialog">
+                              <div class="modal-dialog">
+                              
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h4 class="modal-title">Cart</h4>
+                                  </div>
+                                  <div class="modal-body">
+                                    {% for customers in customer %}
+                                    <table>
+                                        <tr>
+                                            <td style="font-weight: bold;">Car name :</td>
+                                            <td>{{customers.carnameid}}</td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: bold;">Car Type :</td>
+                                            <td>{{cartypenames}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: bold;">Car Company :</td>
+                                            <td>{{carscompanynames}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-weight: bold;">Car prize :</td>
+                                            <td>{{price}}</td>
+                                        </tr>
+                                        
+                                    </table>
+                                    {% endfor %}
+                                    
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                  </div>
+                                </div>
+                                
+                              </div>
+                            </div>
+                            <div class="row">
+                                <div class="col d-flex justify-content-end">
+                                  <button class="btn btn-primary" type="submit">Save Changes</button>
+                                </div>
+                              </div>
                     </div>
-                    
+                </form>
                 </div>
             </div>	
         </section>

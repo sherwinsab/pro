@@ -509,9 +509,46 @@ def callback(request):
         return render(request, "callback.html", context={"status": order.status})
     
 
-def user_profile(request):
-    template = loader.get_template('user_profile.html')
-    return HttpResponse(template.render())
+def userprofile(request):
+    if 'username' in request.session:
+        customer = Order.objects.filter(customerid=request.user)
+        carnameid = customer[0].carnameid
+
+        car_company = DETAILS.objects.filter(car_name=carnameid).values('car_company')
+        car_company_name = COMPANY.objects.filter(pk=car_company[0].get("car_company")).values('name')
+        carscompanynames = car_company_name[0].get("name")
+    
+
+        car_type = DETAILS.objects.filter(car_name=carnameid).values('car_type')
+        car_type_name = TYPE.objects.filter(pk=car_type[0].get("car_type")).values('name')
+        cartypenames = car_type_name[0].get("name")
+
+        contactnumber = customer[0].ContactNumber
+        price = int(customer[0].total)
+
+        return render(request,'user_profile.html',{'contactnumber':contactnumber,'price':price,'customer':customer,'carscompanynames':carscompanynames,'cartypenames':cartypenames})
+    return redirect('signin')
+
+def updaterecord(request):
+ if 'username' in request.session:
+    if request.method == 'POST':
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        id = request.POST['id']
+        # about = request.POST['about']
+        # skills = request.POST['skills']
+        # image = request.FILES.get('avatar')
+    #   password = request.POST['password']
+        user = User.objects.get(id=id)
+        user.first_name = first_name
+        user.last_name = last_name
+
+        # user.about = about
+        # user.skills = skills 
+        # user.image = image
+    #   user.password = password
+        user.save()
+        return redirect('userprofile') 
 
 def favourite_products(request):
     template = loader.get_template('favourite_products.html')
