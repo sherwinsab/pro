@@ -153,10 +153,14 @@ def taxinfo(request,pk):
 def booknow(request,pk):
     if 'username' in request.session:
         CARDETAILS = DETAILS.objects.get(pk=pk)
+        data = {
+            "id": CARDETAILS.id,
+            "user" : request.user
+        }
         total = request.session.get('total')
         insurance = request.session.get('Insurance')
         
-        return render(request,'booknow.html',{'CARDETAILS':CARDETAILS,'total':total,'insurance':insurance}) 
+        return render(request,'booknow.html',{'CARDETAILS':CARDETAILS,'total':total,'insurance':insurance,'data':data}) 
     return redirect('signin')
 
 def add_to_cart(request, oid):
