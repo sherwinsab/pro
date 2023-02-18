@@ -29,6 +29,19 @@
         <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
         <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"> </script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"> </script>
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <style>
+            
+            .fa-star {
+                font-size : 50px;
+                align-content: center;
+            }
+             
+            </style>
     </head>
     <body>
 
@@ -207,6 +220,81 @@
         </section>
        
         <!-- End Shopping Cart Area -->
+        <section class="cart_area mb-30 pt-10">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="cart_content col-lg-10">
+                        <form action="{% url 'rating' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="container">
+                            <h2 style="margin-top: 50px;">Rate The Car</h2>
+                            <div class="con">
+                                <h3 style="margin-top : 80px; color: green;">Rate our product :-</h3>
+                                
+                                    
+                                <input type="radio" name="rating" value="1" id="st1" style="display:none" />
+                                <label for="st1">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </label>
+                                <input type="radio" name="rating" value="2" id="st2" style="display:none" />
+                                <label for="st2">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </label>
+                                <input type="radio" name="rating" value="3" id="st3" style="display:none" />
+                                <label for="st3">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </label>
+                                <input type="radio" name="rating" value="4" id="st4" style="display:none" />
+                                <label for="st4">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </label>
+                                <input type="radio" name="rating" value="5" id="st5" style="display:none" />
+                                <label for="st5">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col d-flex justify-content-end">
+                                <button class="btn btn-primary" type="submit">Sumbit</button>
+                            </div>
+                        </div>
+                        
+                        <script>
+                             $(document).ready(function () {
+            $("#st1").click(function () {
+                $("label i").css("color", "black");
+                $("#st1 + label i").css("color", "yellow");
+                console.log($("#st1").attr("value"));
+            });
+            $("#st2").click(function () {
+                $("label i").css("color", "black");
+                $("#st1 + label i, #st2 + label i").css("color", "yellow");
+                console.log($("#st2").attr("value"));
+            });
+            $("#st3").click(function () {
+                $("label i").css("color", "black")
+                $("#st1 + label i, #st2 + label i, #st3 + label i").css("color", "yellow");
+                console.log($("#st3").attr("value"));
+            });
+            $("#st4").click(function () {
+                $("label i").css("color", "black");
+                $("#st1 + label i, #st2 + label i, #st3 + label i, #st4 + label i").css("color", "yellow");
+                console.log($("#st4").attr("value"));
+            });
+            $("#st5").click(function () {
+                $("label i").css("color", "black");
+                $("#st1 + label i, #st2 + label i, #st3 + label i, #st4 + label i, #st5 + label i").css("color", "yellow");
+                console.log($("#st5").attr("value"));
+            });
+        });
+                        </script>
+                        </form>
+        
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <section class="blog-posts-area pb-120">
             <div class="container">

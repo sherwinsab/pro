@@ -176,17 +176,18 @@
         <!-- End banner Area -->	
         
         <!-- Start item detail Area -->
-    <section class="item-product-area">
+    
+    <section class="blog-posts-area pb-120">
     <div class="container">
         <div class="row">
-            <form method="get">
+            <form method="get" style="margin: 30px;">
                 {{myFilter.form}} <input style="color: rgb(255, 255, 255);font-size: large;background-color: rgb(255, 6, 6);
                 font-family: 'Times New Roman', Times, serif;" type="submit" value=" Search ">
                 
             </form>
     {% if myFilter.qs %}
     {% for CARDETAILS in myFilter.qs %}
-        <div class="col-md-3">
+        <div class="col-md-4">
             <br></br><div class="card">
                 <img src="{{CARDETAILS.image3.url}}" class="card-img-top" alt="pic of the car">
                 <div class="card-body">

@@ -31,9 +31,7 @@ urlpatterns = [
     path('trail4/', views.trail3, name='trail4'),
     path('trail5/',views.trail5, name='trail5'),
     path('trail6/',views.trail6, name='trail6'),
-
-
-
+    path('rating/',views.rating, name='rating'),
 
     path('reset_password/',
     auth_views.PasswordResetView.as_view(template_name ='password_reset.html'),
