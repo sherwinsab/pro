@@ -22,8 +22,12 @@ import io
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
+from django.db.models import Sum
+
 # import numpy as np
 # import pandas as pd
+
+from .recommend import rec_obj
 
 
 def index(request):
@@ -93,13 +97,30 @@ def product_listing(request):
 
 def product_listing_detail(request,pk):
     if 'username' in request.session:
+        #code for recommendtion
+        recommendcardetalis = []
+        orderDETAILS = Order.objects.filter(carnameid=pk)
+        if orderDETAILS:
+            result = rec_obj.process_recom(pk)
+           
+            for i in result:
+                data = DETAILS.objects.get(pk=i)
+                recommendcardetalis.append({
+                        "carname": data.car_name,
+                        "image": data.image3,
+                        "price": data.price,
+                        "id":data.id,
+                        "average_rating":round(data.average_rating,2)
+                        # Add more fields here as needed
+                    })     
         
+        #code for selected car detalis    
         CARDETAILS = DETAILS.objects.get(pk=pk)
         data = {
             "id": CARDETAILS.id,
             "user" : request.user
         }
-        return render(request,'product_listing_detail.html',{'CARDETAILS':CARDETAILS,'data':data}) 
+        return render(request,'product_listing_detail.html',{'CARDETAILS':CARDETAILS,'data':data,'recommendcardetalis':recommendcardetalis}) 
 
     return redirect('signin')
     
@@ -455,14 +476,11 @@ def order_payment(request):
             "order": order,
             }
             )
-            print("before",request)
         return render(request, "payment.html")
 #from here edit
 @csrf_exempt
 def callback(request):
-    print("after:",request.POST)
     def verify_signature(response_data):
-        print("123",response_data)
         client = razorpay.Client(auth=("rzp_test_1sFSQT1jdm1swd", "PYkvqUl4Zx2EfNeRAAf9FXJs"))
         return client.utility.verify_payment_signature(response_data)
     if "razorpay_signature" in request.POST:
@@ -478,7 +496,6 @@ def callback(request):
         
 
         if verify_signature(request.POST):
-            print("true")
             order.status = PaymentStatus.SUCCESS
             order.save()
             #reduce 25000 advance from total  amount
@@ -497,12 +514,10 @@ def callback(request):
             customer.save()
             return render(request, "callback.html", context={"status": order.status})
         else:
-            print("false")
             order.status = PaymentStatus.FAILURE
             order.save()
             return render(request, "callback.html", context={"status": order.status})
     else:
-        print("truefalse")
         payment_id = json.loads(request.POST.get("error[metadata]")).get("payment_id")
         provider_order_id = json.loads(request.POST.get("error[metadata]")).get(
         "order_id"
@@ -558,10 +573,27 @@ def updaterecord(request):
 def rating(request):
     if 'username' in request.session:
         customer = Order.objects.get(customerid=request.user)
-        print(customer)
-        rate = request.POST.get('rating')
+
+        rate = int(request.POST.get('rating'))
         customer.rating = rate
+        sum_of_ratings = 0
+        car_filter = Order.objects.filter(carnameid=customer.carnameid)
+        
+        car_filter_count = car_filter.count() + 1
+        if car_filter.exists():
+            sum_of_ratings = car_filter.aggregate(sum_of_ratings=Sum('rating'))['sum_of_ratings']
+        else:
+            sum_of_ratings = 0 
+        sum_of_ratings += rate
+
+        average_rating = sum_of_ratings/car_filter_count
+        print("average_rating:",average_rating)
+        customer.average_rating = average_rating
         customer.save()
+        car_detail = DETAILS.objects.get(id=customer.carnameid.id)
+        car_detail.average_rating = average_rating
+        car_detail.save()
+        car_filter.update(average_rating = average_rating)
 
         return redirect('shopping_cart')
     return redirect('signin')

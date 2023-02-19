@@ -155,6 +155,8 @@ class DETAILS(models.Model):
         max_length=255,
         verbose_name="What Type Of Energy Using (Fuel TYPE)"
         )
+    average_rating = models.FloatField(default=0.0,null=True,verbose_name="Average Rating Of Car")
+    
     def __str__(self):
         return self.car_name
 
@@ -186,6 +188,8 @@ class Order(models.Model):
     regst_amt = models.FloatField(default=None,null=True,verbose_name="Registration Amount")
     insuramt = models.FloatField(default=None,null=True,verbose_name="Insurance Amount")
     rating = models.IntegerField(default=0,null=True,verbose_name="Car Rating")
+    average_rating = models.FloatField(default=0.0,null=True,verbose_name="Average Rating Of Car")
+
     
 # Create your models here.
 
