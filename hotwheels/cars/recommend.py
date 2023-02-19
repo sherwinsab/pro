@@ -10,45 +10,27 @@ class Recommedations():
 
         # Get the ratings and cars from the database
         ratings = Order.objects.all().values('customerid','carnameid','average_rating')
-        # cars = DETAILS.objects.all()
+        
 
         # Convert the ratings to a Pandas DataFrame
         ratings_data = list(ratings.values('customerid','carnameid','average_rating'))
         
         ratings = pd.DataFrame(ratings_data)
-        # Convert the cars to a Pandas DataFrame
-        # cars_data = list(cars.values())
-        # cars = pd.DataFrame(cars_data)
+       
 
         X, user_mapper, car_mapper, user_inv_mapper, car_inv_mapper = self.create_matrix(ratings)
 
-        # car_make = dict(zip(cars['id'], cars['make']))
+  
 
 
 
         # Find similar cars and print their makes
         similar_ids = self.find_similar_cars(car_id, car_mapper, car_inv_mapper, X, k=3)
-        # car_title = car_make[car_id]
+        
         return similar_ids
         
 
-# # Calculate the number of ratings, unique cars, and unique users
-# n_ratings = len(ratings)
-# n_cars = len(ratings['car_id'].unique())
-# n_users = len(ratings['user_id'].unique())
 
-# # Calculate the average number of ratings per user and per car
-# avg_ratings_per_user = round(n_ratings / n_users, 2)
-# avg_ratings_per_car = round(n_ratings / n_cars, 2)
-
-# # Create a user frequency table
-# user_freq = ratings[['user_id', 'car_id']].groupby('user_id').count().reset_index()
-# user_freq.columns = ['user_id', 'n_ratings']
-
-# # Create a car statistics table
-# car_stats = ratings.groupby('car_id')[['rating']].agg(['count', 'mean'])
-
-# Create a sparse matrix for the ratings data
     def create_matrix(self, df):
         
         N = len(df['customerid'].unique())
