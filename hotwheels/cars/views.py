@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from django.shortcuts import redirect
 from django.contrib import messages
-from .models import TYPE,COMPANY,DETAILS,Order,AdditionalAccessories,Taxandother,INSURANCE,Payment
+from .models import TYPE,COMPANY,DETAILS,Order,AdditionalAccessories,Taxandother,INSURANCE,Payment,TestDrive
 from .filters import CarDETAILSFilter
 import ast
 from datetime import datetime,timedelta
@@ -123,7 +123,153 @@ def product_listing_detail(request,pk):
         return render(request,'product_listing_detail.html',{'CARDETAILS':CARDETAILS,'data':data,'recommendcardetalis':recommendcardetalis}) 
 
     return redirect('signin')
+
+def testdrive_booking(request,pk):
+    if 'username' in request.session:
+        #code for selected car detalis    
+        CARDETAILS = DETAILS.objects.get(pk=pk)
+        data = {
+            "id": CARDETAILS.id,
+            "user" : request.user
+        }
+        return render(request,'testdrive_booking.html',{'CARDETAILS':CARDETAILS,'data':data})
+    return redirect('signin')
+
+def testdrive_booked(request, oid):
+    if 'username' in request.session:
+        if request.method =='POST':
+            Address = request.POST['Address']
+            LicenceIDNumber = request.POST['LicenceIDNumber']
+            Pincode = request.POST['Pincode']
+            ContactNumber = request.POST['ContactNumber']
+            State = request.POST['State']
+            City = request.POST['City']
+            
+            carnameid= DETAILS.objects.get(id=oid)
+            
+            customer=TestDrive(Address=Address,LicenceIDNumber=LicenceIDNumber,Pincode=Pincode,ContactNumber=ContactNumber,
+            State=State,City=City,carnameid=carnameid)
+            customer.customerid = request.user
+            customer.save();
+
+
+        return redirect('testdrivecart')
+    return redirect('signin')
+
+def testdrivecart(request):
+    if 'username' in request.session:
+        
+        customer = TestDrive.objects.filter(customerid=request.user)
+        if not customer:
+            return render(request,'trail4.html')
+        else:
+            carnameid = customer[0].carnameid
+        
+        #imagefkref
+
+        #carcompanyfkref
+            car_company = DETAILS.objects.filter(car_name=carnameid).values('car_company')
+            car_company_name = COMPANY.objects.filter(pk=car_company[0].get("car_company")).values('name')
+            carscompanynames = car_company_name[0].get("name")
+
+        #cartypefkref
+            car_type = DETAILS.objects.filter(car_name=carnameid).values('car_type')
+            car_type_name = TYPE.objects.filter(pk=car_type[0].get("car_type")).values('name')
+            cartypenames = car_type_name[0].get("name")
+
+        #carprice
+            price = DETAILS.objects.filter(car_name=carnameid).values('price')
+            priceof = price[0].get("price")
+            
+            return render(request,'test_drive_cart.html',{'customer':customer,'carscompanynames':carscompanynames,'cartypenames':cartypenames,'priceof':priceof}) 
+    return redirect('signin')
+
+def testdrive_pdf(request):
+    #create bytestream buffer
+    buf = io.BytesIO()
+    #create canvas
+    c = canvas.Canvas(buf,pagesize=letter, bottomup=0)
+    c.drawString(10,20,"HotWheels")
+    c.drawString(13, 770, "HOTWHEELS")
+    c.rect(10, 23, 593, 750, stroke=1)
+    #create text obj
+    textob = c.beginText()
+    textob.setTextOrigin(inch, inch)
+    textob.setFont("Helvetica",14)
     
+    #add lines text
+    # lines = [
+    #         "This is Line 1",
+    #         "This is Line 2",
+    #         "This is Line 3",
+    # ]
+    customer = TestDrive.objects.filter(customerid=request.user)
+    carnameid = customer[0].carnameid
+
+    car_company = DETAILS.objects.filter(car_name=carnameid).values('car_company')
+    car_company_name = COMPANY.objects.filter(pk=car_company[0].get("car_company")).values('name')
+    carscompanynames = car_company_name[0].get("name")
+
+#cartypefkref
+    car_type = DETAILS.objects.filter(car_name=carnameid).values('car_type')
+    car_type_name = TYPE.objects.filter(pk=car_type[0].get("car_type")).values('name')
+    cartypenames = car_type_name[0].get("name")
+
+#carprice
+    # price = DETAILS.objects.filter(car_name=carnameid).values('price')
+    # priceof = price[0].get("price")
+    
+    name = customer[0].customerid
+    auth_cust = User.objects.filter(username=name)
+    names = auth_cust[0].first_name + ' ' + auth_cust[0].last_name
+    email = auth_cust[0].email
+    lines =[]
+    
+    for order in customer:
+        
+        c.drawString(33, 71, "NAME:",lines.append("                               " +  names))
+        c.drawString(33, 88, "CAR:", lines.append("                               " + str(order.carnameid))),
+        c.drawString(33, 105, "COMPANY:",lines.append("                               " +  carscompanynames)),
+        c.drawString(33, 122, "TYPE:",lines.append("                               " +  cartypenames)),
+        c.drawString(33, 139, "DATE OF BOOKING:",lines.append("                               " +  str(order.Date_of_booking))),
+        c.drawString(33, 156, "EMAIL:",lines.append("                               " +  email)),
+        c.drawString(33, 173, "ADDRESS:",lines.append("                               " +  str(order.Address))),
+        c.drawString(33, 190, "LICENCE ID:",lines.append(str("                               " +  order.LicenceIDNumber))),
+        c.drawString(33, 204, "PINCODE:",lines.append("                               " +  str(order.Pincode))),
+        c.drawString(33, 239, "APPLICATION CODE:",lines.append("                               " +  str(order.ContactNumber))),
+        c.drawString(33, 222, "PHONE NUMBER:",lines.append("                               " +  str(order.application_code))),
+        c.drawString(33, 256, "STATE:",lines.append(str("                               " +  order.State))),
+        c.drawString(33, 273, "CITY:",lines.append(str("                               " +  order.City))),
+        lines.append("")
+    #loop
+    for line in lines:
+        textob.textLine(line)
+
+    c.drawText(textob)
+    c.showPage()
+    c.save()
+    buf.seek(0)
+
+    return FileResponse(buf, as_attachment=True, filename='TestBooking.pdf')
+
+def testdrivecancel(request, oid):
+    if 'username' in request.session:
+        customer = TestDrive.objects.get(id=oid)
+        customer.delete()
+        return redirect('product_listing')
+    return redirect('signin')
+
+def testdriverating(request):
+    if 'username' in request.session:
+        customer = TestDrive.objects.get(customerid=request.user)
+
+        rate = int(request.POST.get('rating'))
+        customer.Test_drive_rating = rate
+        customer.save()
+        return redirect('testdrivecart')
+    return redirect('signin')
+
+
 def addaccessories(request,pk):
     if 'username' in request.session:
         order_verify = Order.objects.filter(customerid=request.user)
@@ -587,7 +733,7 @@ def rating(request):
         sum_of_ratings += rate
 
         average_rating = sum_of_ratings/car_filter_count
-        print("average_rating:",average_rating)
+        
         customer.average_rating = average_rating
         customer.save()
         car_detail = DETAILS.objects.get(id=customer.carnameid.id)

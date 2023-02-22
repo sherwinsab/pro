@@ -53,7 +53,7 @@
                                     <li>
                                         <a href="#">
                                             <img src="{% static 'img/boogyman.png' %}" alt="">
-                                            NAME  <span> {{user.first_name}}
+                                            NAME  <span> {{user.first_name}} 
                                             <i class="fa fa-angle-down"></i></span>
                                         </a>
                                         <ul class="profile">
@@ -89,7 +89,7 @@
                     </div>
                 </div>
             </div>
-            <div class="header-bottom">
+            <!-- <div class="header-bottom">
                 <div class="container">
                     <div class="row align-items-center d-flex">
                         <div class="col-lg-2 col-md-2">
@@ -100,47 +100,42 @@
                            <div class="col-lg-10 col-md-2">				
                           <nav id="nav-menu-container">
                             <ul class="nav-menu float-right">
-                              <li class="menu-has-children"><a href="{% url 'index' %}">Home</a>
+                              <li class="menu-has-children"><a href="index.html">Home</a>
                               </li>
                               <li class="menu-has-children"><a href="">Pages</a>
                                 <ul>
-                                    <li><a href="">Product Listing</a></li>
-                                    <li><a href="">Product Listing Detail</a></li>
-                                    <!-- <li><a href="search.html">search</a></li> -->
-                                    <!-- <li><a href="upload_products.html">Upload Products</a></li> -->
-                                    <!-- <li><a href="favourite_products.html">Favourite Products</a></li> -->
-                                    <li><a href="">Signin Page</a></li>
-                                    <li><a href="">Signup Page</a></li>					
-                                    <li><a href="">Terms & Conditions</a></li>
-                                    <li><a href="">Privacy Policy</a></li>
-                                    <li><a href="">404 Page</a></li>
+                                    <li><a href="product_listing.html">Product Listing</a></li>
+                                    <li><a href="product_listing_detail.html">Product Listing Detail</a></li>
+                                    <li><a href="search.html">search</a></li>
+                                    <li><a href="upload_products.html">Upload Products</a></li>
+                                    <li><a href="favourite_products.html">Favourite Products</a></li>
+                                    <li><a href="signin.html">Signin Page</a></li>
+                                    <li><a href="signup.html">Signup Page</a></li>					
+                                    <li><a href="terms_and_conditions.html">Terms & Conditions</a></li>
+                                    <li><a href="privcy_policy.html">Privacy Policy</a></li>
+                                    <li><a href="404.html">404 Page</a></li>
                                 </ul>
                               </li>
-                              <!-- <li class="menu-has-children"><a href="#">About</a> -->
-                                <!-- about_us.html -->
+                              <li class="menu-has-children"><a href="about_us.html">About</a>
                               </li>  
-                              <!-- <li class="menu-has-children"><a href="#">Services</a> -->
-                                <!-- services.html -->
+                              <li class="menu-has-children"><a href="services.html">Services</a>
                               </li>
-                              <!-- <li class="menu-has-children"><a href="#">Blog</a> -->
-                                <!-- blog_home.html -->
+                              <li class="menu-has-children"><a href="blog_home.html">Blog</a>
                                   <ul>
-                                    <li><a href="#">Blog Page</a></li>
-                                    <!-- blog_home.html -->
-                                    <li><a href="#">Blog Detail</a></li>
-                                    <!-- blog_single.html -->
+                                    <li><a href="blog_home.html">Blog Page</a></li>
+                                    <li><a href="blog_single.html">Blog Detail</a></li>
                                 </ul>
                               </li>
                               
-                              <!-- <li class="menu-has-children"><a href="contact.html">Contact</a></li> -->
-                              <!-- <li class="menu-has-children"><a href="#" class="rounded ml-3 text-white sell-btn">My Cart</a> -->
-                              </li>			        	          
+                              <li class="menu-has-children"><a href="contact.html">Contact</a></li>
+                              <li class="menu-has-children"><a href="sell_a_product.html" class="rounded ml-3 text-white sell-btn">Sell My Car</a> -->
+                              <!-- </li>			        	          
                             </ul>
-                          </nav><!-- #nav-menu-container -->
+                          </nav>
                       </div>	    		
                     </div>
                 </div>
-            </div>
+            </div> -->
           </header><!-- #header -->
         
 
@@ -151,39 +146,17 @@
                 <div class="row d-flex align-items-center justify-content-center">
                     <div class="about-content col-lg-12">
                         <h1 class="text-white">
-                            Product Listing	Detail
+                            Book Now Fill Your Details Here
                         </h1>	
-                        <p class="text-white link-nav"><a href="{% url 'index' %}">Home </a>  <span class="lnr lnr-arrow-right"></span> <a href="{% url 'product_listing' %}"> Product Listing</a> <span class="lnr lnr-arrow-right"></span> Product Listing detail</p>
+                        <p class="text-white link-nav"><a href="{% url 'index' %}">Home </a>  <span class="lnr lnr-arrow-right"></span> <a href="{% url 'product_listing' %}"> Product Listing</a> <span class="lnr lnr-arrow-right"></span> <a href="/cars/product_listing_detail/{{CARDETAILS.id}}"> Product Listing detail</a> <span class="lnr lnr-arrow-right"></span> Book Now</p>
                     </div>											
                 </div>
             </div>
         </section>
         <!-- End banner Area -->	
-        <section class="item-product-area">
-            
-            <div class="container">
-                <h1 style="text-align: center;">Car Recommendtions</h1><br>
-            <div class="row">
-                {% for i in recommendcardetalis %}
-                <div class="col-sm-4 card">
-                  
-                    
-                    <img src="{{i.image.url}}" class="card-img-top" alt="pic of the car">
-                      <h5 class="card-title">{{i.carname}}</h5>
-                      <p class="card-text">₹ {{i.price}}</p>
-                      <p class="card-text">Rating {{i.average_rating}}</p>
-                      <a href="/cars/product_listing_detail/{{i.id}}" class="btn btn-info btn-sm">More</a>
-                    
-                  
-                </div>
-                {% endfor %}
-              </div>
-            </div>
-              
-        </section>
         
         <!-- Start item detail Area -->
-        <section class="blog-posts-area pb-10">
+        <section class="item-detail-area-2 section-gap">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-9 order-sm-2 post-list blog-post-list-2">
@@ -240,94 +213,31 @@
 
                             <div class="content-wrap">
                                 <h2>
-                                    About {{CARDETAILS.car_company}} {{CARDETAILS.car_name}} :
+                                    {{user.first_name}} {{user.last_name}} You Are Booking <h4 style="color:rgb(11, 10, 10)">Type : {{CARDETAILS.car_type}}</h4><br> <h4 style="color:rgb(0, 0, 0)">Company : {{CARDETAILS.car_company}}</h4><br> <h4 style="color:rgb(7, 7, 7)">Car Name : {{CARDETAILS.car_name}}</h4>  
                                 </h2>
+                                <blockquote class="generic-blockquote mt-3" ><p style="font-weight: bold;">Enter The Necessary Information Then Submit To Proceed The Booking. Make Sure you pay The Booking Amount "All Payments Are Done In Cart" , Wiating Period Of The {{CARDETAILS.car_name}} Is ().                        
+                                </p></blockquote>
+                                <h2 style="text-align: center;">FILL THE FORM</h2>
+                                <form action="{% url 'testdrive_booked' oid=CARDETAILS.id %}" method="post" onsubmit="return validateInput()">
+                                {% csrf_token %}
                                 <p>
-                                    read here add fld in db
+                                    <label for="DETAILS" style="font-weight: bold;">Address:</label>
+	                                <input name="Address" placeholder="Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Address'" class="common-input mb-20 form-control" onkeyup="validateInput(this)" required>
+                                    <label for="DETAILS" style="font-weight: bold;">Licence ID Number:</label>
+	                                <input name="LicenceIDNumber" placeholder="Licence ID Number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Licence ID Numbe'" class="common-input mb-20 form-control" onkeyup="validateInput(this)" required>
+                                    <label for="DETAILS" style="font-weight: bold;">Pincode:</label>
+	                                <input name="Pincode" placeholder="Pincode" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Pincode'" class="common-input mb-20 form-control" onkeyup="validateInput(this)" required>
+                                    <label for="DETAILS" style="font-weight: bold;">Contact Number:</label>
+	                                <input name="ContactNumber" placeholder="Contact Number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Contact Number'" class="common-input mb-20 form-control" onkeyup="validateInput(this)" required>
+                                    <label for="DETAILS" style="font-weight: bold;">State:</label>
+	                                <input name="State" placeholder="State" onfocus="this.placeholder = ''" onblur="this.placeholder = 'State'" class="common-input mb-20 form-control" onkeyup="validateInput(this)" required>
+                                    <label for="DETAILS" style="font-weight: bold;">City:</label>
+	                                <input name="City" placeholder="City" onfocus="this.placeholder = ''" onblur="this.placeholder = 'City'" class="common-input mb-20 form-control" onkeyup="validateInput(this)" required>
                                 </p>
-
-                                <blockquote class="generic-blockquote mt-3">
-                                    qoutes add fld in db
-                                </blockquote>
-                                <p>
-                                    read here add fld in db
-                                </p>		
+                                <input type="submit" value="Submit" class="btn btn-success contact btn-block">
+                            </form>
                             </div>
-
-                            <!-- Nav tabs -->
-                          <ul class="nav nav-tabs general">
-                            <li class="nav-item">
-                              <a class="nav-link active" data-toggle="tab" href="#info">General Information</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" data-toggle="tab" href="#info1">Features & Options</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" data-toggle="tab" href="#info2">Vehicle Overview</a>
-                            </li>
-                          </ul>
-                          <!-- Tab panes -->
-                          <div class="tab-content">
-                            <div id="info" class="container tab-pane active"><br>
-                               <h3 class="">{{CARDETAILS.car_company}} {{CARDETAILS.car_name}}</h3><br>
-                               <p class="">add fld in db</p><br>
-                               <p class="">add fld in db</p>
-                            </div>
-                            <div id="info1" class="container tab-pane fade"><br>
-                              <h3 class="">Features</h3><br>
-                              <table class="table table-bordered">
-                                  <thead>
-                                    <tr>
-                                      <th>Air Conditioning</th>
-                                      <th>Yes</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <th>Alloy wheels</th>
-                                      <td>Yes</td>
-                                    </tr>
-                                    <tr>
-                                      <th>Anti-Lock Brakes (ABS)</th>
-                                      <td>Yes</td>
-                                    </tr>
-                                    <tr>
-                                      <th>Anti-Theft</th>
-                                      <td colspan="1">Yes</td>
-                                    </tr>
-                                    <tr>
-                                      <th>Anti-Starter</th>
-                                      <td colspan="1">Yes</td>
-                                    </tr>
-                                    <tr>
-                                      <th>Alloy Wheels</th>
-                                      <td colspan="1">Yes</td>
-                                    </tr>
-                                    <tr>
-                                      <th>Security System</th>
-                                      <td colspan="1">Yes</td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                            </div>
-                            <div id="info2" class="container tab-pane fade">
-                                 <h4>
-                                    {{CARDETAILS.car_company}} {{CARDETAILS.car_name}} {{CARDETAILS.car_type}}
-                                </h4>
-
-                                <p>
-                                   add db here
-                                </p><br>  
-                               
-                                <p>
-                                    add db here
-                                </p><br> 
-                                
-                                <p>
-                                   add db here
-                                </p>                                                                                                                                                            
-                            </div>
-                          </div>  
+                      
                             <div class="bottom-meta">
                                 <div class="user-details row align-items-center">
                                     <div class="social-wrap col-lg-12">
@@ -346,118 +256,15 @@
                                     </div>
                                 </div>
                             </div>
-
-                        <!-- Start nav Area -->
-                        <!-- <section class="nav-area">
-                            <div class="container">
-                                <div class="row justify-content-between">
-                                    <div class="col-sm-6 nav-left justify-content-start d-flex">
-                                        <div class="thumb">
-                                            <img class="img-fluid" src="{% static 'img/icon1.png' %}" alt="">
-                                        </div>
-                                        <div class="post-details">
-                                            <p>Prev Post</p>
-                                            <h4 class="text-uppercase"><a href="#">Ferrari Hyundai</a></h4>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 nav-right justify-content-end d-flex">
-                                        <div class="post-details">
-                                            <p>Prev Post</p>
-                                            <h4 class="text-uppercase"><a href="#">Nissan JR</a></h4>
-                                        </div>             
-                                        <div class="thumb">
-                                            <img class="img-fluid" src="{% static 'img/icon2.png' %}" alt="">
-                                        </div>                         
-                                    </div>
-                                </div>
-                            </div>    
-                        </section> -->
                         <!-- End nav Area -->
                         
                         <!-- Nav tabs -->
-                          <ul class="nav nav-tabs">
-                            <li class="nav-item">
-                              <a class="nav-link active" data-toggle="tab" href="#home">Comments (0)</a>
-                            </li>
-                            <li class="nav-item">
-                              <a class="nav-link" data-toggle="tab" href="#menu2">Items FAQ</a>
-                            </li>
-                          </ul>
-
-                          <!-- Tab panes -->
-                          <div class="tab-content">
-                            <div id="home" class="container tab-pane active"><br>
-                                <h1>Under Maintenance</h1>
-                               <div class="comment-sec-area">
-                                    <div class="comment-list">
-                                        <div class="single-comment justify-content-between d-flex">
-                                            <div class="user justify-content-between d-flex">
-                                                <div class="thumb">
-                                                    <img src="" alt=""><p>Photo</p>
-                                                </div>
-                                                <div class="desc">
-                                                    <h5><a href="#">Name</a></h5>
-                                                    <p class="date">Date</p>
-                                                    <p class="comment">
-                                                        Comment!
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="reply-btn">
-                                                   <a href="" class="btn-reply text-uppercase">reply</a> 
-                                            </div>
-                                        </div>
-                                    </div>                                                                                                                                                             
-                                </div>
-                            </div>
-                            <div id="menu2" class="container tab-pane fade">
-                                 <h4>
-                                    Read Before Buying
-                                </h4>
-
-                                <p>
-                                    db add
-                                </p><br>  
-                                <h4>
-                                    Our Return Policy
-                                </h4>
-
-                                <p>
-                                    db add
-                                </p><br> 
-                                <h4>
-                                    Shipping and Delivery
-                                </h4>
-
-                                <p>
-                                    db add
-                                </p>                                                                                                                                                            
-                            </div>
-                          </div>
+                       
                         
                         <!-- Start commentform Area -->
-                        <section class="commentform-area">
-                            <div class="container">
-                                <h5 class="pb-50">Leave a Reply (Under Maintenance)</h5>
-                                <div class="row flex-row d-flex">
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" class="common-input mb-20 form-control" required="" type="text">
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <input name="email" placeholder="Enter your email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your email'" class="common-input mb-20 form-control" required="" type="email">
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-12">
-                                        <input name="Subject" placeholder="Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your Subject'" class="common-input mb-20 form-control" required="" type="text">
-
-                                    </div>
-                                    <div class="col-lg-8 col-md-6">
-                                        <textarea class="form-control mb-10" name="message" placeholder="Messege" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
-                                        <a class="primary-btn mt-20" href="#">Comment</a>
-                                    </div>
-                                </div>
-                            </div>    
-                        </section>
+                        <!-- <section class="commentform-area">
+                            
+                        </section> -->
                         <!-- End commentform Area -->
 
 
@@ -469,18 +276,8 @@
                             <hr class="line-separator">
                             <div class="row mt-4 mb-4">
                                 <div class="col-md-5 col-6 pt-1">
+                                    <h2>{{CARDETAILS.car_name}}</h2><br>
                                     <h3>₹<small>{{CARDETAILS.price}}</small></h3>
-                                </div>
-                                <div class="col-md-7 col-6">
-                                    <!-- <div class="dropdown">
-                                        <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-                                            Regular
-                                        </button>
-                                        <div class="dropdown-menu" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
-                                            <a class="dropdown-item" href="#">Extended</a>
-                                            <a class="dropdown-item" href="#">Regular</a>
-                                        </div>
-                                    </div> -->
                                 </div>
                             </div>
                             
@@ -513,7 +310,7 @@
                                         <label for="message-text" class="col-form-label">Message:</label>
                                         <textarea rows="4" class="form-control" id="message-text"></textarea>
                                       </div>
-                                    </form> 
+                                    </form>
                                   </div>
                                   <div class="modal-footer">
                                       <button type="button" class="btn btn-success">Send</button>
@@ -522,11 +319,6 @@
                                 </div>
                               </div>
                             </div>
-                            
-                            <a href="" class="btn btn-primary btn-block"><i class="lnr lnr-heart"></i> Add to Favourites</a>
-                            <a href="/cars/addaccessories/{{CARDETAILS.id}}" class="btn btn-danger btn-block"> Book Now</a>
-                            <a href="/cars/testdrive_booking/{{CARDETAILS.id}}" class="btn btn-danger btn-block"> Book For Test Drive</a>
-
                         </div>
 
                         <div class="item-info-widget">
@@ -584,7 +376,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>		
+                        </div>			
+
                     </div>
                 </div>
             </div>	
@@ -706,6 +499,69 @@
         <script src="{% static 'js/mail-script.js' %}"></script>	 
         <script src="{% static 'js/jquery.touchSwipe.min.js' %}"></script>
         <script src="{% static 'js/bootstrap_carousel_types.js' %}"></script>
-        <script src="{% static 'js/main.js' %}"></script>	
+        <script src="{% static 'js/main.js' %}"></script>
+        <script>
+            function validateInput(input) {
+            
+              var value = input.value;
+            
+             
+              if (input.name == "Address") {
+               
+                if (/^[a-zA-Z-.]+$/.test(value)) {
+               
+                  input.setCustomValidity("");
+                } else {
+                 
+                  input.setCustomValidity("Please enter a valid name (letters only, .)");
+                }
+              }
+
+              if (input.name == "State" || input.name == "City") {
+               
+               if (/^[a-z]+$/.test(value)) {
+              
+                 input.setCustomValidity("");
+               } else {
+                
+                 input.setCustomValidity("Please enter a valid name (small letters only)");
+               }
+             }
+             
+             if (input.name == "LicenceIDNumber") {
+               
+               if (value.length == 12 && /^[A-Z]{2}\d{10}$/.test(value)) {
+              
+                 input.setCustomValidity("");
+               } else {
+                
+                 input.setCustomValidity("Please enter a valid licence ID (e.g. AA0000000000)");
+               }
+             }
+
+             if (input.name == "Pincode") {
+               
+               if (value.length == 6 && /^\d{6}$/.test(value)) {
+              
+                 input.setCustomValidity("");
+               } else {
+                
+                 input.setCustomValidity("Please enter a valid pincode (6 digits)");
+               }
+             }
+
+             if (input.name == "ContactNumber") {
+               
+               if (/^\+91 \d{5} \d{5}$/.test(value)) {
+              
+                 input.setCustomValidity("");
+               } else {
+                
+                 input.setCustomValidity("Please enter a valid phone number in the format +91 XXXXX XXXXX");
+               }
+             }
+
+            }
+            </script>	
     </body>
 </html>

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TYPE,COMPANY,DETAILS,Order,Information,AdditionalAccessories,Taxandother,INSURANCE,Payment
+from .models import TYPE,COMPANY,DETAILS,Order,Information,AdditionalAccessories,Taxandother,INSURANCE,Payment,TestDrive
 from import_export.admin import ImportExportModelAdmin
 from django.http import HttpResponse
 import decimal, csv
@@ -134,4 +134,7 @@ class PaymentAdmin(admin.ModelAdmin):
 admin.site.register(Payment,PaymentAdmin)
 
 
+class TestDriveAdmin(admin.ModelAdmin):
+    list_display = ['customerid','carnameid','Date_of_booking']
+admin.site.register(TestDrive,TestDriveAdmin)
 # Register your models here.
