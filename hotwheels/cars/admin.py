@@ -48,13 +48,32 @@ def export_order(modeladmin, request, queryset):
     buffer = io.BytesIO()
     pdf = canvas.Canvas(buffer,pagesize=letter, bottomup=0)
     
-    
-    
+
     
     order = queryset.values_list('customerid','carnameid','Date_of_booking','Address','LicenceIDNumber','Pincode',
         'ContactNumber','application_code','State','City','Accessorieslist','insurance',
         'total','balance_amount','accssamt','road_tax','regst_amt','insuramt')
+
+    
+
     for Order in order:
+        customername = User.objects.get(id=Order[0])
+        ascarname = DETAILS.objects.get(id=Order[1])
+        tax_id = Order[11][2]
+        
+
+        if tax_id:
+            taxname = INSURANCE.objects.get(id=int(tax_id))
+
+        access_name = ""
+        accessorylist = eval(Order[10])
+        for i in accessorylist:
+            each_access = int(i)
+            access_name += AdditionalAccessories.objects.get(id = each_access).Product + " ,"
+        access_name = access_name.rstrip(",")   
+
+    
+    # handle the case where tax_id is empty
         pdf.drawString(10,20,"HotWheels")
         pdf.drawString(13, 770, "HOTWHEELS")
         pdf.rect(10, 23, 593, 750, stroke=1)
@@ -79,8 +98,8 @@ def export_order(modeladmin, request, queryset):
         pdf.drawString(33, 340, "REGISTRATION AMOUNT:")
         pdf.drawString(33, 356, "INSURANCE AMOUNT")
         
-        pdf.drawString(250, 71, str(Order[0]))
-        pdf.drawString(250, 88, str(Order[1]))
+        pdf.drawString(250, 71, str(customername))
+        pdf.drawString(250, 88, str(ascarname))
         pdf.drawString(250, 105, str(Order[2]))
         pdf.drawString(250, 122, str(Order[3]))
         pdf.drawString(250, 139, str(Order[4]))
@@ -89,8 +108,8 @@ def export_order(modeladmin, request, queryset):
         pdf.drawString(250, 190, str(Order[7]))
         pdf.drawString(250, 207, str(Order[8]))
         pdf.drawString(250, 222, str(Order[9]))
-        pdf.drawString(250, 239, str(Order[10]))
-        pdf.drawString(250, 256, str(Order[11]))
+        pdf.drawString(250, 239, str(access_name))
+        pdf.drawString(250, 256, str(taxname.name))
         pdf.drawString(250, 273, str(Order[12]))
         pdf.drawString(250, 290, str(Order[13]))
         pdf.drawString(250, 307, str(Order[14]))

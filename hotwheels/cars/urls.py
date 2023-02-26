@@ -38,6 +38,7 @@ urlpatterns = [
     path('trail6/',views.trail6, name='trail6'),
     path('rating/',views.rating, name='rating'),
     path('testdriverating/',views.testdriverating, name='testdriverating'),
+    # path('search',views.search,name='search'),
     
 
     path('reset_password/',

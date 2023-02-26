@@ -136,6 +136,29 @@
                                     <li><a href="">404 Page</a></li>
                                 </ul>
                               </li>
+                              <!-- <li>
+                                    <input type="text" id="tags" placeholder=" Advanced Search"
+                                     style="border: 3px solid #000000;
+                                    margin: 8px 0;
+                                    box-sizing: border-box;
+                                    border: 3px solid #000000;
+                                    -webkit-transition: 0.5s;
+                                    transition: 0.5s;
+                                    outline: none;"> 
+                              </li> -->
+                              
+                              <!-- <script>
+                                $(function () {
+                                    var availableTags = [
+                                        {% for i in CARDETAILS %}
+                                    "{{i.car_name}}",
+                                    {% endfor %}
+                            ];
+                                $("#tags").autocomplete({
+                                    source: availableTags
+                                });
+                          } );
+                            </script> -->
                               <!-- <li class="menu-has-children"><a href="#">About</a> -->
                                 <!-- about_us.html -->
                               </li>  
@@ -174,7 +197,13 @@
                             Product Listing			
                         </h1>	
                         <p class="text-white link-nav"><a href="{% url 'index' %}">Home </a>  <span class="lnr lnr-arrow-right"></span> Product List</p>
-                    </div>											
+                        <!-- <form method="POST" action="">
+                            {% csrf_token %}
+                            <input type="search" class="btn btn-outline-secondary" name="searched" style="background-color: aliceblue;" placeholder=" Advanced Search">
+                            <button class="btn btn-outline-secondary" style="background-color: aliceblue;color: #000;">Search</button>
+                        </form> -->
+                    </div>
+                    											
                 </div>
             </div>
         </section>
@@ -183,6 +212,7 @@
         <!-- Start item detail Area -->
     
     <section class="blog-posts-area pb-120">
+    
     <div class="container">
         <div class="row">
             <form method="get" style="margin: 30px;">

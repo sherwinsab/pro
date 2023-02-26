@@ -124,6 +124,15 @@ def product_listing_detail(request,pk):
 
     return redirect('signin')
 
+# def search(requset):
+#     if requset.method == "POST"
+#         searched = requset.POST['searched']
+#         CARDETAILS = DETAILS.objects.all()
+#         return render(request,'product_listing.html',{'searched':searched})
+#     else:
+#         pass
+
+
 def testdrive_booking(request,pk):
     if 'username' in request.session:
         #code for selected car detalis    
