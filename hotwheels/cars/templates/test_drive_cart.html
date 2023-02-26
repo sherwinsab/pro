@@ -209,6 +209,102 @@
                                         <div class="image"><a href="{% url 'testdrivecancel' oid=Order.id %}"><i class="fa fa-window-close" aria-hidden="true" style="font-size:15px;"></i></a></div>
                                     </div>
                                 </div>
+                            </div><br>
+                            <div class="cart_content col-lg-10">
+                                <form action="{% url 'testdriverating' %}" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="container">
+                                    <h2 style="margin-top: 50px;">Rate The Car After Test Drive</h2>
+                                    <div class="con">                        
+                                        <input type="radio" name="{{ Order.id }}" value="1" id="{{ Order.id }}-st1" style="display:none" />
+                                        <label for="{{ Order.id }}-st1">
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        </label>
+                                        <input type="radio" name="{{ Order.id }}" value="2" id="{{ Order.id }}-st2" style="display:none" />
+                                        <label for="{{ Order.id }}-st2">
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        </label>
+                                        <input type="radio" name="{{ Order.id }}" value="3" id="{{ Order.id }}-st3" style="display:none" />
+                                        <label for="{{ Order.id }}-st3">
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        </label>
+                                        <input type="radio" name="{{ Order.id }}" value="4" id="{{ Order.id }}-st4" style="display:none" />
+                                        <label for="{{ Order.id }}-st4">
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        </label>
+                                        <input type="radio" name="{{ Order.id }}" value="5" id="{{ Order.id }}-st5" style="display:none" />
+                                        <label for="{{ Order.id }}-st5">
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col d-flex justify-content-end">
+                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                    </div>
+                                </div>
+                                
+                                <script>
+                                    $(document).ready(function() {
+                                        // click event for 1st star rating
+                                        $("#{{ Order.id }}-st1").click(function() {
+                                            $("label i").css("color", "black");
+                                            $("#{{ Order.id }}-st1 + label i").css("color", "yellow");
+                                            console.log($("#{{ Order.id }}-st1").attr("value"));
+
+                                            // $("#{{ Order.id }}").val(1); // update hidden rating input field
+                                            // $(".con i").removeClass("fa-star").addClass("fa-star-o"); // reset all stars to empty
+                                            // $("#{{ Order.id }}-st1 i").removeClass("fa-star-o").addClass("fa-star"); // fill selected star and all previous stars
+                                        });
+
+                                        // click event for 2nd star rating
+                                        $("#{{ Order.id }}-st2").click(function() {
+                                            $("label i").css("color", "black");
+                                            $("#{{ Order.id }}-st1 + label i, #{{ Order.id }}-st2 + label i").css("color", "yellow");
+                                            console.log($("#{{ Order.id }}-st2").attr("value"));
+
+                                            // $("#{{ Order.id }}").val(2); // update hidden rating input field
+                                            // $(".con i").removeClass("fa-star").addClass("fa-star-o"); // reset all stars to empty
+                                            // $("#{{ Order.id }}-st1 i, #{{ Order.id }}-st2 i").removeClass("fa-star-o").addClass("fa-star"); // fill selected star and all previous stars
+                                        });
+
+                                        // click event for 3rd star rating
+                                        $("#{{ Order.id }}-st3").click(function() {
+                                            $("label i").css("color", "black");
+                                            $("#{{ Order.id }}-st1 + label i, #{{ Order.id }}-st2 + label i, #{{ Order.id }}-st3 + label i").css("color", "yellow");
+                                            console.log($("#{{ Order.id }}-st3").attr("value"));
+
+                                            // $("#{{ Order.id }}").val(3); // update hidden rating input field
+                                            // $(".con i").removeClass("fa-star").addClass("fa-star-o"); // reset all stars to empty
+                                            // $("#{{ Order.id }}-st1 i, #{{ Order.id }}-st2 i, #{{ Order.id }}-st3 i").removeClass("fa-star-o").addClass("fa-star"); // fill selected star and all previous stars
+                                        });
+
+
+                                        // click event for 4th star rating
+                                        $("#{{ Order.id }}-st4").click(function() {
+                                            $("label i").css("color", "black");
+                                            $("#{{ Order.id }}-st1 + label i, #{{ Order.id }}-st2 + label i, #{{ Order.id }}-st3 + label i, #{{ Order.id }}-st4 + label i").css("color", "yellow");
+                                            console.log($("#{{ Order.id }}-st4").attr("value"));
+
+                                            // $("#{{ Order.id }}").val(4); // update hidden rating input field
+                                            // $(".con i").removeClass("fa-star").addClass("fa-star-o"); // reset all stars to empty
+                                            // $("#{{ Order.id }}-st1 i, #{{ Order.id }}-st2 i, #{{ Order.id }}-st3 i, #{{ Order.id }}-st4 i").removeClass("fa-star-o").addClass("fa-star"); // fill selected star and all previous stars
+                                        });
+                                        // click event for 5th star rating
+                                        $("#{{ Order.id }}-st5").click(function() {
+                                            $("label i").css("color", "black");
+                                            $("#{{ Order.id }}-st1 + label i, #{{ Order.id }}-st2 + label i, #{{ Order.id }}-st3 + label i, #{{ Order.id }}-st4 + label i, #{{ Order.id }}-st5 + label i").css("color", "yellow");
+                                            console.log($("#{{ Order.id }}-st5").attr("value"));
+
+                                            // $("#{{ Order.id }}").val(5); // update hidden rating input field
+                                            // $(".con i").removeClass("fa-star").addClass("fa-star-o"); // reset all stars to empty
+                                            // $("#{{ Order.id }}-st1 i, #{{ Order.id }}-st2 i, #{{ Order.id }}-st3 i, #{{ Order.id }}-st4 i, #{{ Order.id }}-st5 i").removeClass("fa-star-o").addClass("fa-star"); // fill selected star and all previous stars
+                                        });
+                                        });
+
+                                </script>
+                                </form>
+                
                             </div>
                             {% endfor %}
                             {% endif %}
@@ -223,72 +319,7 @@
         <section class="cart_area mb-30 pt-10">
             <div class="container">
                 <div class="row d-flex justify-content-center">
-                    <div class="cart_content col-lg-10">
-                        <form action="{% url 'testdriverating' %}" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class="container">
-                            <h2 style="margin-top: 50px;">Rate The Car After Test Drive</h2>
-                            <div class="con">                        
-                                <input type="radio" name="rating" value="1" id="st1" style="display:none" />
-                                <label for="st1">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </label>
-                                <input type="radio" name="rating" value="2" id="st2" style="display:none" />
-                                <label for="st2">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </label>
-                                <input type="radio" name="rating" value="3" id="st3" style="display:none" />
-                                <label for="st3">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </label>
-                                <input type="radio" name="rating" value="4" id="st4" style="display:none" />
-                                <label for="st4">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </label>
-                                <input type="radio" name="rating" value="5" id="st5" style="display:none" />
-                                <label for="st5">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                </label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col d-flex justify-content-end">
-                                <button class="btn btn-primary" type="submit">Submit</button>
-                            </div>
-                        </div>
-                        
-                        <script>
-                             $(document).ready(function () {
-                                $("#st1").click(function () {
-                                    $("label i").css("color", "black");
-                                    $("#st1 + label i").css("color", "yellow");
-                                    console.log($("#st1").attr("value"));
-                                });
-                                $("#st2").click(function () {
-                                    $("label i").css("color", "black");
-                                    $("#st1 + label i, #st2 + label i").css("color", "yellow");
-                                    console.log($("#st2").attr("value"));
-                                });
-                                $("#st3").click(function () {
-                                    $("label i").css("color", "black")
-                                    $("#st1 + label i, #st2 + label i, #st3 + label i").css("color", "yellow");
-                                    console.log($("#st3").attr("value"));
-                                });
-                                $("#st4").click(function () {
-                                    $("label i").css("color", "black");
-                                    $("#st1 + label i, #st2 + label i, #st3 + label i, #st4 + label i").css("color", "yellow");
-                                    console.log($("#st4").attr("value"));
-                                });
-                                $("#st5").click(function () {
-                                    $("label i").css("color", "black");
-                                    $("#st1 + label i, #st2 + label i, #st3 + label i, #st4 + label i, #st5 + label i").css("color", "yellow");
-                                    console.log($("#st5").attr("value"));
-                                });
-                            });
-                        </script>
-                        </form>
-        
-                    </div>
+                    
                 </div>
             </div>
         </section>

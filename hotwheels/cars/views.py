@@ -1,5 +1,5 @@
 # Create your views here.
-
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
@@ -268,15 +268,35 @@ def testdrivecancel(request, oid):
         return redirect('product_listing')
     return redirect('signin')
 
+@login_required(login_url='signin')
 def testdriverating(request):
-    if 'username' in request.session:
-        customer = TestDrive.objects.get(customerid=request.user)
+    if request.method == 'POST':
+        testdict = {}
+        testdict = json.dumps(request.POST)
+        dict_obj = json.loads(testdict)
 
-        rate = int(request.POST.get('rating'))
-        customer.Test_drive_rating = rate
-        customer.save()
+        # Remove the "csrfmiddlewaretoken" key if it exists
+        if "csrfmiddlewaretoken" in dict_obj:
+            del dict_obj["csrfmiddlewaretoken"]
+
+        # Print the resulting dictionary
+        
+        for key, value in dict_obj.items():
+            testdrive_id = key
+            rating = value
+        
+        # Get the TestDrive object for the given order_id
+        test_drive = TestDrive.objects.get(id=testdrive_id)
+
+        # Update the TestDrive rating with the selected rating
+        test_drive.Test_drive_rating = rating
+        test_drive.save()
+
+        # Redirect to the test drive cart page
         return redirect('testdrivecart')
-    return redirect('signin')
+
+    # If the request method is not POST, redirect to the test drive cart page
+    return redirect('testdrivecart')
 
 
 def addaccessories(request,pk):
