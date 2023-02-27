@@ -1,0 +1,294 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
+    <!-- Author Meta -->
+    <meta name="author" content="">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>HotWheels - Home Buy Vechiles,Service Market Place</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Mina" rel="stylesheet">
+        <!--
+        CSS
+        ============================================= -->
+        <link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">					
+        <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    </head>
+    <body>
+
+          <!-- #header Start-->
+          <header id="header">
+              <div class="header-top bg-1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7 col-xs-12 hide_column">
+                            <div class="header-top-menu">
+                                <ul>
+                                    <!-- <li><a href="#">Partners</a></li>
+                                    <li><a href="#">Community</a></li>
+                                    <li><a href="sell_a_product.html">Become A Seller</a></li> -->
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-12 col-xs-12">
+                            <div class="header-top-right text-right">
+                                <ul class="account">	
+                                    <li>
+                                        <a href="#">
+                                            <img src="{% static 'img/boogyman.png' %}" alt="">
+                                            NAME  <span> {{user.first_name}}
+                                            <i class="fa fa-angle-down"></i></span>
+                                        </a>
+                                        <ul class="profile">
+                                            <li><a href="{% url 'logout' %}">Sign Out</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <!-- <ul class="notification_icons">
+                                    <li>
+                                        <a href="#"><i class="fa fa-bell-o"></i><span class="number">11</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-envelope-o"></i><span class="number">5</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-shopping-basket"></i>
+                                        </a>
+                                    </li> 
+
+                                </ul> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bottom">
+                <div class="container">
+                    <div class="row align-items-center d-flex">
+                        <div class="col-lg-2 col-md-2">
+                            <div id="logo">
+                                <a href="index.html"><img src="" alt="" /></a>
+                            </div>
+                        </div>
+                           <div class="col-lg-10 col-md-2">				
+                          <nav id="nav-menu-container">
+                            <ul class="nav-menu float-right">
+                              <li class="menu-has-children"><a href="{% url 'index' %}">Home</a>
+                              </li>
+                              <!--  -->
+                             
+                                
+                           
+                              <!-- <li class="menu-has-children"><a href="sell_a_product.html" class="rounded ml-3 text-white sell-btn">Sell My Car</a> -->
+                             		        	          
+                            </ul>
+                          </nav><!-- #nav-menu-container -->
+                      </div>	    		
+                    </div>
+                </div>
+            </div>
+          </header><!-- #header -->
+
+
+        <!-- start banner Area -->
+        <section class="banner-area relative" id="home">	
+            <div class="overlay overlay-bg"></div>
+            <div class="container">
+                <div class="row d-flex align-items-center justify-content-center">
+                    <div class="about-content col-lg-12">
+                        <h1 class="text-white">
+                            AI Chat
+                        </h1>	
+                        <p class="text-white link-nav mt-3"><a href="{% url 'index' %}">Return To Home Page </a>  <span class="lnr lnr-arrow-right"></span></p>
+                    </div>											
+                </div>
+            </div>
+        </section>
+        <!-- End banner Area -->	
+
+        <!-- Start Shopping Cart Area -->
+        <section class="cart_area mb-30 pt-120">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="cart_content col-lg-10">
+                        <div class="cart-top-border">
+                            <h2 class="mb-30">Hotwheels Advanced Chat System</h2>
+                            
+                            <form method="post" action="{% url 'generate_completion' %}">
+                                {% csrf_token %}
+                                <label for="prompt">Enter Your Query's:</label>
+                                <br><input type="text" id="prompt" name="prompt" placeholder=" Advanced Search"
+                                style="border: 3px solid #000000;
+                               margin: 8px 0;
+                               box-sizing: border-box;
+                               border: 3px solid #000000;
+                               -webkit-transition: 0.5s;
+                               transition: 0.5s;
+                               outline: none;
+                               width: 900px;">
+                                <br>
+                                <input type="submit" class="btn btn-danger btn-block">
+                            </form>
+                            {% if completion_text %}
+                            <h2>Generated completion :</h2>
+                            <p>{{ completion_text }}</p>
+                            {% endif %}
+                            
+                           
+                            
+                        </div>
+                    </div>
+                </div>	
+            </div>	
+        </section>
+       
+       
+        <!-- End blog-posts Area -->
+
+        <!-- start footer Area -->		
+        <footer class="footer-area footer-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3  col-md-3 col-sm-6">
+                        <div class="single-footer-widget newsletter">
+                            <img class="w-50 img-fluid mb-3" src="" alt="">
+                            <p>HotWheels.</p>
+                            <ul class="social-footer">
+                                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3  col-md-3 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h6>Useful Links</h6>
+                            <ul class="footer-nav">
+                                <li><a href="">Change</a></li>
+                                <li><a href="">Replacement</a></li>
+                                <li><a href="">Contact Us</a></li>
+                                <li><a href="">Pre-Purchase</a></li>
+                                <li><a href="">Service</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3  col-md-3 col-sm-6">
+                        <div class="single-footer-widget">
+                            <h6>Our Service</h6>
+                            <ul class="footer-nav">
+                                <li><a href="">Privacy Policy</a></li>
+                                <li><a href="">About Us</a></li>
+                                <li><a href="">Terms & Conditions</a></li>
+                                <li><a href="">Support</a></li>
+                                <li><a href="">About</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3  col-md-3 col-sm-6">
+                        <div class="single-footer-widget mail-chimp">
+                            <h6 class="mb-20">Keep In Touch</h6>
+                            <ul class="footer-nav">
+                                <li>
+                                <strong><i class="fa fa-map-marker"></i></strong><span class="pl-2">1111 Nnn Nnn, Nnn Nnn</span>
+                                </li>
+                                <li>
+                                <strong><i class="fa fa-mobile"></i></strong><span class="pl-2">+00 00 000 000</span>
+                                </li>
+                                <li>
+                                <strong><i class="fa fa-envelope-o"></i></strong><span class="pl-2"><a href="#">ex@example.com</a></span>
+                                </li>
+                            </ul>
+                            <div class="section_form">
+                                    <div class="col-auto">
+                                      <div class="input-group mb-2">
+                                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter Your Email">
+                                         <div class="input-group-prepend">
+                                          <div class="input-group-text"><i class="fa fa-paper-plane"></i></div>
+                                        </div>
+                                      </div>
+                                    </div>  
+                                </div>
+                        </div>
+                    </div>						
+                </div>	
+            </div>
+        </footer>
+        <div class="copyright1">
+            <div class="container">
+                <div class="row"> 
+                    <div class="col-md-6 col-sm-6 col-12">
+                        <div class="bottom_footer_info">
+                            <span>&copy;Copyright All rights reserved &copy;<script>document.write(new Date().getFullYear())</script> HotWheels</span>
+                            <!-- <p> &copy; Copyright 2018. All rights reserved</p> -->
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-12">
+                        <div class="bottom_footer_logo">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="#">Privacy policy &nbsp;|</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">Terms And Condition &nbsp;|</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">Contact Us</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End footer Area --> 				
+
+        <script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>			
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+        <script src="{% static 'js/easing.min.js' %}"></script>			
+        <script src="{% static 'js/hoverIntent.js' %}"></script>
+        <script src="{% static 'js/superfish.min.js' %}"></script>	
+        <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+        <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>	
+        <script src="{% static 'js/owl.carousel.min.js' %}"></script>			
+        <script src="{% static 'js/jquery.sticky.js' %}"></script>
+        <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>			
+        <script src="{% static 'js/parallax.min.js' %}"></script>		
+        <script src="{% static 'js/mail-script.js' %}"></script>	
+        <script src="{% static 'js/main.js' %}"></script>	
+    </body>
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>HotWheels AI</title>
+</head>
+<body>
+    
+    <h1>OpenAI Completion Generator</h1>
+    
+</body>
+</html> -->

@@ -16,6 +16,7 @@ import razorpay
 import json
 from .constants import PaymentStatus
 from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
 
 from django.http import FileResponse
 import io
@@ -23,7 +24,10 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
 from django.db.models import Sum
+import openai
 
+openai.api_key = "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" # Replace with your actual API key
+model_engine = "text-davinci-003"
 # import numpy as np
 # import pandas as pd
 
@@ -804,6 +808,21 @@ def trail5(request):
     template = loader.get_template('trail5.html')
     return HttpResponse(template.render())
 
-def trail6(request):
-    template = loader.get_template('trail6.html')
-    return HttpResponse(template.render())
+
+def generate_completion(request):
+    if 'username' in request.session:
+        prompt = request.POST.get('prompt', '')
+        response = openai.Completion.create(
+            engine=model_engine,
+            prompt=prompt,
+            max_tokens=1024,
+            n=1,
+            stop=None,
+            temperature=0.5
+        )
+        completion_text = response.choices[0].text
+        context = {
+            'completion_text': completion_text
+        }
+        return render(request, 'trail6.html', context)
+    return redirect('signin')
