@@ -33,6 +33,12 @@
         <link rel="stylesheet" href="{% static 'css/carousel_advance.css' %}">
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
         <link rel="stylesheet" href="{% static 'css/rangeslider.css' %}">
+        <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+			<script >
+				function loadGoogleTranslate(){
+				   new google.translate.TranslateElement("google_element");
+				}
+		</script>
         <!--======= Responsive Bootstrap Carousel StyleSheet =========-->
     <link href="css/testimonial_speech_bubble_border_carousel.css" rel="stylesheet" media="all">
     <script type="text/javascript">
@@ -51,6 +57,7 @@
     <!-- #header Start-->
           <header id="header">
               <div class="header-top bg-1">
+                <div id="google_element" style="float: right;"></div>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-7 col-xs-12 hide_column">
