@@ -214,7 +214,7 @@ def export_test(modeladmin, request, queryset):
     buffer.close()
     response.write(pdf)
     return response
-export_order.short_description = "Export to pdf"
+export_test.short_description = "Export to pdf"
 
 class TestDriveAdmin(admin.ModelAdmin):
     list_display = ['customerid','carnameid','Date_of_booking']
