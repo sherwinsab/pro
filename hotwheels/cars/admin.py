@@ -152,8 +152,74 @@ class PaymentAdmin(admin.ModelAdmin):
     list_display = ['name','amount','status']
 admin.site.register(Payment,PaymentAdmin)
 
+def export_test(modeladmin, request, queryset):
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="Test.pdf"'
+    
+    buffer = io.BytesIO()
+    pdf = canvas.Canvas(buffer,pagesize=letter, bottomup=0)
+    
+
+    
+    order = queryset.values_list('customerid','carnameid','Date_of_booking','Address','LicenceIDNumber','Pincode',
+        'ContactNumber','application_code','State','City')
+
+    
+
+    for Order in order:
+        customername = User.objects.get(id=Order[0])
+        ascarname = DETAILS.objects.get(id=Order[1])
+        
+        
+
+        
+
+          
+
+    
+    # handle the case where tax_id is empty
+        pdf.drawString(10,20,"HotWheels")
+        pdf.drawString(13, 770, "HOTWHEELS")
+        pdf.rect(10, 23, 593, 750, stroke=1)
+        pdf.setTitle("HotWheels")
+        pdf.setFont('Helvetica', 14)
+        pdf.drawString(33, 71, "NAME:")
+        pdf.drawString(33, 88, "CAR:")
+        pdf.drawString(33, 105, "DATE OF BOOKING:")
+        pdf.drawString(33, 122, "ADDRESS:")
+        pdf.drawString(33, 139, "LICENCE ID:")
+        pdf.drawString(33, 156, "PINCODE:")
+        pdf.drawString(33, 173, "PHONE NUMBER:")
+        pdf.drawString(33, 190, "APPLICATION CODE:")
+        pdf.drawString(33, 207, "STATE")
+        pdf.drawString(33, 222, "CITY")
+       
+        
+        pdf.drawString(250, 71, str(customername))
+        pdf.drawString(250, 88, str(ascarname))
+        pdf.drawString(250, 105, str(Order[2]))
+        pdf.drawString(250, 122, str(Order[3]))
+        pdf.drawString(250, 139, str(Order[4]))
+        pdf.drawString(250, 156, str(Order[5]))
+        pdf.drawString(250, 173, str(Order[6]))
+        pdf.drawString(250, 190, str(Order[7]))
+        pdf.drawString(250, 207, str(Order[8]))
+        pdf.drawString(250, 222, str(Order[9]))
+        pdf.showPage()
+        
+        
+    
+    pdf.save()
+    pdf = buffer.getvalue()
+    buffer.close()
+    response.write(pdf)
+    return response
+export_order.short_description = "Export to pdf"
 
 class TestDriveAdmin(admin.ModelAdmin):
     list_display = ['customerid','carnameid','Date_of_booking']
+    actions = [export_test]
 admin.site.register(TestDrive,TestDriveAdmin)
+
+
 # Register your models here.
