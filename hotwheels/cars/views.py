@@ -239,27 +239,47 @@ def testdrive_pdf(request):
     lines =[]
     
     for order in customer:
+
+        c.drawString(13, 770, "HOTWHEELS")
+        c.rect(10, 23, 593, 750, stroke=1)
+        c.setTitle("HotWheels")
+        c.setFont('Helvetica', 14)
+        c.drawString(33, 71, "NAME:")
+        c.drawString(33, 88, "CAR:")
+        c.drawString(33, 105, "DATE OF BOOKING:")
+        c.drawString(33, 122, "ADDRESS:")
+        c.drawString(33, 139, "LICENCE ID:")
+        c.drawString(33, 156, "PINCODE:")
+        c.drawString(33, 173, "PHONE NUMBER:")
+        c.drawString(33, 190, "APPLICATION CODE:")
+        c.drawString(33, 207, "STATE")
+        c.drawString(33, 222, "CITY")
+        c.drawString(33,238,"COMPANY:")
+        c.drawString(33,254,"TYPE:")
+        c.drawString(33,270,"EMAIL:")
+       
         
-        c.drawString(33, 71, "NAME:",lines.append("                               " +  names))
-        c.drawString(33, 88, "CAR:", lines.append("                               " + str(order.carnameid))),
-        c.drawString(33, 105, "COMPANY:",lines.append("                               " +  carscompanynames)),
-        c.drawString(33, 122, "TYPE:",lines.append("                               " +  cartypenames)),
-        c.drawString(33, 139, "DATE OF BOOKING:",lines.append("                               " +  str(order.Date_of_booking))),
-        c.drawString(33, 156, "EMAIL:",lines.append("                               " +  email)),
-        c.drawString(33, 173, "ADDRESS:",lines.append("                               " +  str(order.Address))),
-        c.drawString(33, 190, "LICENCE ID:",lines.append(str("                               " +  order.LicenceIDNumber))),
-        c.drawString(33, 204, "PINCODE:",lines.append("                               " +  str(order.Pincode))),
-        c.drawString(33, 239, "APPLICATION CODE:",lines.append("                               " +  str(order.ContactNumber))),
-        c.drawString(33, 222, "PHONE NUMBER:",lines.append("                               " +  str(order.application_code))),
-        c.drawString(33, 256, "STATE:",lines.append(str("                               " +  order.State))),
-        c.drawString(33, 273, "CITY:",lines.append(str("                               " +  order.City))),
-        lines.append("")
+        c.drawString(250, 71,"" +  names)
+        c.drawString(250, 88,"" + str(order.carnameid))
+        c.drawString(250, 105,"" +  carscompanynames)
+        c.drawString(250, 122,"" +  cartypenames)
+        c.drawString(250, 139,"" +  str(order.Date_of_booking))
+        c.drawString(250, 156,"" +  email)
+        c.drawString(250, 173,"" +  str(order.Address))
+        c.drawString(250, 190,"" +  str(order.LicenceIDNumber))
+        c.drawString(250, 207,"" +  str(order.Pincode))
+        c.drawString(250, 222,""+ str(order.ContactNumber))
+        c.drawString(250,238,"" +  carscompanynames)
+        c.drawString(250,254,"" +  cartypenames)
+        c.drawString(250,270,"" +  email)
+        c.showPage()
+        
     #loop
     for line in lines:
         textob.textLine(line)
 
     c.drawText(textob)
-    c.showPage()
+    
     c.save()
     buf.seek(0)
 
