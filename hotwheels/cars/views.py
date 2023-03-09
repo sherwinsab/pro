@@ -18,6 +18,9 @@ from .constants import PaymentStatus
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 
+
+
+
 from django.http import FileResponse
 import io
 from reportlab.pdfgen import canvas
@@ -25,6 +28,11 @@ from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
 from django.db.models import Sum
 import openai
+
+
+import cv2
+from pytesseract import pytesseract
+
 
 openai.api_key = "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" # Replace with your actual API key
 model_engine = "text-davinci-003"
@@ -845,4 +853,43 @@ def generate_completion(request):
             'completion_text': completion_text
         }
         return render(request, 'trail6.html', context)
+    return redirect('signin')
+
+def run(request):
+    if 'username' in request.session:
+        pass
+        return render(request, 'numberPlates.html')
+    return redirect('signin')
+
+
+def numberPlates(request):
+    if 'username' in request.session:
+        frameWidth = 640    #Frame Width
+        franeHeight = 480   # Frame Height
+        plateCascade = cv2.CascadeClassifier("E:\PyCharm\hi\haarcascade_russian_plate_number.xml")
+        minArea = 500
+        cap = cv2.VideoCapture(0)
+        cap.set(3,frameWidth)
+        cap.set(4,franeHeight)
+        cap.set(10,150)
+        while True:
+            success , img  = cap.read()
+            imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+            numberPlates = plateCascade .detectMultiScale(imgGray, 1.1, 4)
+            for (x, y, w, h) in numberPlates:
+                area = w*h
+                if area > minArea:
+                    cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
+                    cv2.putText(img,"NumberPlate",(x,y-5),cv2.FONT_HERSHEY_COMPLEX,1,(0,0,255),2)
+                    imgRoi = img[y:y+h,x:x+w]
+                    cv2.imshow("ROI",imgRoi)
+                    pytesseract.tesseract_cmd = r'E:/PyCharm/hi/tesseract.exe'
+                    text = pytesseract.image_to_string(imgRoi)
+                    print(text)
+            cv2.imshow("Result",img)
+            if cv2.waitKey(1) == ord('q'):
+                break
+        cap.release()
+        cv2.destroyAllWindows()
+        return render(request, 'numberPlates.html', {'text': text})
     return redirect('signin')

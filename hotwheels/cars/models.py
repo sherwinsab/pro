@@ -303,7 +303,9 @@ class Payment(models.Model):
 
     def __str__(self):
         return f"{self.id}-{self.name}-{self.status}"
-   
+
+class numberplate(models.Model):
+    pass
 
 
 

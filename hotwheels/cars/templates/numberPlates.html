@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Plate Detection Result</title>
+</head>
+<body>
+    <h1>Detected Number Plate :</h1>
+    <a href="{% url 'numberPlates' %}"><button>Run</button></a>
+    
+     
+        <div>
+            <h2>The detected number plate is:</h2>
+            <p>{{text}}</p>
+        </div>
+</body>
+</html>
