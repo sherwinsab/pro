@@ -1,16 +1,36 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Number Plate Detection Result</title>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="light">
+  <title>Detect Number Plate</title>
+  <style>
+    *{
+        background-color: white;
+        color: black;
+    }
+    pre{
+        background-color: white;
+        color: black;
+    }
+  </style>
 </head>
 <body>
-    <h1>Detected Number Plate :</h1>
-    <a href="{% url 'numberPlates' %}"><button>Run</button></a>
-    
-     
-        <div>
-            <h2>The detected number plate is:</h2>
-            <p>{{text}}</p>
-        </div>
+  <h1>Detect Number Plate</h1>
+  <a href="{% url 'numberPlates' %}"><button> Run</button></a>
+  <div style="position: relative;width: 50%;height: 50%;"><div id="number-plates"></div></div>
+
+  <script>
+    const numberPlatesDiv = document.querySelector('#number-plates');
+    const sse = new EventSource('{% url "numberPlates" %}');
+    sse.onmessage = event => {
+      const text = event.data;
+      const p = document.createElement('p');
+      p.textContent = text;
+      p.style="background-color:white,color:black;";
+      numberPlatesDiv.appendChild(p);
+    };
+  </script>
 </body>
 </html>

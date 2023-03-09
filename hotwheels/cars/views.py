@@ -32,7 +32,7 @@ import openai
 
 import cv2
 from pytesseract import pytesseract
-
+from django.http import StreamingHttpResponse
 
 openai.api_key = "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" # Replace with your actual API key
 model_engine = "text-davinci-003"
@@ -863,7 +863,7 @@ def run(request):
 
 
 def numberPlates(request):
-    if 'username' in request.session:
+    def generate():
         frameWidth = 640    #Frame Width
         franeHeight = 480   # Frame Height
         plateCascade = cv2.CascadeClassifier("E:\PyCharm\hi\haarcascade_russian_plate_number.xml")
@@ -872,6 +872,7 @@ def numberPlates(request):
         cap.set(3,frameWidth)
         cap.set(4,franeHeight)
         cap.set(10,150)
+        pytesseract.tesseract_cmd = r'E:/PyCharm/hi/tesseract.exe'
         while True:
             success , img  = cap.read()
             imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -879,17 +880,10 @@ def numberPlates(request):
             for (x, y, w, h) in numberPlates:
                 area = w*h
                 if area > minArea:
-                    cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
-                    cv2.putText(img,"NumberPlate",(x,y-5),cv2.FONT_HERSHEY_COMPLEX,1,(0,0,255),2)
                     imgRoi = img[y:y+h,x:x+w]
-                    cv2.imshow("ROI",imgRoi)
-                    pytesseract.tesseract_cmd = r'E:/PyCharm/hi/tesseract.exe'
                     text = pytesseract.image_to_string(imgRoi)
-                    print(text)
-            cv2.imshow("Result",img)
-            if cv2.waitKey(1) == ord('q'):
-                break
-        cap.release()
-        cv2.destroyAllWindows()
-        return render(request, 'numberPlates.html', {'text': text})
-    return redirect('signin')
+                    yield f"Number Plate Detected: {text}\n\n"      
+    response = StreamingHttpResponse(generate(), content_type='text/event-stream')
+    response['Cache-Control'] = 'no-cache'
+    return response
+    
