@@ -307,5 +307,19 @@ class Payment(models.Model):
 class numberplate(models.Model):
     pass
 
-
+class FeaturedVechiles(models.Model):
+    class Meta:
+        db_table = 'Featured Vechiles'
+        verbose_name = "Add Featured Vechiles"
+        verbose_name_plural = "Featured Vechiles"
+    
+    name = models.TextField(default=None,null=True,blank=True,verbose_name="Car Name")
+    company = models.TextField(default=None,null=True,blank=True,verbose_name="Company Name")
+    ttype = models.TextField(default=None,null=True,blank=True,verbose_name="Car Type")
+    image = models.ImageField(
+        upload_to="image/media/",
+        blank=True,
+        null=True,
+        verbose_name="Car Image"
+        )
 
