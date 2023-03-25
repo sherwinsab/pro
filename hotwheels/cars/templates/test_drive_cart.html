@@ -188,11 +188,13 @@
                                 <div class="progress-table">
                                     <div class="table-head">
                                         <div class="image">Image</div>
+                                        <div class="image">Drive Date</div>
                                         <div class="image">Car Name</div>
                                         <div class="image">Company</div>
                                         <div class="image">Type</div>
                                         <div class="image">Price</div>
                                         <div class="image">Booked On</div>
+                                        
                                        
                                         <div class="image">Cancel Test Drive</div>
                                         
@@ -200,11 +202,13 @@
                                     </div>
                                     <div class="table-row">
                                         <div class="image"> <img src="{% static 'img/shopping-cart1.jpg' %}" alt="flag"></div>
+                                        <div class="image">{{Order.dattte}}</div>
                                         <div class="image">{{Order.carnameid}}</div>
                                         <div class="image">{{carscompanynames}}</div>
                                         <div class="image">{{cartypenames}}</div>
                                         <div class="image">₹{{priceof}}</div>
                                         <div class="image">{{Order.Date_of_booking}}</div>
+                                        
                                         
                                         <div class="image"><a href="{% url 'testdrivecancel' oid=Order.id %}"><i class="fa fa-window-close" aria-hidden="true" style="font-size:15px;"></i></a></div>
                                     </div>

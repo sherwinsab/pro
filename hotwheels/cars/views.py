@@ -165,11 +165,12 @@ def testdrive_booked(request, oid):
             ContactNumber = request.POST['ContactNumber']
             State = request.POST['State']
             City = request.POST['City']
+            dattte = request.POST['birthday']
             
             carnameid= DETAILS.objects.get(id=oid)
             
             customer=TestDrive(Address=Address,LicenceIDNumber=LicenceIDNumber,Pincode=Pincode,ContactNumber=ContactNumber,
-            State=State,City=City,carnameid=carnameid)
+            State=State,City=City,carnameid=carnameid,dattte=dattte)
             customer.customerid = request.user
             customer.save();
 

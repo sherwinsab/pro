@@ -209,7 +209,7 @@ class TestDrive(models.Model):
     carnameid = models.ForeignKey(DETAILS,on_delete=models.CASCADE,verbose_name="Car Name")
     Date_of_booking = models.DateTimeField(auto_now_add=True,verbose_name="Date Of Booking")
     Test_drive_rating = models.IntegerField(default=0,null=True,verbose_name="Rating Of The Test Drive")
-
+    dattte = models.DateTimeField(null=True,verbose_name="Customer Perfer Time For Test Drive")
     
 # Create your models here.
 
