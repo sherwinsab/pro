@@ -19,6 +19,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='testdrive',
             name='test_drive_date',
-            field=models.DateField(default=0, null=True, verbose_name='Test Drive Date Customer Perfered'),
+            field=models.DateField(null=True, verbose_name='Test Drive Date Customer Perfered'),
         ),
     ]
+
