@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from django.shortcuts import redirect
 from django.contrib import messages
-from .models import TYPE,COMPANY,DETAILS,Order,AdditionalAccessories,Taxandother,INSURANCE,Payment,TestDrive
+from .models import TYPE,COMPANY,DETAILS,Order,AdditionalAccessories,Taxandother,INSURANCE,Payment,TestDrive,FeaturedVechiles
 from .filters import CarDETAILSFilter
 import ast
 from datetime import datetime,timedelta
@@ -43,8 +43,10 @@ from .recommend import rec_obj
 
 
 def index(request):
-    template = loader.get_template('index.html')
-    return HttpResponse(template.render())
+    featured_vechiles = FeaturedVechiles.objects.all()
+    context = {'featured_vechiles': featured_vechiles}
+    return render(request, 'index.html', context)
+    
 
 def signup(request):
     if request.method == 'POST':
@@ -888,3 +890,8 @@ def numberPlates(request):
     response['Cache-Control'] = 'no-cache'
     return response
     
+    
+def featured_vechiles(request):
+    featured_vechiles = FeaturedVechiles.objects.all()
+    context = {'featured_vechiles': featured_vechiles}
+    return render(request, 'featured_vechiles.html', context)

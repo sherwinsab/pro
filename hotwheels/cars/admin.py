@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TYPE,COMPANY,DETAILS,Order,Information,AdditionalAccessories,Taxandother,INSURANCE,Payment,TestDrive
+from .models import TYPE,COMPANY,DETAILS,Order,Information,AdditionalAccessories,Taxandother,INSURANCE,Payment,TestDrive,FeaturedVechiles
 from import_export.admin import ImportExportModelAdmin
 from django.http import HttpResponse
 import decimal, csv
@@ -225,5 +225,7 @@ class TestDriveAdmin(admin.ModelAdmin):
     actions = [export_test]
 admin.site.register(TestDrive,TestDriveAdmin)
 
-
+class FeaturedVechilesAdmin(admin.ModelAdmin):
+    list_display = ['name','company','ttype']
+admin.site.register(FeaturedVechiles,FeaturedVechilesAdmin)
 # Register your models here.
