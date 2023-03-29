@@ -37,6 +37,7 @@ urlpatterns = [
     path('trail5/',views.trail5, name='trail5'),
     path('numberPlates/',views.numberPlates, name='numberPlates'),
     path('run/',views.run, name='run'),
+    path('news/', views.get_news, name='get_news'),
     
     path('rating/',views.rating, name='rating'),
     path('testdriverating/',views.testdriverating, name='testdriverating'),

@@ -28,7 +28,7 @@ from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
 from django.db.models import Sum
 import openai
-
+import requests
 
 import cv2
 from pytesseract import pytesseract
@@ -895,3 +895,13 @@ def featured_vechiles(request):
     featured_vechiles = FeaturedVechiles.objects.all()
     context = {'featured_vechiles': featured_vechiles}
     return render(request, 'featured_vechiles.html', context)
+
+def get_news(request):
+    url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=e92090481bc24996a2a89b1f90299cdf'
+    response = requests.get(url)
+    articles = response.json()['articles']
+    return render(request, 'news.html', 
+                {
+                    "page": "Newsplatform",
+                    "articles": articles
+                })
