@@ -897,11 +897,13 @@ def featured_vechiles(request):
     return render(request, 'featured_vechiles.html', context)
 
 def get_news(request):
-    url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=e92090481bc24996a2a89b1f90299cdf'
-    response = requests.get(url)
-    articles = response.json()['articles']
-    return render(request, 'news.html', 
-                {
-                    "page": "Newsplatform",
-                    "articles": articles
-                })
+    if 'username' in request.session:
+        url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=e92090481bc24996a2a89b1f90299cdf'
+        response = requests.get(url)
+        articles = response.json()['articles']
+        return render(request, 'news.html', 
+                    {
+                        "page": "Newsplatform",
+                        "articles": articles
+                    })
+    return redirect('signin')
