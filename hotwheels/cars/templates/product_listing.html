@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,34 +18,34 @@
     <!-- Site Title -->
     <title>HotWheels - Home Buy Vechiles,Service Market Place</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Mina" rel="stylesheet"> 
-        <!--
+    <link href="https://fonts.googleapis.com/css?family=Mina" rel="stylesheet">
+    <!--
         CSS
         ============================================= -->
-        <link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
-        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-        <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
-        <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">					
-        <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/owl.theme.min.css' %}">
-        <link rel="stylesheet" href="{% static 'css/owl.transitions.css' %}">
-        <link rel="stylesheet" href="{% static 'css/carousel_advance.css' %}">
-        <link rel="stylesheet" href="{% static 'css/main.css' %}">
-        <link rel="stylesheet" href="{% static 'css/rangeslider.css' %}">
-        <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
-			<script >
-				function loadGoogleTranslate(){
-				   new google.translate.TranslateElement("google_element");
-				}
-		</script>
-        <!--======= Responsive Bootstrap Carousel StyleSheet =========-->
+    <link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.transitions.css' %}">
+    <link rel="stylesheet" href="{% static 'css/carousel_advance.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/rangeslider.css' %}">
+    <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
+    <script>
+        function loadGoogleTranslate() {
+            new google.translate.TranslateElement("google_element");
+        }
+    </script>
+    <!--======= Responsive Bootstrap Carousel StyleSheet =========-->
     <link href="css/testimonial_speech_bubble_border_carousel.css" rel="stylesheet" media="all">
     <script type="text/javascript">
-        (function(d, m){
-            var kommunicateSettings = 
-                {"appId":"3e3c143d5a4c9f14f55ee55c1d82e4863","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        (function (d, m) {
+            var kommunicateSettings =
+                { "appId": "3e3c143d5a4c9f14f55ee55c1d82e4863", "popupWidget": true, "automaticChatOpenOnNavigation": true };
             var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
             s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
             var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
@@ -52,106 +53,110 @@
         })(document, window.kommunicate || {});
     /* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
     </script>
-    </head>
-    <body>
+</head>
+
+<body>
     <!-- #header Start-->
-          <header id="header">
-              <div class="header-top bg-1">
-                <div id="google_element" style="float: right;"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-7 col-xs-12 hide_column">
-                            <div class="header-top-menu">
-                                <ul>
-                                    <!-- <li><a href="#">Partners</a></li>
+    <header id="header">
+        <div class="header-top bg-1">
+            <div id="google_element" style="float: right;"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 col-xs-12 hide_column">
+                        <div class="header-top-menu">
+                            <ul>
+                                <!-- <li><a href="#">Partners</a></li>
                                     <li><a href="#">Community</a></li> -->
-                                    <!-- <li><a href="sell_a_product.html">Become A Seller</a></li> -->
-                                </ul>
-                            </div>
+                                <!-- <li><a href="sell_a_product.html">Become A Seller</a></li> -->
+                            </ul>
                         </div>
-                        <div class="col-lg-5 col-md-12 col-xs-12">
-                            <div class="header-top-right text-right">
-                                <ul class="account">	
-                                    <li>
-                                        <a href="#">
-                                            <img src="{% static 'img/boogyman.png' %}" alt="">
-                                            NAME  <span> {{user.first_name}}
+                    </div>
+                    <div class="col-lg-5 col-md-12 col-xs-12">
+                        <div class="header-top-right text-right">
+                            <ul class="account">
+                                <li>
+                                    <a href="#">
+                                        <img src="{% static 'img/boogyman.png' %}" alt="">
+                                        NAME <span> {{user.first_name}}
                                             <i class="fa fa-angle-down"></i></span>
-                                        </a>
-                                        <ul class="profile">
-                                            <li><a href="{% url 'userprofile' %}">User Profile</a></li>
-                                            <!-- <li><a href="#">Upload Products</a></li> -->
-                                            <!-- <li><a href="#">Favourite Products</a></li> -->
-                                            <!-- <li><a href="#">Change Password</a></li> -->
-                                            <li><a href="{% url 'shopping_cart' %}">Manage Products</a></li>
-                                            <!-- <li><a href="#">Notifications</a></li> -->
-                                            <!-- <li><a href="#">Messages</a></li> -->
-                                            <li><a href="{% url 'shopping_cart' %}">Shopping Cart</a></li>
-                                            <!-- <li><a href="#">Withdraw</a></li> -->
-                                            <li><a href="{% url 'logout' %}">Sign Out</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                                <ul class="notification_icons">
-                                    <!-- <li>
+                                    </a>
+                                    <ul class="profile">
+                                        <li><a href="{% url 'userprofile' %}">User Profile</a></li>
+                                        <!-- <li><a href="#">Upload Products</a></li> -->
+                                        <!-- <li><a href="#">Favourite Products</a></li> -->
+                                        <!-- <li><a href="#">Change Password</a></li> -->
+                                        <li><a href="{% url 'shopping_cart' %}">Manage Products</a></li>
+                                        <!-- <li><a href="#">Notifications</a></li> -->
+                                        <!-- <li><a href="#">Messages</a></li> -->
+                                        <li><a href="{% url 'shopping_cart' %}">Shopping Cart</a></li>
+                                        <!-- <li><a href="#">Withdraw</a></li> -->
+                                        <li><a href="{% url 'logout' %}">Sign Out</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="notification_icons">
+                                <!-- <li>
                                         <a href="#"><i class="fa fa-bell-o"></i><span class="number">11</span></a>
                                     </li>
                                     <li>
                                         <a href="#"><i class="fa fa-envelope-o"></i><span class="number">5</span></a>
                                     </li> -->
-                                    <li>
-                                        <a href="{% url 'shopping_cart' %}">
-                                            <i class="fa fa-shopping-basket"> Car Bookings</i>
-                                        </a>
-                                    </li> 
-                                    <li>  
-                                        <a href="{% url 'testdrivecart' %}">
-                                            <i class="fa fa-car"> Test Drive Booking</i>
-                                        </a>
-                                    </li>  
+                                <li>
+                                    <a href="{% url 'shopping_cart' %}">
+                                        <i class="fa fa-shopping-basket"> Car Bookings</i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'testdrivecart' %}">
+                                        <i class="fa fa-car"> Test Drive Booking</i>
+                                    </a>
+                                </li>
 
-                                </ul>
-                            </div>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="header-bottom">
-                <div class="container">
-                    <div class="row align-items-center d-flex">
-                        <div class="col-lg-2 col-md-2">
-                            <div id="logo">
-                                <a href="index.html"><img src="#" alt="" /></a>
-                            </div>
+        </div>
+        <div class="header-bottom">
+            <div class="container">
+                <div class="row align-items-center d-flex">
+                    <div class="col-lg-2 col-md-2">
+                        <div id="logo">
+                            <a href="index.html"><img src="#" alt="" /></a>
                         </div>
-                           <div class="col-lg-10 col-md-2">				
-                          <nav id="nav-menu-container">
+                    </div>
+                    <div class="col-lg-10 col-md-2">
+                        <nav id="nav-menu-container">
                             <ul class="nav-menu float-right">
-                              <li class="menu-has-children"><a href="{% url 'index' %}">Home</a>
-                              </li>
-                              <li class="menu-has-children"><a href="">Pages</a>
-                                <ul>
-                                    <li><a href="">Product Listing</a></li>
-                                    <li><a href="">Product Listing Detail</a></li>
-                                    <!-- <li><a href="search.html">search</a></li> -->
-                                    <!-- <li><a href="upload_products.html">Upload Products</a></li> -->
-                                    <!-- <li><a href="favourite_products.html">Favourite Products</a></li> -->
-                                    <li><a href="">Signin Page</a></li>
-                                    <li><a href="">Signup Page</a></li>					
-                                    <li><a href="">Terms & Conditions</a></li>
-                                    <li><a href="">Privacy Policy</a></li>
-                                    <li><a href="">404 Page</a></li>
-                                </ul>
-                              </li>
-                              <li class="menu-has-children"> <a href="">HotWheels AI</a>
-                                <ul>
-                                    <li class="menu-has-children"><a href="{% url 'generate_completion' %}">Advance Chat</a></li>
-                                    <li class="menu-has-children"><a href="{% url 'run' %}">Number Plate Reader</a></li>
-                                    <li class="menu-has-children"><a href="{% url 'get_news' %}">Latest News</a></li>
-                                </ul>
-                              </li>
-                              
-                              <!-- <li>
+                                <li class="menu-has-children"><a href="{% url 'index' %}">Home</a>
+                                </li>
+                                <li class="menu-has-children"><a href="">Pages</a>
+                                    <ul>
+                                        <li><a href="">Product Listing</a></li>
+                                        <li><a href="">Product Listing Detail</a></li>
+                                        <!-- <li><a href="search.html">search</a></li> -->
+                                        <!-- <li><a href="upload_products.html">Upload Products</a></li> -->
+                                        <!-- <li><a href="favourite_products.html">Favourite Products</a></li> -->
+                                        <li><a href="">Signin Page</a></li>
+                                        <li><a href="">Signup Page</a></li>
+                                        <li><a href="">Terms & Conditions</a></li>
+                                        <li><a href="">Privacy Policy</a></li>
+                                        <li><a href="">404 Page</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-has-children"> <a href="">HotWheels AI</a>
+                                    <ul>
+                                        <li class="menu-has-children"><a href="{% url 'generate_completion' %}">Advance
+                                                Chat</a></li>
+                                        <li class="menu-has-children"><a href="{% url 'run' %}">Number Plate Reader</a>
+                                        </li>
+                                        <li class="menu-has-children"><a href="{% url 'get_news' %}">Latest News</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!-- <li>
                                     <input type="text" id="tags" placeholder=" Advanced Search"
                                      style="border: 3px solid #000000;
                                     margin: 8px 0;
@@ -161,8 +166,8 @@
                                     transition: 0.5s;
                                     outline: none;"> 
                               </li> -->
-                              
-                              <!-- <script>
+
+                                <!-- <script>
                                 $(function () {
                                     var availableTags = [
                                         {% for i in CARDETAILS %}
@@ -174,216 +179,230 @@
                                 });
                           } );
                             </script> -->
-                              <!-- <li class="menu-has-children"><a href="#">About</a> -->
+                                <!-- <li class="menu-has-children"><a href="#">About</a> -->
                                 <!-- about_us.html -->
-                              </li>  
-                              <!-- <li class="menu-has-children"><a href="#">Services</a> -->
+                                </li>
+                                <!-- <li class="menu-has-children"><a href="#">Services</a> -->
                                 <!-- services.html -->
-                              </li>
-                              <!-- <li class="menu-has-children"><a href="#">Blog</a> -->
+                                </li>
+                                <!-- <li class="menu-has-children"><a href="#">Blog</a> -->
                                 <!-- blog_home.html -->
-                                  <ul>
+                                <ul>
                                     <li><a href="#">Blog Page</a></li>
                                     <!-- blog_home.html -->
                                     <li><a href="#">Blog Detail</a></li>
                                     <!-- blog_single.html -->
                                 </ul>
-                              </li>
-                              
-                              <!-- <li class="menu-has-children"><a href="contact.html">Contact</a></li> -->
-                              <!-- <li class="menu-has-children"><a href="#" class="rounded ml-3 text-white sell-btn">My Cart</a> -->
-                              </li>			        	          
+                                </li>
+
+                                <!-- <li class="menu-has-children"><a href="contact.html">Contact</a></li> -->
+                                <!-- <li class="menu-has-children"><a href="#" class="rounded ml-3 text-white sell-btn">My Cart</a> -->
+                                </li>
                             </ul>
-                          </nav><!-- #nav-menu-container -->
-                      </div>	    		
+                        </nav><!-- #nav-menu-container -->
                     </div>
                 </div>
             </div>
-          </header><!-- #header -->
-        
+        </div>
+    </header><!-- #header -->
 
-        <!-- start banner Area -->
-        <section class="banner-area relative">	
-            <div class="overlay overlay-bg"></div>
-            <div class="container">
-                <div class="row d-flex align-items-center justify-content-center">
-                    <div class="about-content col-lg-12">
-                        <h1 class="text-white">
-                            Product Listing			
-                        </h1>	
-                        <p class="text-white link-nav"><a href="{% url 'index' %}">Home </a>  <span class="lnr lnr-arrow-right"></span> Product List</p>
-                        <!-- <form method="POST" action="">
+
+    <!-- start banner Area -->
+    <section class="banner-area relative">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+                        Product Listing
+                    </h1>
+                    <p class="text-white link-nav"><a href="{% url 'index' %}">Home </a> <span
+                            class="lnr lnr-arrow-right"></span> Product List</p>
+                    <!-- <form method="POST" action="">
                             {% csrf_token %}
                             <input type="search" class="btn btn-outline-secondary" name="searched" style="background-color: aliceblue;" placeholder=" Advanced Search">
                             <button class="btn btn-outline-secondary" style="background-color: aliceblue;color: #000;">Search</button>
                         </form> -->
-                    </div>
-                    											
                 </div>
+
             </div>
-        </section>
-        <!-- End banner Area -->	
-        
-        <!-- Start item detail Area -->
-    
-    <section class="blog-posts-area pb-120">
-    
-    <div class="container">
-        <div class="row">
-            <form method="get" style="margin: 30px;">
-                {{myFilter.form}} <input style="color: rgb(255, 255, 255);font-size: large;background-color: rgb(255, 6, 6);
-                font-family: 'Times New Roman', Times, serif;" type="submit" value=" Search ">
-                
-            </form>
-    {% if myFilter.qs %}
-    {% for CARDETAILS in myFilter.qs %}
-        <div class="col-md-4">
-            <br></br><div class="card">
-                <img src="{{CARDETAILS.image3.url}}" class="card-img-top" alt="pic of the car">
-                <div class="card-body">
-                <h3 class="card-title"><label style="color:red"></label>{{CARDETAILS.car_name}}</h3>
-                <h7 class="card-title"><label style="color:red">Company</label> {{CARDETAILS.car_company}}</h7><br>
-                <h7 class="card-title"><label style="color:red">Type</label> {{CARDETAILS.car_type}}</h7><br>
-                <h7 class="card-title"><label style="color:red">₹</label> {{CARDETAILS.price}}</h7><br></br>
-                <a href="/cars/product_listing_detail/{{CARDETAILS.id}}"><button>More</button></a>
-                <!-- <a href="/cuspage/singlecars/{{CARDETAILS.id}}"><button>More</button></a> -->
-                <!-- /cuspage/singlecars/{{cartbl.id}} -->
-                <p class="card-text"></p>
-                </div>
         </div>
-    </div>
-    {% endfor %}
-    {% else %}
-    <br><br><br><h1>No results found <a style="font-size: x-large;color: rgb(255, 0, 0);" href="{% url 'product_listing' %}">refresh page</a></h1>
-    {% endif %}
-    </div>
-    </div>
+    </section>
+    <!-- End banner Area -->
+
+    <!-- Start item detail Area -->
+
+    <section class="blog-posts-area pb-120">
+
+        <div class="container">
+            <div class="row">
+                <form method="get" style="margin: 30px;">
+                    {{myFilter.form}} <input style="color: rgb(255, 255, 255);font-size: large;background-color: rgb(255, 6, 6);
+                font-family: 'Times New Roman', Times, serif;" type="submit" value=" Search ">
+
+                </form>
+                {% if myFilter.qs %}
+                {% for CARDETAILS in myFilter.qs %}
+                <div class="col-md-4">
+                    <br></br>
+                    <div class="card">
+                        <img src="{{CARDETAILS.image3.url}}" class="card-img-top" alt="pic of the car">
+                        <div class="card-body">
+                            <h3 class="card-title"><label style="color:red"></label>{{CARDETAILS.car_name}}</h3>
+                            <h7 class="card-title"><label style="color:red">Company</label> {{CARDETAILS.car_company}}
+                            </h7><br>
+                            <h7 class="card-title"><label style="color:red">Type</label> {{CARDETAILS.car_type}}</h7>
+                            <br>
+                            <h7 class="card-title"><label style="color:red">₹</label> {{CARDETAILS.price}}</h7><br></br>
+                            <a href="/cars/product_listing_detail/{{CARDETAILS.id}}"><button>More</button></a>
+                            <!-- <a href="/cuspage/singlecars/{{CARDETAILS.id}}"><button>More</button></a> -->
+                            <!-- /cuspage/singlecars/{{cartbl.id}} -->
+                            <p class="card-text"></p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <br><br><br>
+                <h1>No results found <a style="font-size: x-large;color: rgb(255, 0, 0);"
+                        href="{% url 'product_listing' %}">refresh page</a></h1>
+                {% endif %}
+            </div>
+        </div>
 
     </section>
-        <!-- End item detail Area -->
-        
-    
-       <!-- start footer Area -->		
-        <footer class="footer-area footer-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3  col-md-3 col-sm-6">
-                        <div class="single-footer-widget newsletter">
-                            <img class="w-50 img-fluid mb-3" src="#" alt="">
-                            <p>HotWheels.</p>
-                            <ul class="social-footer">
-                                <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
-                            </ul>
-                        </div>
+    <!-- End item detail Area -->
+
+
+    <!-- start footer Area -->
+    <footer class="footer-area footer-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3  col-md-3 col-sm-6">
+                    <div class="single-footer-widget newsletter">
+                        <img class="w-50 img-fluid mb-3" src="#" alt="">
+                        <p>HotWheels.</p>
+                        <ul class="social-footer">
+                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a class="google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
                     </div>
-                    <div class="col-lg-3  col-md-3 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h6>Useful Links</h6>
-                            <ul class="footer-nav">
-                                <li><a href="">Change</a></li>
-                                <li><a href="">Replacement</a></li>
-                                <li><a href="">Contact Us</a></li>
-                                <li><a href="">Pre-Purchase</a></li>
-                                <li><a href="">Service</a></li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="col-lg-3  col-md-3 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>Useful Links</h6>
+                        <ul class="footer-nav">
+                            <li><a href="">Change</a></li>
+                            <li><a href="">Replacement</a></li>
+                            <li><a href="">Contact Us</a></li>
+                            <li><a href="">Pre-Purchase</a></li>
+                            <li><a href="">Service</a></li>
+                        </ul>
                     </div>
-                    <div class="col-lg-3  col-md-3 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h6>Our Service</h6>
-                            <ul class="footer-nav">
-                                <li><a href="">Privacy Policy</a></li>
-                                <li><a href="">About Us</a></li>
-                                <li><a href="">Terms & Conditions</a></li>
-                                <li><a href="">Support</a></li>
-                                <li><a href="">About</a></li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="col-lg-3  col-md-3 col-sm-6">
+                    <div class="single-footer-widget">
+                        <h6>Our Service</h6>
+                        <ul class="footer-nav">
+                            <li><a href="">Privacy Policy</a></li>
+                            <li><a href="">About Us</a></li>
+                            <li><a href="">Terms & Conditions</a></li>
+                            <li><a href="">Support</a></li>
+                            <li><a href="">About</a></li>
+                        </ul>
                     </div>
-                    <div class="col-lg-3  col-md-3 col-sm-6">
-                        <div class="single-footer-widget mail-chimp">
-                            <h6 class="mb-20">Keep In Touch</h6>
-                            <ul class="footer-nav">
-                                <li>
-                                <strong><i class="fa fa-map-marker"></i></strong><span class="pl-2">1111 Nnn Nnn, Nnn Nnn</span>
-                                </li>
-                                <li>
+                </div>
+                <div class="col-lg-3  col-md-3 col-sm-6">
+                    <div class="single-footer-widget mail-chimp">
+                        <h6 class="mb-20">Keep In Touch</h6>
+                        <ul class="footer-nav">
+                            <li>
+                                <strong><i class="fa fa-map-marker"></i></strong><span class="pl-2">1111 Nnn Nnn, Nnn
+                                    Nnn</span>
+                            </li>
+                            <li>
                                 <strong><i class="fa fa-mobile"></i></strong><span class="pl-2">+00 00 000 000</span>
-                                </li>
-                                <li>
-                                <strong><i class="fa fa-envelope-o"></i></strong><span class="pl-2"><a href="#">ex@example.com</a></span>
-                                </li>
-                            </ul>
-                            <div class="section_form">
-                                    <div class="col-auto">
-                                      <div class="input-group mb-2">
-                                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter Your Email">
-                                         <div class="input-group-prepend">
-                                          <div class="input-group-text"><i class="fa fa-paper-plane"></i></div>
-                                        </div>
-                                      </div>
-                                    </div>  
+                            </li>
+                            <li>
+                                <strong><i class="fa fa-envelope-o"></i></strong><span class="pl-2"><a
+                                        href="#">ex@example.com</a></span>
+                            </li>
+                        </ul>
+                        <div class="section_form">
+                            <div class="col-auto">
+                                <div class="input-group mb-2">
+                                    <input type="text" class="form-control" id="inlineFormInputGroup"
+                                        placeholder="Enter Your Email">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text"><i class="fa fa-paper-plane"></i></div>
+                                    </div>
                                 </div>
-                        </div>
-                    </div>						
-                </div>	
-            </div>
-        </footer>
-        <div class="copyright1">
-            <div class="container">
-                <div class="row"> 
-                    <div class="col-md-6 col-sm-6 col-12">
-                        <div class="bottom_footer_info">
-                            <span>&copy;Copyright All rights reserved &copy;<script>document.write(new Date().getFullYear())</script> HotWheels</span>
-                            <!-- <p> &copy; Copyright 2023. All rights reserved</p> -->
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-12">
-                        <div class="bottom_footer_logo">
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <a href="#">Privacy policy &nbsp;|</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">Terms And Condition &nbsp;|</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a href="#">Contact Us</a>
-                                </li>
-                            </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End footer Area --> 	
+    </footer>
+    <div class="copyright1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-12">
+                    <div class="bottom_footer_info">
+                        <span>&copy;Copyright All rights reserved &copy;
+                            <script>document.write(new Date().getFullYear())</script> HotWheels
+                        </span>
+                        <!-- <p> &copy; Copyright 2023. All rights reserved</p> -->
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-12">
+                    <div class="bottom_footer_logo">
+                        <ul class="list-inline">
+                            <li class="list-inline-item">
+                                <a href="#">Privacy policy &nbsp;|</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#">Terms And Condition &nbsp;|</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#">Contact Us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End footer Area -->
 
-        <script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>			
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-          <script src="{% static 'js/easing.min.js' %}"></script>			
-        <script src="{% static 'js/hoverIntent.js' %}"></script>
-        <!--======= Touch Swipe =========-->
-        <script src="{% static 'js/jquery.touchSwipe.min.js' %}"></script>	
-        <!--======= Customize =========-->
-        <script src="{% static 'js/responsive_bootstrap_carousel.js' %}"></script>
-        <script src="{% static 'js/superfish.min.js' %}"></script>	
-        <script src="{% static 'js/rangeslider.js' %}"></script>
-        <script src="{% static 'js/rangeslider.min.js' %}"></script>	
-        <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
-        <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>	
-        <script src="{% static 'js/owl.carousel.min.js' %}"></script>			
-        <script src="{% static 'js/jquery.sticky.js' %}"></script>
-        <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>			
-        <script src="{% static 'js/parallax.min.js' %}"></script>		
-        <script src="{% static 'js/mail-script.js' %}"></script>	
-        <script src="{% static 'js/jquery.touchSwipe.min.js' %}"></script>
-        <script src="{% static 'js/responsive_bootstrap_carousel.js' %}"></script>
-        <script src="{% static 'js/paradise_slider_min.js' %}"></script>
-        <script src="{% static 'js/main.js' %}"></script>	
-    </body>
+    <script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+    <script src="{% static 'js/easing.min.js' %}"></script>
+    <script src="{% static 'js/hoverIntent.js' %}"></script>
+    <!--======= Touch Swipe =========-->
+    <script src="{% static 'js/jquery.touchSwipe.min.js' %}"></script>
+    <!--======= Customize =========-->
+    <script src="{% static 'js/responsive_bootstrap_carousel.js' %}"></script>
+    <script src="{% static 'js/superfish.min.js' %}"></script>
+    <script src="{% static 'js/rangeslider.js' %}"></script>
+    <script src="{% static 'js/rangeslider.min.js' %}"></script>
+    <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.sticky.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/parallax.min.js' %}"></script>
+    <script src="{% static 'js/mail-script.js' %}"></script>
+    <script src="{% static 'js/jquery.touchSwipe.min.js' %}"></script>
+    <script src="{% static 'js/responsive_bootstrap_carousel.js' %}"></script>
+    <script src="{% static 'js/paradise_slider_min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
 </html>
