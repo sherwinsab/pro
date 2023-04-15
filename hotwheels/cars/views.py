@@ -34,7 +34,7 @@ import cv2
 from pytesseract import pytesseract
 from django.http import StreamingHttpResponse
 
-openai.api_key = "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" # Replace with your actual API key
+openai.api_key = "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" # Replace with your actual API key
 model_engine = "text-davinci-003"
 # import numpy as np
 # import pandas as pd
