@@ -161,7 +161,7 @@
                     <div class="cart_content col-lg-10">
                         <div class="cart-top-border">
                             <h2 class="mb-30">Tax And Additional Accessories Total</h2>
-                            <form action="/cars/booknow/{{CARDETAILS.id}}" method="post">
+                            <form action="/booknow/{{CARDETAILS.id}}" method="post">
                                 {% csrf_token %} 
                                     <h4><br>Car Price              : ₹ {{CARDETAILS.price}}</h4>
                                     <h4><br>Additional Accessories Total : ₹ {{accssamt}}</h4>
